@@ -8,13 +8,11 @@ function Show-Menu {
 
 function Get-Gacha_os {
     [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("https://github.com/studiobutter/gacha-stuff/raw/refs/heads/main/gacha_clipboard/get_signal_link_os.ps1")
-    Write-Host "Now paste in your Signal Tracker Service"
     Write-Host "Press any key to return to the menu, or Ctrl + C to exit"
 }
 
 function Get-Gacha_cn {
     [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("https://github.com/studiobutter/gacha-stuff/raw/refs/heads/main/gacha_clipboard/get_signal_link_cn.ps1")
-    Write-Host "Now paste in your Singal Tracker Service"
     Write-Host "Press any key to return to the menu, or Ctrl + C to exit"
 }
 
