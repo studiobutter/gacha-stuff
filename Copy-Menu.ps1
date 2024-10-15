@@ -1,4 +1,5 @@
 Clear-Host
+[Console]::Title = "Gacha Clipboard Catcher"
 function Show-Menu {
     Write-Host "Select which Gacha link to obtain:"
     Write-Host "1. Genshin"
