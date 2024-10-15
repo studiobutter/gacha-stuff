@@ -1,5 +1,6 @@
 Clear-Host
 function Show-Menu {
+    Write-Host "Make sure to open the Gacha Page before choosing any of these options"
     Write-Host "Select which Gacha link to obtain:"
     Write-Host "1. Global"
     Write-Host "2. China"
