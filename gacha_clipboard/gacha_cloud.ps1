@@ -54,7 +54,7 @@ switch ($choice.ToLower()) {
 
         if ($gachaCN) {
             $gachaCN | Set-Clipboard
-            Write-Output "祈愿链接已复制到剪贴板: $gachaCN"
+            Write-Output "抽卡日志 URL 已复制到剪贴板: $gachaCN"
             Write-Output "将其粘贴到您最喜欢的祈愿记录保存程序"
         } else {
             Write-Output "未找到匹配的 URL。请在游戏中打开祈愿历史。"
