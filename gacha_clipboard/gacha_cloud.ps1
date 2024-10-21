@@ -1,5 +1,5 @@
 # Prompt user to choose which URL to copy
-Write-Output "输入'1'复制全球扭蛋网址，或输入'2'复制中国扭蛋网址"
+Write-Output "输入'1'复制国际服祈愿链接，输入'2'复制中国服祈愿链接"
 $choice = Read-Host "Type '1' to copy Global Gacha URL or '2' to copy CN Gacha URL"
 
 # Define the paths to the log files in %localappdata%
@@ -54,10 +54,10 @@ switch ($choice.ToLower()) {
 
         if ($gachaCN) {
             $gachaCN | Set-Clipboard
-            Write-Output "扭蛋日志 URL 已复制到剪贴板: $gachaCN"
-            Write-Output "将其粘贴到您最喜欢的愿望追踪服务中"
+            Write-Output "祈愿链接已复制到剪贴板: $gachaCN"
+            Write-Output "将其粘贴到您最喜欢的祈愿记录保存程序"
         } else {
-            Write-Output "未找到匹配的 URL。请在游戏中打开扭蛋历史。"
+            Write-Output "未找到匹配的 URL。请在游戏中打开祈愿历史。"
         }
     }
     default {
