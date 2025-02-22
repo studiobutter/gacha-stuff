@@ -32,33 +32,33 @@ if ($set_path) {
 
     if (-Not [IO.File]::Exists($log_path)) {
         Write-Output "Failed to locate log file!"
-        Write-Output "Try using the Global one?"
+        Write-Output "Try using the Global region script?"
         return
     }
 
-    $log_lines = Get-Content $log_path -First 4
+    $log_lines = Get-Content $log_path -First 16
 
     if ([string]::IsNullOrEmpty($log_lines)) {
         $log_path = "$locallow_path\Player-prev.log"
 
         if (-Not [IO.File]::Exists($log_path)) {
             Write-Output "Failed to locate log file!"
-            Write-Output "Try using the Global one?"
+            Write-Output "Try using the Global region script?"
             return
         }
 
-        $log_lines = Get-Content $log_path -First 4
+        $log_lines = Get-Content $log_path -First 16
     }
 
     if ([string]::IsNullOrEmpty($log_lines)) {
         Write-Output "Failed to locate game path! (1)"
-        Write-Output "Please contact support at rng.moe Discord: discord.gg/e48fzqxuPM"
+        Write-Output "Please contact rng.moe support at discord.gg/e48fzqxuPM"
         return
     }
 
     $log_lines = $log_lines.split([Environment]::NewLine)
 
-    for ($i = 0; $i -lt 10; $i++) {
+    for ($i = 0; $i -lt 16; $i++) {
         $log_line = $log_lines[$i]
 
         if ($log_line.startsWith("[Subsystems] Discovering subsystems at path ")) {
@@ -70,7 +70,7 @@ if ($set_path) {
 
 if ([string]::IsNullOrEmpty($game_path)) {
     Write-Output "Failed to locate game path! (2)"
-    Write-Output "Please contact support at at rng.moe Discord: discord.gg/e48fzqxuPM"
+    Write-Output "Please contact support at discord.gg/e48fzqxuPM"
 }
 
 $copy_path = [IO.Path]::GetTempPath() + [Guid]::NewGuid().ToString()
@@ -133,4 +133,4 @@ for ($i = $cache_data_split.Length - 1; $i -ge 0; $i--) {
 }
 
 Write-Output "Could not locate Search History Url."
-Write-Output "Please make sure to open the Search history before choosing this option."
+Write-Output "Please make sure to open the Search history before running the script."
