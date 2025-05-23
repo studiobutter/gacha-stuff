@@ -1,5 +1,5 @@
 # Prompt user to choose which URL to copy
-$choice = Read-Host "不支持国际服务器愿望链接，请输入“2”复制中国服务器愿望链接。"
+$choice = Read-Host "不支持国际服的调频记录链接，请输入'2'复制中国服务器的调频记录链接"
 
 # Define the paths to the log files in %localappdata%
 # $GlobalPath = "$env:LOCALAPPDATA\HoYoverse\ZenlessZoneZeroCloud\config\logs\MiHoYoSDK.log"
@@ -37,7 +37,7 @@ function Get-LastMatchingURL {
 switch ($choice.ToLower()) {
     "1" {
         Clear-Host
-        Write-Host "Zenless Zone Zero Cloud is not supported yet."
+        Write-Host "Zenless Zone Zero - Cloud Global is not supported yet."
     }
     "2" {
         $pattern = '"url":"https://webstatic.mihoyo.com/hk4e/event/e20190909gacha-v3/'
@@ -52,7 +52,6 @@ switch ($choice.ToLower()) {
         }
     }
     default {
-        Write-Output "Invalid choice. Please run the command again."
         Write-Output "无效选择。请再次运行该命令。"
     }
 }
