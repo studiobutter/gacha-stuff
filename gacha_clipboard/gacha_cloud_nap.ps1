@@ -40,7 +40,7 @@ switch ($choice.ToLower()) {
         Write-Host "Zenless Zone Zero - Cloud Global is not supported yet."
     }
     "2" {
-        $pattern = '"url":"https://webstatic.mihoyo.com/hk4e/event/e20190909gacha-v3/'
+        $pattern = '"url":"https://webstatic.mihoyo.com/nap/event/e20230424gacha/'
         $gachaCN = Get-LastMatchingURL -filePath $CNPath -pattern $pattern
 
         if ($gachaCN) {

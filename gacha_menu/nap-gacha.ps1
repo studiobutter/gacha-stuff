@@ -30,6 +30,7 @@ while ($true) {
     switch ($choice) {
         1 { Get-Gacha_os }
         2 { Get-Gacha_cn }
+        3 { Get-Gacha_Cloud }
         default { Write-Host "Invalid choice. Please try again." }
     }
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
