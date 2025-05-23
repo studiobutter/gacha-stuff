@@ -4,6 +4,7 @@ function Show-Menu {
     Write-Host "Select which Gacha link to obtain:"
     Write-Host "1. Global"
     Write-Host "2. China"
+    Write-Host "3. Cloud"
     Write-Host "Press Ctrl + C to exit"
 }
 
@@ -14,6 +15,11 @@ function Get-Gacha_os {
 
 function Get-Gacha_cn {
     [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("https://github.com/studiobutter/gacha-stuff/raw/refs/heads/main/gacha_clipboard/get_signal_link_cn.ps1")
+    Write-Host "Press any key to return to the menu, or Ctrl + C to exit"
+}
+
+function Get-Gacha_Cloud {
+    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("https://github.com/studiobutter/gacha-stuff/raw/refs/heads/main/gacha_clipboard/gacha_cloud_nap.ps1")
     Write-Host "Press any key to return to the menu, or Ctrl + C to exit"
 }
 
