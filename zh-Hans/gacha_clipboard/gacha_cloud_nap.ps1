@@ -1,3 +1,7 @@
+# Script made by Studio Butter for Zenless Zone Zero - Cloud (China)
+
+# Prompt user to choose which URL to copy
+
 # Prompt user to choose which URL to copy
 $choice = Read-Host "不支持国际服的调频记录链接，请输入'2'复制中国服务器的调频记录链接"
 
