@@ -1,3 +1,5 @@
+# Script made by Studio Butter for Genshin Impact - Cloud (Global and CN)
+
 # Prompt user to choose which URL to copy
 $choice = Read-Host "Type '1' to copy Global Gacha URL or '2' to copy CN Gacha URL"
 
