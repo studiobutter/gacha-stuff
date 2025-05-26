@@ -1,4 +1,4 @@
-# Forked from paimon.moe
+# Forked from paimon.moe for Genshin Impact
 Add-Type -AssemblyName System.Web
 
 $logLocation = "%userprofile%\AppData\LocalLow\miHoYo\Genshin Impact\output_log.txt";
