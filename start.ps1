@@ -55,6 +55,24 @@ if ($regLang) {
         return
     }
 
+# Download language.json from repo to $env:TMP/gacha-log
+$gachaLogTmp = Join-Path $env:TMP 'gacha-log'
+if (-not (Test-Path $gachaLogTmp)) {
+    New-Item -Path $gachaLogTmp -ItemType Directory | Out-Null
+}
+$languageFile = Join-Path $gachaLogTmp 'language.json'
+Invoke-WebRequest -Uri 'https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/language.json' -OutFile $languageFile -UseBasicParsing
+
+$languagesJson = Get-Content $languageFile -Raw | ConvertFrom-Json
+$languages = $languagesJson.languages
+
+# Determine if system language is available in language.json, fallback to English if not
+$systemLangCode = $systemLanguage.Name.ToLower()
+$availableCodes = @()
+foreach ($lang in $languages) {
+    $availableCodes += $lang.codes
+}
+
 # Display language menu with system language option
 Write-Host "Language:" -ForegroundColor Cyan
 for ($i = 0; $i -lt $languages.Count; $i++) {
@@ -80,8 +98,27 @@ while ($selectedIndex -lt 1 -or $selectedIndex -gt $languages.Count) {
 }
 
 if ($useSystemLang) {
-    $commonCode = $systemLanguage.Name.ToLower()
-    Write-Host "Using System Language: $($systemLanguage.Name) ($commonCode)"
+    $foundLang = $null
+    foreach ($lang in $languages) {
+        if ($lang.codes -contains $systemLangCode) {
+            $foundLang = $lang
+            break
+        }
+    }
+    if ($foundLang) {
+        $commonCode = $foundLang.commonCode
+        Write-Host "Using System Language: $($systemLanguage.Name) ($commonCode)"
+    } else {
+        # Fallback to English
+        $englishLang = $languages | Where-Object { $_.commonCode -eq 'en' }
+        if ($englishLang) {
+            $commonCode = $englishLang.commonCode
+            Write-Host "System Language '$($systemLanguage.Name)' not available, falling back to English ($commonCode)" -ForegroundColor Yellow
+        } else {
+            Write-Host "System Language and English fallback not found in language.json!" -ForegroundColor Red
+            exit 1
+        }
+    }
 } else {
     $selectedLanguage = $languages[$selectedIndex - 1]
     $commonCode = $selectedLanguage.commonCode
@@ -104,7 +141,7 @@ if ($commonCode -in @(
 }
 
 # Download Gacha.Resources.psd1 for the selected language
-$resourceUrl = "https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/$commonCode/Gacha.Resources.psd1"
+$resourceUrl = "https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/i18n/$commonCode/Gacha.Resources.psd1"
 $resourceFile = Join-Path $gachaLogTmp 'Gacha.Resources.psd1'
 try {
     Invoke-WebRequest -Uri $resourceUrl -OutFile $resourceFile -UseBasicParsing
