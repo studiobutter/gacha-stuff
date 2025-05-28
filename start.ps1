@@ -4,78 +4,77 @@ Clear-Host
 $systemLanguage = Get-Culture
 Write-Host "System Language: $($systemLanguage.Name)"
 
-# Load language data from language.json
-$languageData = Get-Content -Raw -Path ".\language.json" | ConvertFrom-Json
+Write-Host "User TEMP folder: $env:TMP"
 
-# Display language options
-Write-Host "Available Languages:"
-for ($i = 0; $i -lt $languageData.languages.Count; $i++) {
-    Write-Host "$($i + 1). $($languageData.languages[$i].name)"
+# Load available languages from language.json
+$languageFile = Join-Path $PSScriptRoot 'language.json'
+$languagesJson = Get-Content $languageFile -Raw | ConvertFrom-Json
+$languages = $languagesJson.languages
+
+# Check Registry for saved language
+$regPath = 'HKCU:\Software\gacha-log'
+$regLang = $null
+if (Test-Path $regPath) {
+    try {
+        $regLang = (Get-ItemProperty -Path $regPath -Name 'lang' -ErrorAction SilentlyContinue).lang
+    } catch {}
 }
 
-# Prompt user for language selection
-$selection = Read-Host "Select a language (press Enter to use system language: $($systemLanguage.Name))"
+if ($regLang) {
+    $env:GACHA_LANG = $regLang
+    Write-Host "Loaded saved language from Registry: $regLang"
+    # Continue the rest of your script here
+    return
+}
 
-if ([string]::IsNullOrWhiteSpace($selection)) {
-    # Use system language
-    $selectedLanguage = $languageData.languages | Where-Object {
-        $_.codes -contains $systemLanguage.Name.ToLower()
+# Display language menu with system language option
+Write-Host "Select your language (or press Enter to use System Language: $($systemLanguage.Name)):" -ForegroundColor Cyan
+for ($i = 0; $i -lt $languages.Count; $i++) {
+    $num = $i + 1
+    Write-Host ("{0}. {1}" -f $num, $languages[$i].name)
+}
+
+# Get user selection, allow Enter for system language
+$selectedIndex = -1
+$useSystemLang = $false
+while ($selectedIndex -lt 1 -or $selectedIndex -gt $languages.Count) {
+    $userInput = Read-Host "Enter the number of your language choice (or press Enter for System Language)"
+    if ([string]::IsNullOrWhiteSpace($userInput)) {
+        $useSystemLang = $true
+        break
     }
-    if (-not $selectedLanguage) {
-        # Try matching by language prefix (e.g., "en" for "en-US")
-        $langPrefix = $systemLanguage.Name.Split('-')[0].ToLower()
-        $selectedLanguage = $languageData.languages | Where-Object {
-            $_.codes -contains $langPrefix
-        }
+    if ($userInput -match '^[0-9]+$') {
+        $selectedIndex = [int]$userInput
     }
-    if ($selectedLanguage) {
-        Write-Host "Selected language: $($selectedLanguage.name)"
-    } else {
-        Write-Host "System language not found in language.json. Defaulting to English."
-        $selectedLanguage = $languageData.languages | Where-Object { $_.name -eq "English" }
+    if ($selectedIndex -lt 1 -or $selectedIndex -gt $languages.Count) {
+        Write-Host "Invalid selection. Please try again." -ForegroundColor Yellow
     }
+}
+
+if ($useSystemLang) {
+    $commonCode = $systemLanguage.Name.ToLower()
+    Write-Host "Using System Language: $($systemLanguage.Name) ($commonCode)"
 } else {
-    # Use user selection
-    $index = [int]$selection - 1
-    if ($index -ge 0 -and $index -lt $languageData.languages.Count) {
-        $selectedLanguage = $languageData.languages[$index]
-        Write-Host "Selected language: $($selectedLanguage.name)"
-    } else {
-        Write-Host "Invalid selection. Defaulting to English."
-        $selectedLanguage = $languageData.languages | Where-Object { $_.name -eq "English" }
-    }
+    $selectedLanguage = $languages[$selectedIndex - 1]
+    $commonCode = $selectedLanguage.commonCode
+    Write-Host "Selected language: $($selectedLanguage.name) ($commonCode)"
 }
 
-# Set the selected language in the environment variable
-$env:LANGUAGE = $selectedLanguage.name
+# Set environment variable for this session
+$env:GACHA_LANG = $commonCode
 
-# Ask user if they want to remember their choice
-$rememberChoice = Read-Host "Do you want to remember this language selection for next time? (y/n). Administrator privileges required to save this preference"
-if ([string]::IsNullOrWhiteSpace($rememberChoice)) {
-    $rememberChoice = "n"  # Default to not remembering if input is empty
-}
-if ($rememberChoice -match '^(y|yes)$') {
-    # Check if running as administrator
-    $currentIdentity = [Security.Principal.WindowsIdentity]::GetCurrent()
-    $principal = New-Object Security.Principal.WindowsPrincipal($currentIdentity)
-    if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        Write-Host "Restarting script as Administrator to save your preference..."
-
-        # Check for pwsh.exe (PowerShell Core)
-        $pwshPath = (Get-Command pwsh.exe -ErrorAction SilentlyContinue)?.Source
-        if ($pwshPath) {
-            Start-Process $pwshPath "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
-        } else {
-            Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+# Ask if user wants to save in Registry
+$saveReg = Read-Host "Do you want to save this language in the Registry for next time? (y/n)"
+if ($saveReg -match '^(y|Y)') {
+    try {
+        $regPath = 'HKCU:\\Software\\gacha-log'
+        if (-not (Test-Path $regPath)) {
+            New-Item -Path $regPath -Force | Out-Null
         }
-        exit
+        Set-ItemProperty -Path $regPath -Name 'lang' -Value $commonCode
+        Write-Host "Language saved in Registry under HKCU/Software/gacha-log/lang." -ForegroundColor Green
+    } catch {
+        Write-Host "Failed to save language in Registry: $_" -ForegroundColor Red
     }
-
-    # Save the selected language code to registry
-    $regPath = "HKCU:\Software\gacha-log"
-    if (-not (Test-Path $regPath)) {
-        New-Item -Path $regPath -Force | Out-Null
-    }
-    Set-ItemProperty -Path $regPath -Name "lang" -Value $selectedLanguage.name
-    Write-Host "Language preference saved to registry."
 }
+

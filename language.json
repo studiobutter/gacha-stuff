@@ -13,27 +13,31 @@
                 "en-za",
                 "en-in",
                 "en-sg"
-            ]
+            ],
+            "commonCode": "en"
         },
         {
             "name": "Chinese (Simplified)",
             "codes": [
                 "zh",
                 "zh-cn"
-            ]
+            ],
+            "commonCode": "zh-cn"
         },
         {
             "name": "Chinese (Traditional)",
             "codes": [
                 "zh-tw",
                 "zh-hk"
-            ]
+            ],
+            "commonCode": "zh-tw"
         },
         {
             "name": "Vietnamese",
             "codes": [
                 "vi"
-            ]
+            ],
+            "commonCode": "vi"
         }
     ]
 }
