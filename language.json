@@ -1,0 +1,39 @@
+{
+    "languages": [
+        {
+            "name": "English",
+            "codes": [
+                "en",
+                "en-us",
+                "en-gb",
+                "en-au",
+                "en-ca",
+                "en-nz",
+                "en-ie",
+                "en-za",
+                "en-in",
+                "en-sg"
+            ]
+        },
+        {
+            "name": "Chinese (Simplified)",
+            "codes": [
+                "zh",
+                "zh-cn"
+            ]
+        },
+        {
+            "name": "Chinese (Traditional)",
+            "codes": [
+                "zh-tw",
+                "zh-hk"
+            ]
+        },
+        {
+            "name": "Vietnamese",
+            "codes": [
+                "vi"
+            ]
+        }
+    ]
+}
