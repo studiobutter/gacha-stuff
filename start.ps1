@@ -30,7 +30,7 @@ if ($regLang) {
     Write-Host "Loaded saved language from Registry: $regLang"
     # Continue the rest of your script here
     # Download Gacha.Resources.psd1 for the selected language
-    $resourceUrl = "https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/$commonCode/Gacha.Resources.psd1"
+    $resourceUrl = "https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/i18n/$commonCode/Gacha.Resources.psd1"
     $resourceFile = Join-Path $gachaLogTmp 'Gacha.Resources.psd1'
     try {
         Invoke-WebRequest -Uri $resourceUrl -OutFile $resourceFile -UseBasicParsing
