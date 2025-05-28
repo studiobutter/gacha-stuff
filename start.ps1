@@ -60,7 +60,14 @@ if ($rememberChoice -match '^(y|yes)$') {
     $principal = New-Object Security.Principal.WindowsPrincipal($currentIdentity)
     if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
         Write-Host "Restarting script as Administrator to save your preference..."
-        Start-Process powershell "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+
+        # Check for pwsh.exe (PowerShell Core)
+        $pwshPath = (Get-Command pwsh.exe -ErrorAction SilentlyContinue)?.Source
+        if ($pwshPath) {
+            Start-Process $pwshPath "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+        } else {
+            Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+        }
         exit
     }
 
