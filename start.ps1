@@ -84,7 +84,7 @@ for ($i = 0; $i -lt $languages.Count; $i++) {
 $selectedIndex = -1
 $useSystemLang = $false
 while ($selectedIndex -lt 1 -or $selectedIndex -gt $languages.Count) {
-    $userInput = Read-Host "Default = $($systemLanguage.Name)"
+    $userInput = Read-Host "Default = $($systemLanguage.Name) [Enter]"
     if ([string]::IsNullOrWhiteSpace($userInput)) {
         $useSystemLang = $true
         break
