@@ -121,18 +121,13 @@ try {
     Write-Host "Failed to download Gacha.Resources.psd1 for '$commonCode': $_" -ForegroundColor Red
 }
 
-# Ask if user wants to save in Registry
-$saveReg = Read-Host "Do you want to save this language in the Registry for next time? (y/n)"
-if ($saveReg -match '^(y|Y)') {
-    try {
-        $regPath = 'HKCU:\\Software\\gacha-log'
-        if (-not (Test-Path $regPath)) {
-            New-Item -Path $regPath -Force | Out-Null
-        }
-        Set-ItemProperty -Path $regPath -Name 'lang' -Value $commonCode
-        Write-Host "Language saved in Registry under HKCU/Software/gacha-log/lang." -ForegroundColor Green
-    } catch {
-        Write-Host "Failed to save language in Registry: $_" -ForegroundColor Red
-    }
+# Download saveReg.ps1 and execute it with $commonCode as argument
+$saveRegUrl = "https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/saveReg.ps1"
+$saveRegFile = Join-Path $gachaLogTmp 'saveReg.ps1'
+try {
+    Invoke-WebRequest -Uri $saveRegUrl -OutFile $saveRegFile -UseBasicParsing
+    Write-Host "Downloaded saveReg.ps1 to $saveRegFile" -ForegroundColor Green
+    & $saveRegFile $commonCode
+} catch {
+    Write-Host "Failed to download or run saveReg.ps1: $_" -ForegroundColor Red
 }
-
