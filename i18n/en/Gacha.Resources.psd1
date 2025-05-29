@@ -12,7 +12,7 @@
         '1. Genshin Impact',
         '2. Honkai: Star Rail',
         '3. Zenless Zone Zero'
-        'Press Q to Exit'
+        'Press 0 to Exit'
     );
     GachaMenuChoice = 'Enter your choice';
     GachaMenuInvalidChoice = 'Invalid choice. Please try again.';
