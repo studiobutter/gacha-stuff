@@ -16,5 +16,5 @@
     GachaMenuChoice = 'Enter your choice';
     GachaMenuInvalidChoice = 'Invalid choice. Please try again.';
     GachaMenuAnyKey = 'Press any key to return to the menu...';
-    GachaMenuExit = 'Exiting...';
+    GachaMenuExit = 'Cleaning Temp Files and Exiting...';
 }

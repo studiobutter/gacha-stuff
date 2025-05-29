@@ -44,9 +44,10 @@ try {
 catch [System.Management.Automation.Host.ControlCException] {
     # Handle Ctrl+C: delete $gachaLogTmp
     if (Test-Path $gachaLogTmp) {
+        Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
+        Start-Sleep -Seconds 5
         Remove-Item -Path $gachaLogTmp -Recurse -Force -ErrorAction SilentlyContinue
     }
-    Write-Host "Exiting and cleaned up $gachaLogTmp" -ForegroundColor Green
     exit
 }
 
