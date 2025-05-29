@@ -4,6 +4,7 @@
     RegRememberFailed = 'Failed to saved to registry:';
     RegRememberSuccess = 'Language selection saved to registry successfully.';
     RegSuggestAdmin = 'You may need to run PowerShell as Administrator to save this setting.';
+    RegRememberCancelled = 'Operation cancelled. No changes made to the registry.';
 
     GachaMenuTitle = 'Gacha Clipboard Catcher';
     GachaMenuDescription = 'Select which Gacha link to obtain:';

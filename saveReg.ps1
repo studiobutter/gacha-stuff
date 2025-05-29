@@ -29,9 +29,10 @@ if ($args.Count -gt 0) {
     $confirmation = Read-Host ($Locale.RegRememberChoice -f $inputText)
     if ($confirmation -match '^[Yy]$') {
         Set-ItemProperty -Path $regPath -Name 'lang' -Value $inputText
-        Write-Output "."
+        Write-Output $Locale.RegRememberSuccess
+        
     } else {
-        Write-Output "Operation cancelled."
+        Write-Output $Locale.RegRememberCancelled
     }
 } else {
     Write-Output "No text provided. Usage: ./saveReg.ps1 [text]"
