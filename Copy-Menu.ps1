@@ -27,22 +27,21 @@ try {
     while ($true) {
         Show-Menu
         $choice = Read-Host $Locale.GachaMenuChoice
-        
+        if ($choice -eq 'q' -or $choice -eq 'Q') {
+            break
+        }
         switch ($choice) {
             1 { Get-Gacha_hk4e }
             2 { Get-Gacha_hkrpg }
             3 { Get-Gacha_nap }
             default { Write-Host $Locale.GachaMenuInvalidChoice -ForegroundColor Red; continue }
         }
-        
         Write-Host $Locale.GachaMenuAnyKey -ForegroundColor Yellow
-        # Wait for any key press
         $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
         Clear-Host
     }
 }
-catch [System.Management.Automation.Host.ControlCException] {
-    # Handle Ctrl+C: delete $gachaLogTmp
+finally {
     if (Test-Path $gachaLogTmp) {
         Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
         Start-Sleep -Seconds 5
