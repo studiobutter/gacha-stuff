@@ -54,10 +54,10 @@ if ($regLang) {
             $copyMenuFile = Join-Path $gachaLogTmp 'Copy-Menu.ps1'
             try {
                 Invoke-WebRequest -Uri $copyMenuUrl -OutFile $copyMenuFile -UseBasicParsing
-                Write-Host "Downloaded Copy-Menu.ps1 to $copyMenuFile" -ForegroundColor Green
+                Write-Host "Downloaded menu.ps1 to $copyMenuFile" -ForegroundColor Green
                 & $copyMenuFile
             } catch {
-                Write-Host "Failed to download or run Copy-Menu.ps1: $_" -ForegroundColor Red
+                Write-Host "Failed to download or run menu.ps1: $_" -ForegroundColor Red
             }
         } else {
             Write-Host "Resource file not found, cannot display greeting." -ForegroundColor Yellow
