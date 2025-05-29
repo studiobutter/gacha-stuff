@@ -1,11 +1,14 @@
+$gachaLogTmp = "$env:TMP\gacha_log"
+
+Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
+
 Clear-Host
-[Console]::Title = "Gacha Clipboard Catcher"
+[Console]::Title = $Locale.GachaMenuTitle
 function Show-Menu {
-    Write-Host "Select which Gacha link to obtain:"
-    Write-Host "1. Genshin"
-    Write-Host "2. Star Rail"
-    Write-Host "3. Zenless"
-    Write-Host "Press Ctrl + C to exit"
+    Write-Host $Locale.GachaMenuDescription
+    foreach ($option in $Locale.GachaMenuOptions) {
+        Write-Host $option
+    }
 }
 
 function Get-Gacha_hk4e {
@@ -20,21 +23,31 @@ function Get-Gacha_nap {
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://github.com/studiobutter/gacha-stuff/raw/refs/heads/main/gacha_menu/nap-gacha.ps1'))}"
 }
 
-
-while ($true) {
-    Show-Menu
-    $choice = Read-Host "Enter your choice"
-    
-    switch ($choice) {
-        1 { Get-Gacha_hk4e }
-        2 { Get-Gacha_hkrpg }
-        3 { Get-Gacha_nap }
-        default { Write-Host "Invalid choice. Please try again." }
+try {
+    while ($true) {
+        Show-Menu
+        $choice = Read-Host $Locale.GachaMenuChoice
+        
+        switch ($choice) {
+            1 { Get-Gacha_hk4e }
+            2 { Get-Gacha_hkrpg }
+            3 { Get-Gacha_nap }
+            default { Write-Host $Locale.GachaMenuInvalidChoice -ForegroundColor Red; continue }
+        }
+        
+        Write-Host $Locale.GachaMenuAnyKey -ForegroundColor Yellow
+        # Wait for any key press
+        $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+        Clear-Host
     }
-    
-    Write-Host "Press any key to return to the menu..."
-    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-    Clear-Host
+}
+catch [System.Management.Automation.Host.ControlCException] {
+    # Handle Ctrl+C: delete $gachaLogTmp
+    if (Test-Path $gachaLogTmp) {
+        Remove-Item -Path $gachaLogTmp -Recurse -Force -ErrorAction SilentlyContinue
+    }
+    Write-Host "Exiting and cleaned up $gachaLogTmp" -ForegroundColor Green
+    exit
 }
 
 Write-Host "Exiting"
