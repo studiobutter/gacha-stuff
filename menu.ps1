@@ -26,6 +26,7 @@ function Get-Gacha_nap {
 function Close-Clear {
     Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/cleanup.ps1'))}"
+    exit
 }
 
 while ($true) {
