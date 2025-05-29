@@ -49,16 +49,7 @@ if ($regLang) {
         if (Test-Path $resourceFile) {
             $GachaResources = Import-PowerShellDataFile -Path $resourceFile
             Write-Output $GachaResources.Greeting
-            # Download Copy-Menu.ps1 to $gachaLogTmp and execute it
-            $copyMenuUrl = "https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/menu.ps1"
-            $copyMenuFile = Join-Path $gachaLogTmp 'Copy-Menu.ps1'
-            try {
-                Invoke-WebRequest -Uri $copyMenuUrl -OutFile $copyMenuFile -UseBasicParsing
-                Write-Host "Downloaded menu.ps1 to $copyMenuFile" -ForegroundColor Green
-                & $copyMenuFile
-            } catch {
-                Write-Host "Failed to download or run menu.ps1: $_" -ForegroundColor Red
-            }
+            Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "& { $((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/menu.ps1')) }"
         } else {
             Write-Host "Resource file not found, cannot display greeting." -ForegroundColor Yellow
         }
