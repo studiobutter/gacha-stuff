@@ -1,0 +1,1 @@
+Remove-Item Join-Path $env:TMP 'gacha-log' -Recurse -Force -ErrorAction SilentlyContinue

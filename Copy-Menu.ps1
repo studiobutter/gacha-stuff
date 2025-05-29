@@ -23,31 +23,26 @@ function Get-Gacha_nap {
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://github.com/studiobutter/gacha-stuff/raw/refs/heads/main/gacha_menu/nap-gacha.ps1'))}"
 }
 
-try {
-    while ($true) {
-        Show-Menu
-        $choice = Read-Host $Locale.GachaMenuChoice
-        if ($choice -eq 'q' -or $choice -eq 'Q') {
-            break
-        }
-        switch ($choice) {
-            1 { Get-Gacha_hk4e }
-            2 { Get-Gacha_hkrpg }
-            3 { Get-Gacha_nap }
-            default { Write-Host $Locale.GachaMenuInvalidChoice -ForegroundColor Red; continue }
-        }
-        Write-Host $Locale.GachaMenuAnyKey -ForegroundColor Yellow
-        $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-        Clear-Host
-    }
+function Close-Clear {
+    Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/cleanup.ps1'))}
 }
-finally {
-    if (Test-Path $gachaLogTmp) {
-        Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
-        Start-Sleep -Seconds 5
-        Remove-Item -Path $gachaLogTmp -Recurse -Force -ErrorAction SilentlyContinue
+
+while ($true) {
+    Show-Menu
+    $choice = Read-Host $Locale.GachaMenuChoice
+    
+    switch ($choice) {
+        0 { Close-Clear }
+        1 { Get-Gacha_hk4e }
+        2 { Get-Gacha_hkrpg }
+        3 { Get-Gacha_nap }
+        default { Write-Host $Locale.GachaMenuInvalidChoice -ForegroundColor Red; continue }
     }
-    exit
+    
+    Write-Host $Locale.GachaMenuAnyKey -ForegroundColor Yellow
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    Clear-Host
 }
 
 Write-Host "Exiting"
