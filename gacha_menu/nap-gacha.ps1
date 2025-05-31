@@ -10,21 +10,21 @@ function Show-Menu {
 }
 
 function Get-Gacha_os {
-    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("https://github.com/studiobutter/gacha-stuff/raw/refs/heads/main/gacha_clipboard/get_signal_link_os.ps1")
+    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/gacha_clipboard/get_signal_link_os.ps1")
     Write-Host $Locale.TaskCompleted
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Close-Clear
 }
 
 function Get-Gacha_cn {
-    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("https://github.com/studiobutter/gacha-stuff/raw/refs/heads/main/gacha_clipboard/get_signal_link_cn.ps1")
+    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/gacha_clipboard/get_signal_link_cn.ps1")
     Write-Host $Locale.TaskCompleted
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Close-Clear
 }
 
 function Get-Gacha_Cloud {
-    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("https://github.com/studiobutter/gacha-stuff/raw/refs/heads/main/gacha_clipboard/gacha_cloud_nap.ps1")
+    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/gacha_clipboard/gacha_cloud_nap.ps1")
     Write-Host $Locale.TaskCompleted
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Close-Clear

@@ -10,7 +10,7 @@ if (-not (Test-Path $gachaLogTmp)) {
     New-Item -Path $gachaLogTmp -ItemType Directory | Out-Null
 }
 $languageFile = Join-Path $gachaLogTmp 'language.json'
-Invoke-WebRequest -Uri 'https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/language.json' -OutFile $languageFile -UseBasicParsing
+Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/language.json' -OutFile $languageFile -UseBasicParsing
 
 $languagesJson = Get-Content $languageFile -Raw | ConvertFrom-Json
 $languages = $languagesJson.languages
@@ -30,7 +30,7 @@ if ($regLang) {
     Write-Host "Loaded saved language from Registry: $regLang"
     # Continue the rest of your script here
     # Download Gacha.Resources.psd1 for the selected language
-    $resourceUrl = "https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/i18n/$commonCode/Gacha.Resources.psd1"
+    $resourceUrl = "https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/i18n/$commonCode/Gacha.Resources.psd1"
     $resourceFile = Join-Path $gachaLogTmp 'Gacha.Resources.psd1'
     try {
         Invoke-WebRequest -Uri $resourceUrl -OutFile $resourceFile -UseBasicParsing
@@ -61,7 +61,7 @@ if (-not (Test-Path $gachaLogTmp)) {
     New-Item -Path $gachaLogTmp -ItemType Directory | Out-Null
 }
 $languageFile = Join-Path $gachaLogTmp 'language.json'
-Invoke-WebRequest -Uri 'https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/language.json' -OutFile $languageFile -UseBasicParsing
+Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/language.json' -OutFile $languageFile -UseBasicParsing
 
 $languagesJson = Get-Content $languageFile -Raw | ConvertFrom-Json
 $languages = $languagesJson.languages
@@ -141,7 +141,7 @@ if ($commonCode -in @(
 }
 
 # Download Gacha.Resources.psd1 for the selected language
-$resourceUrl = "https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/i18n/$commonCode/Gacha.Resources.psd1"
+$resourceUrl = "https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/i18n/$commonCode/Gacha.Resources.psd1"
 $resourceFile = Join-Path $gachaLogTmp 'Gacha.Resources.psd1'
 try {
     Invoke-WebRequest -Uri $resourceUrl -OutFile $resourceFile -UseBasicParsing
@@ -159,7 +159,7 @@ try {
 }
 
 # Download saveReg.ps1 and execute it with $commonCode as argument
-$saveRegUrl = "https://github.com/studiobutter/gacha-stuff/raw/refs/heads/mutli-lang_2/saveReg.ps1"
+$saveRegUrl = "https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/saveReg.ps1"
 $saveRegFile = Join-Path $gachaLogTmp 'saveReg.ps1'
 try {
     Invoke-WebRequest -Uri $saveRegUrl -OutFile $saveRegFile -UseBasicParsing
