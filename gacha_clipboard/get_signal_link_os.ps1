@@ -1,16 +1,9 @@
-# Copyright 2024 Star Rail Station
+# Script made by Star Rail Station under the Apache License. Remade by rng.moe for Zenless Zone Zero.
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# Read the Licenses here: http://www.apache.org/licenses/LICENSE-2.0
+
+$gachaLogTmp = "$env:TMP\gacha-log"
+Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
@@ -20,7 +13,7 @@ $ProgressPreference = 'SilentlyContinue'
 
 $game_path = ""
 
-Write-Output "Attempting to locate Search History url!"
+Write-Output $Locale.AttemptingToLocate
 
 if ($set_path) {
     $game_path = $set_path
@@ -31,8 +24,7 @@ if ($set_path) {
     $log_path = "$locallow_path\Player.log"
 
     if (-Not [IO.File]::Exists($log_path)) {
-        Write-Output "Failed to locate log file!"
-        Write-Output "Try using the Chinese region script?"
+        Write-Output $Locale.FailedToLocateLogOS
         return
     }
 
@@ -42,8 +34,7 @@ if ($set_path) {
         $log_path = "$locallow_path\Player-prev.log"
 
         if (-Not [IO.File]::Exists($log_path)) {
-            Write-Output "Failed to locate log file!"
-            Write-Output "Try using the Chinese region script?"
+            Write-Output $Locale.FailedToLocateLogOS
             return
         }
 
@@ -51,8 +42,8 @@ if ($set_path) {
     }
 
     if ([string]::IsNullOrEmpty($log_lines)) {
-        Write-Output "Failed to locate game path! (1)"
-        Write-Output "Please contact support at discord.gg/e48fzqxuPM"
+        Write-Output $Locale.FailedToLocatePath1
+        Write-Output $Locale.ScriptProvider1
         return
     }
 
@@ -69,8 +60,8 @@ if ($set_path) {
 }
 
 if ([string]::IsNullOrEmpty($game_path)) {
-    Write-Output "Failed to locate game path! (2)"
-    Write-Output "Please contact rng.moe support at discord.gg/e48fzqxuPM"
+    Write-Output $Locale.FailedToLocatePath2
+    Write-Output $Locale.ScriptProvider1
     return
 }
 
@@ -123,15 +114,14 @@ for ($i = $cache_data_split.Length - 1; $i -ge 0; $i--) {
 
             $latest_url = $uri.Scheme + "://" + $uri.Host + $uri.AbsolutePath + "?" + $query.ToString()
 
-            Write-Output "Search History Url Found!"
+            Write-Output $Locale.ZZZURLFound
             Write-Output $latest_url
             Set-Clipboard -Value $latest_url
-            Write-Output "Search History Url has been saved to clipboard."
-            Write-Output "Now paste it in your Favorite Signal Tracker (i.e: zzz.rng.moe, Hoyo Buddy, etc)"
+            Write-Output $Locale.ZZZURLClipboard
+            Write-Output $Locale.GachaLogInstructions
             return;
         }
     }
 }
 
-Write-Output "Could not locate Search History Url."
-Write-Output "Please make sure to open the Search history before running the script."
+Write-Output $Locale.NoURL

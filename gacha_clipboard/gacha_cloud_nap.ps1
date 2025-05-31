@@ -1,3 +1,5 @@
+# Script made by Studio Butter for Zenless Zone Zero - Cloud (China)
+
 $gachaLogTmp = "$env:TMP\gacha-log"
 Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
 
