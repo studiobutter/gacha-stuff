@@ -17,7 +17,7 @@
             "commonCode": "en"
         },
         {
-            "name": "Chinese (Simplified)",
+            "name": "简体中文",
             "codes": [
                 "zh",
                 "zh-cn"
@@ -25,7 +25,7 @@
             "commonCode": "zh-cn"
         },
         {
-            "name": "Chinese (Traditional)",
+            "name": "繁體中文",
             "codes": [
                 "zh-tw",
                 "zh-hk"
@@ -33,7 +33,7 @@
             "commonCode": "zh-tw"
         },
         {
-            "name": "Vietnamese",
+            "name": "Tiếng Việt",
             "codes": [
                 "vi"
             ],
