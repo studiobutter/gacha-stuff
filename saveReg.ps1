@@ -38,4 +38,4 @@ if ($args.Count -gt 0) {
     Write-Output "No text provided. Usage: ./saveReg.ps1 [text]"
 }
 
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://gacha.studiobutter.io.vn/Copy-Menu.ps1?ref_type=heads'))}"
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://gacha.studiobutter.io.vn/menu.ps1?ref_type=heads'))}"
