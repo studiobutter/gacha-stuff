@@ -1,67 +1,65 @@
 @{
-    Greeting = 'Welcome to Gacha Log Interactive Clipboard Menu!';
-    RegRememberChoice = 'Do you want to remember this language selection for next time? (y/n)';
-    RegRememberFailed = 'Failed to saved to registry:';
-    RegRememberSuccess = 'Language selection saved to registry successfully.';
-    RegSuggestAdmin = 'You may need to run PowerShell as Administrator to save this setting.';
-    RegRememberCancelled = 'Operation cancelled. No changes made to the registry.';
+    Greeting = 'Chào mừng đến Menu Tương Tác Bản Ghi Nhật Ký Gacha!';
+    RegRememberChoice = 'Bạn có muốn ghi nhớ lựa chọn ngôn ngữ này cho lần sau không? (y/n)';
+    RegRememberFailed = 'Không lưu được vào cơ sở dử liệu Registry';
+    RegRememberSuccess = 'Đã lưu lựa chọn ngôn ngữ vào cơ sở dử liệu Registry thành công.';
+    RegSuggestAdmin = 'Bạn có thể cần chạy PowerShell với tư cách Quản trị viên để lưu cài đặt này.';
+    RegRememberCancelled = 'Hoạt động đã bị hủy. Không có thay đổi nào được thực hiện đối với cơ sở dử liệu Registry.';
 
-    GachaMenuTitle = 'Gacha Clipboard Catcher';
-    GachaMenuDescription = 'Select which Gacha link to obtain:';
+    GachaMenuTitle = 'Menu Tương Tác Bản Ghi Nhật Ký Gacha';
+    GachaMenuDescription = 'Chọn trò chơi để lấy đường link Nhật Ký Gacha:';
     GachaMenuOptions = @(
         '1. Genshin Impact',
         '2. Honkai: Star Rail',
         '3. Zenless Zone Zero'
-        'Press 0 to Exit'
+        'Nhấn [0] để thoát'
     );
-    GachaMenuChoice = 'Enter your choice';
-    GachaMenuInvalidChoice = 'Invalid choice. Please try again.';
-    GachaMenuAnyKey = 'Press any key to return to the menu...';
-    GachaMenuExit = 'Cleaning Temp Files and Exiting...';
+    GachaMenuChoice = 'Chọn tùy chọn của bạn:';
+    GachaMenuInvalidChoice = 'Lựa chọn không hợp lệ. Vui lòng thử lại.';
+    GachaMenuAnyKey = 'Nhấn bất kỳ phím nào để tiếp tục...';
+    GachaMenuExit = 'Dọn file rác và thoát...';
 
-    GachaMenuChooseLink = 'Choose a Gacha link to obtain:';
+    GachaMenuChooseLink = 'Chọn vùng để lấy đường link Nhật Ký Gacha:';
     RegionOptions = @(
-        '1. Global',
-        '2. China',
-        '3. Cloud',
-        'Press 0 to Exit'
+        '1. Quốc tế',
+        '2. Trung Quốc Đại Lục',
+        '3. Bản Cloud',
+        'Nhấn [0] để thoát'
     );
     RegionOptionsNoCloud = @(
-        '1. Global',
-        '2. China',
-        'Press 0 to Exit'
+        '1. Quốc tế',
+        '2. Trung Quốc Đại Lục',
+        'Nhấn [0] để thoát'
     );
-    TaskCompleted = 'Task completed. If any error occurs, please rerun the script or follow the instruction above to contact support. Press any key to exit.';
+    TaskCompleted = 'Tác vụ đã hoàn tất. Nếu có bất kỳ lỗi nào xảy ra, vui lòng chạy lại mã lệnh hoặc làm theo hướng dẫn ở trên để liên hệ hỗ trợ. Nhấn phím bất kỳ để thoát.';
 
-    RegionChoice = 'Select your choice:';
-    GachaMenuInvalidRegion = 'Invalid region choice. Please try again.';
+    RegionChoice = 'Vui lòng chọn vùng của bạn:';
+    GachaMenuInvalidRegion = 'Vùng không hợp lệ. Vui lòng chọn lại.';
 
-    CloudChoice = 'Type "1" to copy Global Gacha URL, "2" for China Gacha URL.';
-    NoURL = 'No matching URL found or URL cannot located. Please open the Gacha History in-game.';
-    Copied = 'Gacha Log URL copied to clipboard:';
-    PasteInstructions = 'Paste it in your favorite Wish Tracker Service';
-    InvalidChoice = 'Invalid choice. Please run the command again.';
+    CloudChoice = 'Nhập [1] để lấy đường link Nhật Ký Gacha Quốc tế hoặc [2] để lấy đường link Nhật Ký Gacha Trung Quốc Đại Lục:';
+    NoURL = 'Không tìm thấy URL phù hợp hoặc không thể định vị được URL. Vui lòng mở Lịch sử Gacha trong trò chơi.';
+    Copied = 'Đường dẫn Nhật Ký Gacha đã được sao chép vào bộ nhớ tạm.';
+    PasteInstructions = 'Hãy dán vào dịch vụ theo dõi Nhật Ký Gacha yêu thích của bạn (ví dụ: zzz.rng.moe, Hoyo Buddy, v.v.)';
+    InvalidChoice = 'Lựa chọn không hợp lệ. Vui lòng chạy lại lệnh.';
 
-    RegionUnavailable = 'This region is currently unavailable. Please choose another region.';
+    RegionUnavailable = 'Vùng được lựa chọn này hiện không khả dụng. Vui lòng chọn vùng khác.';
     AdminRequest = 'This script requires administrative privileges to run. Press [ENTER] to run as administrator or any key to cancel.';
 
-    AttemptingToLocate = 'Attempting to locate Gacha Log URL...';
-    FailedToLocateLogCN = 'Failed to locate log file! Please try rerun the script with the Global region option.';
-    FailedToLocateLogOS = 'Failed to locate log file! Please try rerun the script with the Global region option.';
-    FailedToLocateLog = 'Failed to locate log file! Make sure to open the Gacha History in-game first.';
-    FailedToLocatePath1 = 'Failed to locate game path! Please contact script provider for support. Error Code: 1';
-    FailedToLocatePath2 = 'Failed to locate game path! Please contact script provider for support. Error Code: 2';
-    ScriptProvider1 = 'Provider Support Discord Server: https://discord.gg/e48fzqxuPM'
-    ScriptProvider2 = 'Provider Support Discord Server: https://discord.gg/srs';
+    AttemptingToLocate = 'Đang cố gắng định vị nhật ký Gacha...';
+    FailedToLocateLogCN = 'Không tìm thấy tệp nhật ký! Vui lòng thử chạy lại mã lệnh với tùy chọn Quốc Tế.';
+    FailedToLocateLogOS = 'Không tìm thấy tệp nhật ký! Vui lòng thử chạy lại mã lệnh với tùy chọn Trung Quốc Đại Lục.';
+    FailedToLocateLog = 'Không tìm thấy tệp nhật ký! Hãy đảm bảo mở Lịch sử Gacha trong trò chơi trước.';
+    FailedToLocatePath1 = 'Không tìm thấy đường dẫn trò chơi! Vui lòng liên hệ với nhà cung cấp tập lệnh để được hỗ trợ. Lỗi mã: 1';
+    FailedToLocatePath2 = 'Không tìm thấy đường dẫn trò chơi! Vui lòng liên hệ với nhà cung cấp tập lệnh để được hỗ trợ. Lỗi mã: 2';
+    ScriptProvider1 = 'Máy chủ Discord hỗ trợ: https://discord.gg/e48fzqxuPM'
+    ScriptProvider2 = 'Máy chủ Discord hỗ trợ: https://discord.gg/srs';
 
-    ZZZURLFound = 'Signal History URL found:';
-    ZZZURLClipboard = 'Signal History URL saved to clipboard.';
+    ZZZURLFound = 'Dường link Lịch sử Chỉnh Kênh đã tìm thấy:';
+    ZZZURLClipboard = 'Dường link Lịch sử Chỉnh Kênh đã được sao chép vào bộ nhớ tạm.';
     
-    SRURLFound = 'Warp History URL found:';
-    SRURLClipboard = 'Warp History URL saved to clipboard.';
+    SRURLFound = 'Dường link Lịch sử Bước Nhảy đã tìm thấy:';
+    SRURLClipboard = 'Dường link Lịch sử Bước Nhảy đã được sao chép vào bộ nhớ tạm.';
 
-    YSCacheOS = 'Using Global cache location';
-    YSCacheCN = 'Using China cache location';
-    
-    GachaLogInstructions = 'Now paste it in your Favorite Gacha Log Tracker (i.e: zzz.rng.moe, Hoyo Buddy, etc)';
+    YSCacheOS = 'Sử dụng vị trí bộ nhớ đệm Vùng Quốc Tế';
+    YSCacheCN = 'Sử dụng vị trí bộ nhớ đệm Vùng Trung Quốc Đại Lục';
 }

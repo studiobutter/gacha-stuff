@@ -118,7 +118,7 @@ for ($i = $cache_data_split.Length - 1; $i -ge 0; $i--) {
             Write-Output $latest_url
             Set-Clipboard -Value $latest_url
             Write-Output $Locale.ZZZURLClipboard
-            Write-Output $Locale.GachaLogInstructions
+            Write-Output $Locale.PasteInstructions
             return;
         }
     }

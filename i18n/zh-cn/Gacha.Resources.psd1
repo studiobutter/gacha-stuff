@@ -43,11 +43,11 @@
     InvalidChoice = 'Invalid choice. Please run the command again.';
 
     RegionUnavailable = 'This region is currently unavailable. Please choose another region.';
-    AdminRequest = 'Tập lệnh này yêu cầu quyền quản trị để chạy. Nhấn [ENTER] để chạy với tư cách quản trị viên hoặc bất kỳ phím nào để hủy.';
+    AdminRequest = 'This script requires administrative privileges to run. Press [ENTER] to run as administrator or any key to cancel.';
 
     AttemptingToLocate = 'Attempting to locate Gacha Log URL...';
     FailedToLocateLogCN = 'Failed to locate log file! Please try rerun the script with the Global region option.';
-    FailedToLocateLogOS = 'Failed to locate log file! Please try rerun the script with the China region option.';
+    FailedToLocateLogOS = 'Failed to locate log file! Please try rerun the script with the Global region option.';
     FailedToLocateLog = 'Failed to locate log file! Make sure to open the Gacha History in-game first.';
     FailedToLocatePath1 = 'Failed to locate game path! Please contact script provider for support. Error Code: 1';
     FailedToLocatePath2 = 'Failed to locate game path! Please contact script provider for support. Error Code: 2';
