@@ -39,7 +39,7 @@
     CloudChoice = 'Type "1" to copy Global Gacha URL, "2" for China Gacha URL.';
     NoURL = 'No matching URL found or URL cannot located. Please open the Gacha History in-game.';
     Copied = 'Gacha Log URL copied to clipboard:';
-    PasteInstructions = 'Paste it in your favorite Wish Tracker Service';
+    PasteInstructions = 'Now paste it in your Favorite Gacha Log Tracker (i.e: zzz.rng.moe, Hoyo Buddy, etc)';
     InvalidChoice = 'Invalid choice. Please run the command again.';
 
     RegionUnavailable = 'This region is currently unavailable. Please choose another region.';
@@ -62,6 +62,4 @@
 
     YSCacheOS = 'Using Global cache location';
     YSCacheCN = 'Using China cache location';
-    
-    GachaLogInstructions = 'Now paste it in your Favorite Gacha Log Tracker (i.e: zzz.rng.moe, Hoyo Buddy, etc)';
 }

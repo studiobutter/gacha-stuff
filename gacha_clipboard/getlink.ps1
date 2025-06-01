@@ -111,4 +111,4 @@ $wishHistoryUrl = $link
 
 Write-Host $wishHistoryUrl
 Set-Clipboard -Value $wishHistoryUrl
-Write-Host $Locale.GachaLogInstructions
+Write-Host $Locale.PasteInstructions

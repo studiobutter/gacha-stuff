@@ -39,15 +39,15 @@
     CloudChoice = 'Type "1" to copy Global Gacha URL, "2" for China Gacha URL.';
     NoURL = 'No matching URL found or URL cannot located. Please open the Gacha History in-game.';
     Copied = 'Gacha Log URL copied to clipboard:';
-    PasteInstructions = 'Paste it in your favorite Wish Tracker Service';
+    PasteInstructions = 'Now paste it in your Favorite Gacha Log Tracker (i.e: zzz.rng.moe, Hoyo Buddy, etc)';
     InvalidChoice = 'Invalid choice. Please run the command again.';
 
     RegionUnavailable = 'This region is currently unavailable. Please choose another region.';
-    AdminRequest = 'This script requires administrative privileges to run. Press [ENTER] to run as administrator or any key to cancel.';
+    AdminRequest = 'Tập lệnh này yêu cầu quyền quản trị để chạy. Nhấn [ENTER] để chạy với tư cách quản trị viên hoặc bất kỳ phím nào để hủy.';
 
     AttemptingToLocate = 'Attempting to locate Gacha Log URL...';
     FailedToLocateLogCN = 'Failed to locate log file! Please try rerun the script with the Global region option.';
-    FailedToLocateLogOS = 'Failed to locate log file! Please try rerun the script with the Global region option.';
+    FailedToLocateLogOS = 'Failed to locate log file! Please try rerun the script with the China region option.';
     FailedToLocateLog = 'Failed to locate log file! Make sure to open the Gacha History in-game first.';
     FailedToLocatePath1 = 'Failed to locate game path! Please contact script provider for support. Error Code: 1';
     FailedToLocatePath2 = 'Failed to locate game path! Please contact script provider for support. Error Code: 2';
@@ -62,6 +62,4 @@
 
     YSCacheOS = 'Using Global cache location';
     YSCacheCN = 'Using China cache location';
-    
-    GachaLogInstructions = 'Now paste it in your Favorite Gacha Log Tracker (i.e: zzz.rng.moe, Hoyo Buddy, etc)';
 }
