@@ -1,5 +1,5 @@
 Clear-Host
-[Console]::Title = "Gacha Clipboard Catcher - Debug Mode"
+[Console]::Title = "Gacha Clipboard Catcher"
 
 $systemLanguage = Get-Culture
 Write-Host "User TEMP folder: $env:TMP"
