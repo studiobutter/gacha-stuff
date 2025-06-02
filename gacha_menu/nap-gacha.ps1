@@ -38,13 +38,14 @@ function Close-Clear {
 
 while ($true) {
     Show-Menu
-    $choice = Read-Host "Enter your choice"
+    $choice = Read-Host $Locale.EnterChoice
     
     switch ($choice) {
+        0 { Close-Clear }
         1 { Get-Gacha_os }
         2 { Get-Gacha_cn }
         3 { Get-Gacha_Cloud }
-        default { Write-Host $Locale.GachaMenuInvalidChoice -ForegroundColor Red; }
+        default { Write-Host $Locale.InvalidChoice -ForegroundColor Red; }
     }
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Clear-Host
