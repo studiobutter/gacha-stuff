@@ -4,8 +4,11 @@ $gachaLogTmp = "$env:TMP\gacha-log"
 Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
 
 Clear-Host
-# Prompt user to choose which URL to copy
-$choice = Read-Host $Locale.CloudOptions
+# Display CloudOptions menu
+for ($i = 0; $i -lt $Locale.CloudOptions.Count; $i++) {
+    Write-Host $Locale.CloudOptions[$i]
+}
+$choice = Read-Host $Locale.EnterChoice
 
 # Define the paths to the log files in %localappdata%
 $GlobalPath = "$env:LOCALAPPDATA\HoYoverse\GenshinImpactCloudGame\config\logs\MiHoYoSDK.log"
@@ -41,6 +44,9 @@ function Get-LastMatchingURL {
 
 # Determine which URL to copy based on user's choice
 switch ($choice.ToLower()) {
+    "0" {
+        return
+    }
     "1" {
         $pattern = '"url":"https://gs.hoyoverse.com/'
         $gachaGlobal = Get-LastMatchingURL -filePath $GlobalPath -pattern $pattern
