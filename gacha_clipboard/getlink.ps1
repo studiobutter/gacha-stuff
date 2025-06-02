@@ -89,7 +89,7 @@ $linkFound = $false
 for ($i = $found.Length - 1; $i -ge 0; $i -= 1) {
   $t = $found[$i] -match "(https.+?game_biz=)"
   $link = $matches[0]
-  Write-Host "`rChecking Link $i" -NoNewline
+  Write-Host "$($Locale.AttemptingToLocate) $i" -NoNewline
   $testResult = testUrl $link
   if ($testResult -eq $true) {
     $linkFound = $true
