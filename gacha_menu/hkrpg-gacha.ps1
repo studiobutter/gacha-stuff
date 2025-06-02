@@ -34,11 +34,13 @@ while ($true) {
     $choice = Read-Host "Enter your choice"
     
     switch ($choice) {
+        0 { Close-Clear }
         1 { Get-Gacha_os }
         2 { Get-Gacha_cn }
-        default { Write-Host "Invalid choice. Please try again." }
+        default { Write-Host $Locale.InvalidChoice -ForegroundColor Red; }
     }
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Clear-Host
 }
+
 
