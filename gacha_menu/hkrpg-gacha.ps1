@@ -31,7 +31,7 @@ function Close-Clear {
 
 while ($true) {
     Show-Menu
-    $choice = Read-Host "Enter your choice"
+    $choice = Read-Host $Locale.EnterChoice
     
     switch ($choice) {
         0 { Close-Clear }
