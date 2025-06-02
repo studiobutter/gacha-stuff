@@ -36,14 +36,13 @@
         '2. China',
         'Press 0 to Exit'
     );
-    TaskCompleted = 'Task completed. If any error occurred, rerun the script or contact support. Press any key to exit.';
-
     CloudOptions = @(
         '1. Global',
         '2. China',
         'Press 0 to Exit'
-    );
-
+        );
+        
+    TaskCompleted = 'Task completed. If any error occurred, rerun the script or contact support. Press any key to exit.';
     RegionUnavailable = 'This region is currently unavailable. Please choose another region.';
     AdminRequest = 'This script requires administrative privileges to run. Press [ENTER] to run as administrator or any key to cancel.';
 
