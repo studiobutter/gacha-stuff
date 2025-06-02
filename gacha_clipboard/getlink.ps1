@@ -26,7 +26,7 @@ if ([System.IO.File]::Exists($tmps)) {
 
 $path = [System.Environment]::ExpandEnvironmentVariables($logLocation);
 if (-Not [System.IO.File]::Exists($path)) {
-    Write-Host $Locale.FailedToLocateLog -ForegroundColor Red
+    Write-Host $Locale.NoURL -ForegroundColor Red
 
     if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {  
         Write-Host $Locale.AdminRequest

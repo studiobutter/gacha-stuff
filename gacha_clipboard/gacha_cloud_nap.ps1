@@ -5,7 +5,11 @@ Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1
 
 Clear-Host
 # Prompt user to choose which URL to copy
-$choice = Read-Host $Locale.CloudChoice
+# Display CloudOptions menu
+for ($i = 0; $i -lt $Locale.CloudOptions.Count; $i++) {
+    Write-Host $Locale.CloudOptions[$i]
+}
+$choice = Read-Host $Locale.EnterChoice
 
 # Define the paths to the log files in %localappdata%
 # $GlobalPath = "$env:LOCALAPPDATA\HoYoverse\ZenlessZoneZeroCloud\config\logs\MiHoYoSDK.log"

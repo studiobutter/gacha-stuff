@@ -24,7 +24,7 @@ if ($set_path) {
     $log_path = "$locallow_path\Player.log"
 
     if (-Not [IO.File]::Exists($log_path)) {
-        Write-Output $Locale.FailedToLocateLogOS
+        Write-Output $Locale.NoURL
         return
     }
 
@@ -34,7 +34,7 @@ if ($set_path) {
         $log_path = "$locallow_path\Player-prev.log"
 
         if (-Not [IO.File]::Exists($log_path)) {
-            Write-Output $Locale.FailedToLocateLogOS
+            Write-Output $Locale.NoURL
             return
         }
 
@@ -114,10 +114,10 @@ for ($i = $cache_data_split.Length - 1; $i -ge 0; $i--) {
 
             $latest_url = $uri.Scheme + "://" + $uri.Host + $uri.AbsolutePath + "?" + $query.ToString()
 
-            Write-Output $Locale.ZZZURLFound
+            Write-Output $Locale.URLFound
             Write-Output $latest_url
             Set-Clipboard -Value $latest_url
-            Write-Output $Locale.ZZZURLClipboard
+            Write-Output $Locale.Copied
             Write-Output $Locale.PasteInstructions
             return;
         }
