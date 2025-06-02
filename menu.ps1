@@ -31,14 +31,14 @@ function Close-Clear {
 
 while ($true) {
     Show-Menu
-    $choice = Read-Host $Locale.GachaMenuChoice
+    $choice = Read-Host $Locale.EnterChoice
     
     switch ($choice) {
         0 { Close-Clear }
         1 { Get-Gacha_hk4e }
         2 { Get-Gacha_hkrpg }
         3 { Get-Gacha_nap }
-        default { Write-Host $Locale.GachaMenuInvalidChoice -ForegroundColor Red; continue }
+        default { Write-Host $Locale.InvalidChoice -ForegroundColor Red; continue }
     }
     
     Write-Host $Locale.GachaMenuAnyKey -ForegroundColor Yellow
