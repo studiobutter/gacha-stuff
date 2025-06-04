@@ -10,14 +10,14 @@ function Show-Menu {
 }
 
 function Get-Gacha_os {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/gacha_clipboard/getlink.ps1'))} global"
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/main/gacha_clipboard/getlink.ps1'))} global"
     Write-Host $Locale.TaskCompleted
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Close-Clear
 }
 
 function Get-Gacha_cn {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/gacha_clipboard/getlink.ps1'))} china"
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/main/gacha_clipboard/getlink.ps1'))} china"
     Write-Host $Locale.TaskCompleted
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Close-Clear
@@ -25,7 +25,7 @@ function Get-Gacha_cn {
 }
 
 function Get-Gacha_Cloud {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/gacha_clipboard/gacha_cloud_hk4e.ps1'))}"
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/main/gacha_clipboard/gacha_cloud_hk4e.ps1'))}"
     Write-Host $Locale.TaskCompleted
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Close-Clear
@@ -33,7 +33,7 @@ function Get-Gacha_Cloud {
 
 function Close-Clear {
     Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/mutli-lang_2/cleanup.ps1'))}"
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/main/cleanup.ps1'))}"
     exit 0
 }
 
