@@ -8,7 +8,7 @@
 
     EnterChoice = 'Nhập lựa chọn của bạn:';
     NoURL = 'Không tìm thấy URL phù hợp hoặc không thể định vị được URL. Vui lòng mở Lịch sử Gacha trong trò chơi.';;
-    Copied = 'Đường dẫn Nhật Ký Gacha đã được sao chép vào bộ nhớ tạm.';
+    Copied = 'Đường dẫn Nhật Ký Gacha đã được sao chép vào bộ nhớ tạm!';
     PasteInstructions = 'Hãy dán vào dịch vụ theo dõi Nhật Ký Gacha yêu thích của bạn (ví dụ: zzz.rng.moe, Hoyo Buddy, v.v.)';
     InvalidChoice = 'Lựa chọn không hợp lệ. Vui lòng thử lại.';
     URLFound = 'URL Nhật ký Gacha đã tìm thấy   :';

@@ -7,7 +7,7 @@
     RegRememberCancelled = '操作已取消。未对注册表进行任何更改。';
     EnterChoice          = '请输入您的选择';
     NoURL                = '未找到抽卡记录 URL，请先在游戏内打开抽卡历史记录后再运行。';
-    Copied               = '抽卡记录 URL 已复制到剪贴板：';
+    Copied               = '抽卡记录 URL 已复制到剪贴板！';
     PasteInstructions    = '请将其粘贴到您喜欢的抽卡记录追踪工具中（如 zzz.rng.moe、Hoyo Buddy 等）';
     InvalidChoice        = '无效选择。请重试。';
     URLFound             = '已找到抽卡记录 URL：';

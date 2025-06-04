@@ -8,7 +8,7 @@
 
     EnterChoice = 'Enter your choice';
     NoURL = 'Cannot find gacha log URL, open the gacha history in-game before running.';
-    Copied = 'Gacha log URL copied to clipboard:';
+    Copied = 'Gacha log URL copied to clipboard!';
     PasteInstructions = 'Paste it in your favorite gacha log tracker (zzz.rng.moe, Hoyo Buddy, etc.)';
     InvalidChoice = 'Invalid choice. Please try again.';
     URLFound = 'Gacha log URL found:';
