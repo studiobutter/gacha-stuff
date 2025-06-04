@@ -96,6 +96,7 @@ for ($i = $found.Length - 1; $i -ge 0; $i -= 1) {
     break
   }
   Sleep 1
+  Clear-Host
 }
 
 Remove-Item $tmpfile
