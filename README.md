@@ -31,3 +31,4 @@ $env:GACHA_LOCAL_TEST = "true"
 $env:GACHA_LOCAL_PATH = "C:\path\to\your\local\repo"
 .\start.ps1
 ```
+If you using Visual Studio Code, use PowerShell Extension for better language support. Only set the `$env` Variables. For testing, choose `start.ps1` and oress F5
