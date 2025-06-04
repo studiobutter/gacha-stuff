@@ -1,0 +1,43 @@
+{
+    "languages": [
+        {
+            "name": "English",
+            "codes": [
+                "en",
+                "en-us",
+                "en-gb",
+                "en-au",
+                "en-ca",
+                "en-nz",
+                "en-ie",
+                "en-za",
+                "en-in",
+                "en-sg"
+            ],
+            "commonCode": "en"
+        },
+        {
+            "name": "简体中文",
+            "codes": [
+                "zh",
+                "zh-cn"
+            ],
+            "commonCode": "zh-cn"
+        },
+        {
+            "name": "繁體中文",
+            "codes": [
+                "zh-tw",
+                "zh-hk"
+            ],
+            "commonCode": "zh-tw"
+        },
+        {
+            "name": "Tiếng Việt",
+            "codes": [
+                "vi"
+            ],
+            "commonCode": "vi"
+        }
+    ]
+}

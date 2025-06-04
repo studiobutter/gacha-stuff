@@ -1,16 +1,9 @@
-# Copyright 2023 Star Rail Station
+# Script made by Star Rail Station under the Apache License. Made for Honkai: Star Rail.
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# Read the Licenses here: http://www.apache.org/licenses/LICENSE-2.0
+
+$gachaLogTmp = "$env:TMP\gacha-log"
+Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
@@ -20,7 +13,7 @@ $ProgressPreference = 'SilentlyContinue'
 
 $game_path = ""
 
-Write-Output "Attempting to locate Warp Url!"
+Write-Output $Locale.AttemptingToLocate
 
 if ($args.Length -eq 0) {
     $app_data = [Environment]::GetFolderPath('ApplicationData')
@@ -29,8 +22,7 @@ if ($args.Length -eq 0) {
     $log_path = "$locallow_path\Player.log"
 
     if (-Not [IO.File]::Exists($log_path)) {
-        Write-Output "Failed to locate log file!"
-        Write-Output "Try using the Chinese one?"
+        Write-Output $Locale.NoURL
         return
     }
 
@@ -40,8 +32,7 @@ if ($args.Length -eq 0) {
         $log_path = "$locallow_path\Player-prev.log"
 
         if (-Not [IO.File]::Exists($log_path)) {
-            Write-Output "Failed to locate log file!"
-            Write-Output "Try using the Chinese one?"
+            Write-Output $Locale.NoURL
             return
         }
 
@@ -49,8 +40,8 @@ if ($args.Length -eq 0) {
     }
 
     if ([string]::IsNullOrEmpty($log_lines)) {
-        Write-Output "Failed to locate game path! (1)"
-        Write-Output "Please contact support at Star Rail Station Discord: https://discord.gg/srs"
+        Write-Output $Locale.FailedToLocatePath1
+        Write-Output $Locale.ScriptProvider2
         return
     }
 
@@ -69,8 +60,8 @@ if ($args.Length -eq 0) {
 }
 
 if ([string]::IsNullOrEmpty($game_path)) {
-    Write-Output "Failed to locate game path! (2)"
-    Write-Output "Please contact support at Star Rail Station Discord: https://discord.gg/srs"
+    Write-Output $Locale.FailedToLocatePath2
+    Write-Output $Locale.ScriptProvider2
     return
 }
 
@@ -123,15 +114,14 @@ for ($i = $cache_data_split.Length - 1; $i -ge 0; $i--) {
 
             $latest_url = $uri.Scheme + "://" + $uri.Host + $uri.AbsolutePath + "?" + $query.ToString()
 
-            Write-Output "Warp History Url Found!"
+            Write-Output $Locale.URLFound
             Write-Output $latest_url
             Set-Clipboard -Value $latest_url
-            Write-Output "Warp History Url has been saved to clipboard."
-            Write-Output "Now paste it in your Favorite Warp Tracker (i.e: Star Rail Station, Hoyo Buddy, Pom.moe, etc)"
+            Write-Output $Locale.Copied
+            Write-Output $Locale.PasteInstructions
             return;
         }
     }
 }
 
-Write-Output "Could not locate Warp History Url."
-Write-Output "Please make sure to open the Warp history before choosing this option."
+Write-Output $Locale.NoURL

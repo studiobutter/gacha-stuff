@@ -1,4 +1,9 @@
-# Forked from paimon.moe
+# Forked from paimon.moe and modified to work with localization files
+
+$gachaLogTmp = "$env:TMP\gacha-log"
+Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
+Clear-Host
+
 Add-Type -AssemblyName System.Web
 
 $logLocation = "%userprofile%\AppData\LocalLow\miHoYo\Genshin Impact\output_log.txt";
@@ -7,9 +12,11 @@ $logLocationChina = "%userprofile%\AppData\LocalLow\miHoYo\$([char]0x539f)$([cha
 $reg = $args[0]
 $apiHost = "public-operation-hk4e-sg.hoyoverse.com" 
 if ($reg -eq "china") {
-  Write-Host "Using China cache location"
+  Write-Host $Locale.YSCacheCN -ForegroundColor Yellow
   $logLocation = $logLocationChina
   $apiHost = "public-operation-hk4e.mihoyo.com"
+} else {
+    Write-Host $Locale.YSCacheOS -ForegroundColor Yellow
 }
 
 $tmps = $env:TEMP + '\pm.ps1';
@@ -19,10 +26,10 @@ if ([System.IO.File]::Exists($tmps)) {
 
 $path = [System.Environment]::ExpandEnvironmentVariables($logLocation);
 if (-Not [System.IO.File]::Exists($path)) {
-    Write-Host "Cannot find the log file! Make sure to open the wish history first!" -ForegroundColor Red
+    Write-Host $Locale.NoURL -ForegroundColor Red
 
     if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {  
-        Write-Host "Do you want to try to run the script as Administrator? Press [ENTER] to continue, or any key to cancel."
+        Write-Host $Locale.AdminRequest
         $keyInput = [Console]::ReadKey($true).Key
         if ($keyInput -ne "13") {
             return
@@ -42,7 +49,7 @@ $m = $logs -match "(?m).:/.+(GenshinImpact_Data|YuanShen_Data)"
 $m[0] -match "(.:/.+(GenshinImpact_Data|YuanShen_Data))" >$null
 
 if ($matches.Length -eq 0) {
-    Write-Host "Cannot find the wish history url! Make sure to open the wish history first!" -ForegroundColor Red
+    Write-Host $Locale.NoURL -ForegroundColor Red
     return
 }
 
@@ -82,7 +89,7 @@ $linkFound = $false
 for ($i = $found.Length - 1; $i -ge 0; $i -= 1) {
   $t = $found[$i] -match "(https.+?game_biz=)"
   $link = $matches[0]
-  Write-Host "`rChecking Link $i" -NoNewline
+  Write-Host "$($Locale.AttemptingToLocate) $i" -NoNewline
   $testResult = testUrl $link
   if ($testResult -eq $true) {
     $linkFound = $true
@@ -96,7 +103,7 @@ Remove-Item $tmpfile
 Write-Host ""
 
 if (-Not $linkFound) {
-  Write-Host "Cannot find the wish history url! Make sure to open the wish history first!" -ForegroundColor Red
+  Write-Host $Locale.NoURL -ForegroundColor Red
   return
 }
 
@@ -104,4 +111,4 @@ $wishHistoryUrl = $link
 
 Write-Host $wishHistoryUrl
 Set-Clipboard -Value $wishHistoryUrl
-Write-Host "Link copied to clipboard, paste it in your favorite Wish Tracker Service" -ForegroundColor Green
+Write-Host $Locale.PasteInstructions

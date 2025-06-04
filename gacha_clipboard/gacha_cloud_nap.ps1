@@ -1,5 +1,14 @@
-# Prompt user to choose which URL to copy
-$choice = Read-Host "不支持国际服的调频记录链接，请输入'2'复制中国服务器的调频记录链接"
+# Script made by Studio Butter for Zenless Zone Zero - Cloud (China)
+
+$gachaLogTmp = "$env:TMP\gacha-log"
+Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
+
+Clear-Host
+# Display CloudOptions menu
+for ($i = 0; $i -lt $Locale.CloudOptions.Count; $i++) {
+    Write-Host $Locale.CloudOptions[$i]
+}
+$choice = Read-Host $Locale.EnterChoice
 
 # Define the paths to the log files in %localappdata%
 # $GlobalPath = "$env:LOCALAPPDATA\HoYoverse\ZenlessZoneZeroCloud\config\logs\MiHoYoSDK.log"
@@ -36,8 +45,7 @@ function Get-LastMatchingURL {
 # Determine which URL to copy based on user's choice
 switch ($choice.ToLower()) {
     "1" {
-        Clear-Host
-        Write-Host "Zenless Zone Zero - Cloud Global is not supported yet."
+        Write-Host $Locale.RegionUnavailable -ForegroundColor Yellow
     }
     "2" {
         $pattern = '"url":"https://webstatic.mihoyo.com/nap/event/e20230424gacha/'
@@ -45,13 +53,13 @@ switch ($choice.ToLower()) {
 
         if ($gachaCN) {
             $gachaCN | Set-Clipboard
-            Write-Output "抽卡日志 URL 已复制到剪贴板: $gachaCN"
-            Write-Output "将其粘贴到您最喜欢的祈愿记录保存程序"
+            Write-Output ($Locale.Copied + " " + $gachaCN)
+            Write-Output ($Locale.PasteInstructions)
         } else {
-            Write-Output "未找到匹配的 URL。请在游戏中打开祈愿历史。"
+            Write-Output $Locale.NoURL
         }
     }
     default {
-        Write-Output "无效选择。请再次运行该命令。"
+        Write-Output $Locale.InvalidChoice
     }
 }
