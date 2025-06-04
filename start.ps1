@@ -1,6 +1,19 @@
 Clear-Host
 [Console]::Title = "Gacha Clipboard Catcher"
 
+function Get-ScriptUrl {
+    param([string]$ScriptPath)
+    
+    $isLocalTesting = $env:GACHA_LOCAL_TEST -eq "true"
+    if ($isLocalTesting) {
+        $localPath = Join-Path $env:GACHA_LOCAL_PATH $ScriptPath
+        return "file:///$($localPath.Replace('\', '/'))"
+    }
+    else {
+        return "https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/main/$ScriptPath"
+    }
+}
+
 $systemLanguage = Get-Culture
 Write-Host "User TEMP folder: $env:TMP"
 
@@ -21,7 +34,8 @@ $regLang = $null
 if (Test-Path $regPath) {
     try {
         $regLang = (Get-ItemProperty -Path $regPath -Name 'lang' -ErrorAction SilentlyContinue).lang
-    } catch {}
+    }
+    catch {}
 }
 
 if ($regLang) {
@@ -40,21 +54,24 @@ if ($regLang) {
         if (Test-Path $resourceFile) {
             Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
             Write-Host "Loaded language resource file for '$commonCode'." -ForegroundColor Cyan
-        } else {
+        }
+        else {
             Write-Host "Resource file not found after download." -ForegroundColor Yellow
         }
-    } catch {
+    }
+    catch {
         Write-Host "Failed to download Gacha.Resources.psd1 for '$commonCode': $_" -ForegroundColor Red
     }
-        if (Test-Path $resourceFile) {
-            $GachaResources = Import-PowerShellDataFile -Path $resourceFile
-            Write-Output $GachaResources.Greeting
-            Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "& { $((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/main/menu.ps1')) }"
-        } else {
-            Write-Host "Resource file not found, cannot display greeting." -ForegroundColor Yellow
-        }
-        return
+    if (Test-Path $resourceFile) {
+        $GachaResources = Import-PowerShellDataFile -Path $resourceFile
+        Write-Output $GachaResources.Greeting
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "& { $((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "menu.ps1"))) }"
     }
+    else {
+        Write-Host "Resource file not found, cannot display greeting." -ForegroundColor Yellow
+    }
+    return
+}
 # Download language.json from repo to $env:TMP/gacha-log
 $gachaLogTmp = Join-Path $env:TMP 'gacha-log'
 if (-not (Test-Path $gachaLogTmp)) {
@@ -108,35 +125,41 @@ if ($useSystemLang) {
     if ($foundLang) {
         $commonCode = $foundLang.commonCode
         Write-Host "Using System Language: $($systemLanguage.Name) ($commonCode)"
-    } else {
+    }
+    else {
         # Fallback to English
         $englishLang = $languages | Where-Object { $_.commonCode -eq 'en' }
         if ($englishLang) {
             $commonCode = $englishLang.commonCode
             Write-Host "System Language '$($systemLanguage.Name)' not available, falling back to English ($commonCode)" -ForegroundColor Yellow
-        } else {
+        }
+        else {
             Write-Host "System Language and English fallback not found in language.json!" -ForegroundColor Red
             exit 1
         }
     }
-} else {
+}
+else {
     $selectedLanguage = $languages[$selectedIndex - 1]
     $commonCode = $selectedLanguage.commonCode
     Write-Host "Selected language: $($selectedLanguage.name) ($commonCode)"
 }
 
 if ($commonCode -in @(
-    'en-us', 'en-gb', 'en-au', 'en-ca', 'en-nz', 'en-ie', 'en-za', 'en-in', 'en-sg'
-)) {
+        'en-us', 'en-gb', 'en-au', 'en-ca', 'en-nz', 'en-ie', 'en-za', 'en-in', 'en-sg'
+    )) {
     $commonCode = 'en'
     $env:GACHA_LANG = $commonCode
-} elseif ($commonCode -in @('zh-tw', 'zh-hk')) {
+}
+elseif ($commonCode -in @('zh-tw', 'zh-hk')) {
     $commonCode = 'zh-tw'
     $env:GACHA_LANG = $commonCode
-} elseif ($commonCode -eq 'vi-vn') {
+}
+elseif ($commonCode -eq 'vi-vn') {
     $commonCode = 'vi'
     $env:GACHA_LANG = $commonCode
-} else {
+}
+else {
     $env:GACHA_LANG = $commonCode
 }
 
@@ -151,10 +174,12 @@ try {
     if (Test-Path $resourceFile) {
         $GachaResources = Import-PowerShellDataFile -Path $resourceFile
         Write-Host "Loaded language resource file for '$commonCode'." -ForegroundColor Cyan
-    } else {
+    }
+    else {
         Write-Host "Resource file not found after download." -ForegroundColor Yellow
     }
-} catch {
+}
+catch {
     Write-Host "Failed to download Gacha.Resources.psd1 for '$commonCode': $_" -ForegroundColor Red
 }
 
@@ -165,6 +190,7 @@ try {
     Invoke-WebRequest -Uri $saveRegUrl -OutFile $saveRegFile -UseBasicParsing
     Write-Host "Downloaded saveReg.ps1 to $saveRegFile" -ForegroundColor Green
     & $saveRegFile $commonCode
-} catch {
+}
+catch {
     Write-Host "Failed to download or run saveReg.ps1: $_" -ForegroundColor Red
 }
