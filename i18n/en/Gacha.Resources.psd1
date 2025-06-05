@@ -1,4 +1,5 @@
 @{
+    BlankLine = '';
     Greeting = 'Welcome to Gacha Log URL Obtainer!';
     RegRememberChoice = 'Remember the language selection? (y/n)';
     RegRememberFailed = 'Failed to save to registry:';
@@ -19,6 +20,7 @@
         '1. Genshin Impact',
         '2. Honkai: Star Rail',
         '3. Zenless Zone Zero',
+        '4. Settings',
         'Press 0 to Exit'
     );
     GachaMenuAnyKey = 'Press any key to return to the menu...';
@@ -54,4 +56,27 @@
 
     YSCacheOS = 'Using Global cache location';
     YSCacheCN = 'Using China cache location';
+
+    # This sections is for tools.
+    ToolSelection = 'Select a tool to run:';
+    ToolOptions = @(
+        '1. Cache Cleaner',
+        '2. Reset Language Settings',
+        'Press 0 to Exit'
+    );
+
+    ToolCleanerDisclaimer1 = 'This tool will delete all cache files from the game.';
+    ToolCleanerDisclaimer2 = 'If you have any other similar region of the game installed'
+    ToolCleanerDisclaimer3 = @(
+        'Example'
+        '- Genshin Impact (China) - Celestia and Genshin Impact (China) - Irminsul (BiliBili)'
+        '- Honkai: Star Rail (China) - Astral Express and Honkai: Star Rail (China) - The Nameless (BiliBili)'
+        '- Zenless Zone Zero (China) and Zenless Zone Zero (BiliBili)'
+        '- Genshin Impact (Global) and Genshin Impact (Global) - Google Play)'
+    )
+    ToolCleanerDisclaimer4 = 'Please open those versions of the game for few seconds and then close them before running this tool.';
+    ToolCleanerDisclaimer5 = 'For more information, you can read about it here:';
+    ToolCleanerDisclaimerLink = '';
+
+    ToolCleanerAnyKey = 'Press any key to continue...';
 }
