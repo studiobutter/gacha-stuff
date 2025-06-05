@@ -12,7 +12,7 @@ function Get-ScriptUrl {
         return "file:///$($localPath.Replace('\', '/'))"
     }
     else {
-        return "https://gacha.studiobutter.io.vn/$ScriptPath?ref_type=heads"
+        return "https://gacha.studiobutter.io.vn/$ScriptPath"
     }
 }
 
