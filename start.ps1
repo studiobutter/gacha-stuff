@@ -24,7 +24,13 @@ if (-not (Test-Path $gachaLogTmp)) {
 }
 $languageFile = Join-Path $gachaLogTmp 'language.json'
 $languageJsonUrl = Get-ScriptUrl 'language.json'
-Invoke-WebRequest -Uri $languageJsonUrl -OutFile $languageFile -UseBasicParsing
+if ($languageJsonUrl -like 'file:///*') {
+    $localPath = $languageJsonUrl -replace '^file:///', ''
+    $localPath = $localPath -replace '/', '\'
+    Copy-Item -Path $localPath -Destination $languageFile -Force
+} else {
+    Invoke-WebRequest -Uri $languageJsonUrl -OutFile $languageFile -UseBasicParsing
+}
 
 $languagesJson = Get-Content $languageFile -Raw | ConvertFrom-Json
 $languages = $languagesJson.languages
@@ -48,7 +54,13 @@ if ($regLang) {
     $resourceUrl = Get-ScriptUrl "i18n/$commonCode/Gacha.Resources.psd1"
     $resourceFile = Join-Path $gachaLogTmp 'Gacha.Resources.psd1'
     try {
-        Invoke-WebRequest -Uri $resourceUrl -OutFile $resourceFile -UseBasicParsing
+        if ($resourceUrl -like 'file:///*') {
+            $localResourcePath = $resourceUrl -replace '^file:///', ''
+            $localResourcePath = $localResourcePath -replace '/', '\'
+            Copy-Item -Path $localResourcePath -Destination $resourceFile -Force
+        } else {
+            Invoke-WebRequest -Uri $resourceUrl -OutFile $resourceFile -UseBasicParsing
+        }
         Write-Host "Downloaded Gacha.Resources.psd1 for '$commonCode' to $resourceFile" -ForegroundColor Green
 
         # Import the language resource file
@@ -83,7 +95,13 @@ if (-not (Test-Path $gachaLogTmp)) {
 }
 $languageFile = Join-Path $gachaLogTmp 'language.json'
 $languageJsonUrl = Get-ScriptUrl 'language.json'
-Invoke-WebRequest -Uri $languageJsonUrl -OutFile $languageFile -UseBasicParsing
+if ($languageJsonUrl -like 'file:///*') {
+    $localPath = $languageJsonUrl -replace '^file:///', ''
+    $localPath = $localPath -replace '/', '\'
+    Copy-Item -Path $localPath -Destination $languageFile -Force
+} else {
+    Invoke-WebRequest -Uri $languageJsonUrl -OutFile $languageFile -UseBasicParsing
+}
 
 $languagesJson = Get-Content $languageFile -Raw | ConvertFrom-Json
 $languages = $languagesJson.languages
@@ -172,7 +190,13 @@ else {
 $resourceUrl = Get-ScriptUrl "i18n/$commonCode/Gacha.Resources.psd1"
 $resourceFile = Join-Path $gachaLogTmp 'Gacha.Resources.psd1'
 try {
-    Invoke-WebRequest -Uri $resourceUrl -OutFile $resourceFile -UseBasicParsing
+    if ($resourceUrl -like 'file:///*') {
+        $localResourcePath = $resourceUrl -replace '^file:///', ''
+        $localResourcePath = $localResourcePath -replace '/', '\'
+        Copy-Item -Path $localResourcePath -Destination $resourceFile -Force
+    } else {
+        Invoke-WebRequest -Uri $resourceUrl -OutFile $resourceFile -UseBasicParsing
+    }
     Write-Host "Downloaded Gacha.Resources.psd1 for '$commonCode' to $resourceFile" -ForegroundColor Green
 
     # Import the language resource file
