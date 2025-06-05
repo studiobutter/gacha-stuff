@@ -1,10 +1,24 @@
+function Get-ScriptUrl {
+    param([string]$ScriptPath)
+    
+    $isLocalTesting = $env:GACHA_LOCAL_TEST -eq "true"
+    if ($isLocalTesting) {
+        $localPath = Join-Path $env:GACHA_LOCAL_PATH $ScriptPath
+        return "file:///$($localPath.Replace('\', '/'))"
+    }
+    else {
+        return "https://gacha.studiobutter.io.vn/$ScriptPath?ref_type=heads"
+    }
+}
+
 # Check for Administrator rights
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Output "Script is not running as Administrator. Attempting to relaunch with elevated privileges..."
     $pwshPath = (Get-Command pwsh.exe -ErrorAction SilentlyContinue)?.Source
     if ($pwshPath) {
         Start-Process $pwshPath "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`" $args" -Verb RunAs
-    } else {
+    }
+    else {
         Start-Process powershell "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`" $args" -Verb RunAs
     }
     exit
@@ -31,11 +45,13 @@ if ($args.Count -gt 0) {
         Set-ItemProperty -Path $regPath -Name 'lang' -Value $inputText
         Write-Output $Locale.RegRememberSuccess
 
-    } else {
+    }
+    else {
         Write-Output $Locale.RegRememberCancelled
     }
-} else {
+}
+else {
     Write-Output "No text provided. Usage: ./saveReg.ps1 [text]"
 }
 
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString('https://gacha.studiobutter.io.vn/menu.ps1?ref_type=heads'))}"
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "Copy-Menu.ps1")))}"
