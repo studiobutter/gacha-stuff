@@ -6,17 +6,17 @@ function Get-GameRegistryPaths {
         @{ Name = 'Genshin Impact (Global - Epic)';       RegPath = 'HKCU:Software\Cognosphere\HYP\standalone\1_3\hk4e_global\8fANlj5K7I\hk4e_global'; Type = 'Genshin';   DataFolder = 'GenshinImpact_Data'; },
         @{ Name = 'Genshin Impact (Global - Google Play)';RegPath = 'HKCU:Software\Cognosphere\HYP\standalone\1_6\hk4e_global\8fANlj5K7I\hk4e_global'; Type = 'Genshin';   DataFolder = 'GenshinImpact_Data'; },
         @{ Name = 'Genshin Impact (China - Default)';     RegPath = 'HKCU:Software\miHoYo\HYP\1_1\hk4e_cn';         Type = 'Genshin';   DataFolder = 'YuanShen_Data'; },
-        @{ Name = 'Genshin Impact (China - TapTap)';      RegPath = 'HKCU:Software\miHoYo\HYP\1_2\hk4e_cn';         Type = 'Genshin';   DataFolder = 'YuanShen_Data'; },
+        @{ Name = 'Genshin Impact (China - QQ)';      RegPath = 'HKCU:Software\miHoYo\HYP\1_2\hk4e_cn';         Type = 'Genshin';   DataFolder = 'YuanShen_Data'; },
         @{ Name = 'Genshin Impact (China - BiliBili)';    RegPath = 'HKCU:Software\miHoYo\HYP\standalone\14_0\hk4e_cn\umfgRO5gh5\hk4e_cn'; Type = 'Genshin';   DataFolder = 'YuanShen_Data'; },
         @{ Name = 'Honkai: Star Rail (Global - Default)'; RegPath = 'HKCU:Software\Cognosphere\HYP\1_0\hkrpg_global'; Type = 'StarRail'; DataFolder = 'StarRail_Data'; },
         @{ Name = 'Honkai: Star Rail (Global - Epic)';    RegPath = 'HKCU:Software\Cognosphere\HYP\standalone\1_3\hkrpg_global\gGoJxKOusQ\hkrpg_global'; Type = 'StarRail'; DataFolder = 'StarRail_Data'; },
         @{ Name = 'Honkai: Star Rail (China - Default)';  RegPath = 'HKCU:Software\miHoYo\HYP\1_1\hkrpg_cn';        Type = 'StarRail'; DataFolder = 'StarRail_Data'; },
-        @{ Name = 'Honkai: Star Rail (China - TapTap)';   RegPath = 'HKCU:Software\miHoYo\HYP\1_2\hkrpg_cn';        Type = 'StarRail'; DataFolder = 'StarRail_Data'; },
+        @{ Name = 'Honkai: Star Rail (China - QQ)';   RegPath = 'HKCU:Software\miHoYo\HYP\1_2\hkrpg_cn';        Type = 'StarRail'; DataFolder = 'StarRail_Data'; },
         @{ Name = 'Honkai: Star Rail (China - BiliBili)'; RegPath = 'HKCU:Software\miHoYo\HYP\standalone\14_0\hkrpg_cn\6P5gHMNyK3\hkrpg_cn'; Type = 'StarRail'; DataFolder = 'StarRail_Data'; },
         @{ Name = 'Zenless Zone Zero (Global - Default)'; RegPath = 'HKCU:Software\Cognosphere\HYP\1_0\nap_global'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = 'Zenless Zone Zero (Global - Epic)';    RegPath = 'HKCU:Software\Cognosphere\HYP\standalone\1_3\nap_global\0hUu4SbmhI\nap_global'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = 'Zenless Zone Zero (China - Default)';  RegPath = 'HKCU:Software\miHoYo\HYP\1_1\nap_cn';          Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
-        @{ Name = 'Zenless Zone Zero (China - TapTap)';   RegPath = 'HKCU:Software\miHoYo\HYP\1_2\nap_cn';          Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
+        @{ Name = 'Zenless Zone Zero (China - QQ)';   RegPath = 'HKCU:Software\miHoYo\HYP\1_2\nap_cn';          Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = 'Zenless Zone Zero (China - BiliBili)'; RegPath = 'HKCU:Software\miHoYo\HYP\standalone\14_0\nap_cn\xV0f4r1GT0\nap_cn'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; }
     )
 }
