@@ -65,17 +65,27 @@
         'Press 0 to Exit'
     );
 
+    CleanerOptions = @(
+        '1. No Launcher Detection',
+        '2. HoYoPlay Launcher Detection',
+        '?. Learn More',
+        'Press 0 to Exit'
+    );
+    
+    
     ToolCleanerDisclaimer1 = 'This tool will delete all cache files from the game.';
-    ToolCleanerDisclaimer2 = 'If you have any other similar region of the game installed'
+    ToolCleanerDisclaimer2 = "For Option 1: No Launcher Detection, if you don't have HoYoPlay launcher installed and have any other similar region of the game installed"
     ToolCleanerDisclaimer3 = @(
         'Example'
-        '- Genshin Impact (China) - Celestia and Genshin Impact (China) - Irminsul (BiliBili)'
-        '- Honkai: Star Rail (China) - Astral Express and Honkai: Star Rail (China) - The Nameless (BiliBili)'
+        '- Genshin Impact (China) and Genshin Impact (BiliBili)'
+        '- Honkai: Star Rail (China) and Honkai: Star Rail (BiliBili)'
         '- Zenless Zone Zero (China) and Zenless Zone Zero (BiliBili)'
         '- Genshin Impact (Global) and Genshin Impact (Global) - Google Play)'
     )
-    ToolCleanerDisclaimer4 = 'Please open those versions of the game for few seconds and then close them before running this tool.';
-    ToolCleanerDisclaimer5 = 'For more information, you can read about it here:';
+    ToolCleanerDisclaimer4 = 'Please open those versions of the game for few seconds and then close them before running this tool so the tool can detect all available games installed on the system to remove cached data.';
+    ToolCleanerDisclaimer5 = 'For Option 2: HoYoPlay Launcher Detection, if you have HoYoPlay launcher installed, this tool will automatically detect all games installed on the system thru HoYoPlay configuration and remove cached files.';
+    ToolCleanerDisclaimer6 = 'Option 3 is for Cloud Users, which delete the file containing the gacha log URL.';
+    ToolCleanerDisclaimer7 = 'For more information, you can read about it here:';
     ToolCleanerDisclaimerLink = '';
 
     ToolCleanerAnyKey = 'Press any key to continue...';
