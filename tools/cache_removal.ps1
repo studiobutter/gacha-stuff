@@ -19,6 +19,31 @@ function Show-Menu {
     Write-Host $Locale.CleanerOptions[4] # ?: More Info
 }
 
+function Show-Menu {
+    Write-Host $Locale.ToolSelection
+    foreach ($option in $Locale.CleanerOptions) {
+        Write-Host $option
+    }
+}
+
+function Invoke-NoLauncher {
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal/no_launcher.ps1")))}"
+}
+
+function Invoke-HoYoPlay {
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal/hyp.ps1")))}"
+}
+
+function Invoke-Collapse {
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal/collapse.ps1")))}"
+}
+
+function Close-Clear {
+    Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "cleanup.ps1")))}"
+    exit 0
+}
+
 # Main loop
 while ($true) {
     # Re-run checks for each loop
