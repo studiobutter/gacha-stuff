@@ -38,6 +38,26 @@ function Invoke-Collapse {
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal/collapse.ps1")))}"
 }
 
+function Show-More {
+    Clear-Host
+    Write-Host $Locale.ToolCleanerDisclaimer1
+    Write-Host $Locale.ToolCleanerDisclaimer2
+    foreach ($item in $Locale.ToolCleanerDisclaimer3) {
+        Write-Host $item
+    }
+    Write-Host $Locale.ToolCleanerDisclaimer4
+    Write-Host $Locale.ToolCleanerDisclaimer5
+    Write-Host $Locale.ToolCleanerDisclaimer6
+    Write-Host $Locale.ToolCleanerDisclaimer7
+    Write-Host $Locale.ToolCleanerDisclaimer8
+    Write-Host $Locale.ToolCleanerDisclaimer9
+    Write-Host $Locale.ToolCleanerDisclaimerLink
+    Write-Host $Locale.ToolCleanerAnyKey -ForegroundColor Yellow
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    Clear-Host
+    Show-Menu
+}
+
 function Close-Clear {
     Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "cleanup.ps1")))}"
@@ -46,6 +66,7 @@ function Close-Clear {
 
 # Main loop
 while ($true) {
+    Clear-Host
     # Re-run checks for each loop
     $regBase = 'HKCU:\Software\Classes'
     $regFolders = @(
