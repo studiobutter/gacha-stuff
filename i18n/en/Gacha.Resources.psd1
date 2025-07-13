@@ -67,11 +67,14 @@
 
     CleanerOptions = @(
         '1. No Launcher Detection',
-        '2. HoYoPlay Launcher Detection',
+        '2. HoYoPlay Launcher',
+        '3. Collapse Launcher',
+        '4. Cloud Launcher',
         '?. Learn More',
         'Press 0 to Exit'
     );
     
+    DisabledChoice = 'Option is Disabled';
     
     ToolCleanerDisclaimer1 = 'This tool will delete all cache files from the game.';
     ToolCleanerDisclaimer2 = "- For Option 1: No Launcher Detection, if you don't have HoYoPlay launcher installed and have any other similar region of the game installed"
@@ -86,7 +89,7 @@
     ToolCleanerDisclaimer5 = '- For Option 2: HoYoPlay Launcher Detection, if you have HoYoPlay launcher installed, this tool will automatically detect all games installed on the system thru HoYoPlay configuration and remove cached files.';
     ToolCleanerDisclaimer6 = '- For Option 3: If you use Collapse Launcher, this tool will automatically detect all games installed on the system thru Collapse Launcher configuration and remove cached files.';
     ToolCleanerDisclaimer7 = 'Note that this tool will not delete any game files including "Cache Updates" files, only Chromium cache files.';
-    ToolCleanerDisclaimer8 = '- For Option 4: Cloud Users, which delete the file containing the gacha log URL.';
+    ToolCleanerDisclaimer8 = '- For Option 4: Cloud Launchers, which delete the file containing the gacha log URL.';
     ToolCleanerDisclaimer9 = 'For more information, you can read about it here:';
     ToolCleanerDisclaimerLink = '';
 

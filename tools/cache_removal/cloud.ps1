@@ -1,4 +1,9 @@
 # Define the log directories to check
+$input = Read-Host "Press ENTER to continue with log file removal, or press Q then ENTER to exit."
+if ($input -eq "Q") {
+    Write-Host "No files were deleted."
+    break
+}
 $logDirs = @(
     "$env:LOCALAPPDATA\miHoYo\GenshinImpactCloudGame\config\logs",
     "$env:LOCALAPPDATA\HoYoverse\GenshinImpactCloudGame\config\logs",
