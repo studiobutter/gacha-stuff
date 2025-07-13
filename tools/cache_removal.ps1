@@ -38,6 +38,10 @@ function Invoke-Collapse {
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal/collapse.ps1")))}"
 }
 
+function Invoke-Cloud {
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal/cloud.ps1")))}"
+}
+
 function Show-More {
     Clear-Host
     Write-Host $Locale.ToolCleanerDisclaimer1
@@ -86,9 +90,23 @@ while ($true) {
         }
     }
     $collapsePath = Join-Path "$env:USERPROFILE\AppData\LocalLow" 'CollapseLauncher'
-    $collapseEnabled = Test-Path $collapsePath
+    $collapseEnabled = (Test-Path $collapsePath -PathType Container)
 
-    Show-Menu -hoyoplayEnabled $hoyoplayEnabled -collapseEnabled $collapseEnabled
+    $cloudBase = $env:LOCALAPPDATA
+    $cloudFolders = @(
+        'miHoYo/GenshinImpactCloudGame',
+        'HoYoverse/GenshinImpactCloudGame',
+        'miHoYo/ZenlessZoneZeroCloud'
+    )
+    $cloudEnabled = $false
+    foreach ($folder in $cloudFolders) {
+        if (Test-Path (Join-Path $cloudBase $folder)) {
+            $cloudEnabled = $true
+            break
+        }
+    }
+
+    Show-Menu -hoyoplayEnabled $hoyoplayEnabled -collapseEnabled $collapseEnabled -cloudEnabled $cloudEnabled
     $choice = Read-Host $Locale.EnterChoice
     $choiceStr = "$choice"
 
@@ -106,6 +124,16 @@ while ($true) {
         "3" {
             if ($collapseEnabled) {
                 Invoke-Collapse
+            } else {
+                Write-Host $Locale.DisabledChoice -ForegroundColor Red
+                continue
+            }
+        }
+        "4" {
+            if ($cloudEnabled) {
+                Clear-Host
+                Invoke-Cloud
+                $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
             } else {
                 Write-Host $Locale.DisabledChoice -ForegroundColor Red
                 continue
