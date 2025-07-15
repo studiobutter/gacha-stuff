@@ -1,9 +1,14 @@
 # Requires -RunAsAdministrator
+
+$gachaLogTmp = "$env:TMP\gacha-log"
+
+Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
+
 function Get-CollapseLauncherConfig {
     $basePath = "$env:LOCALAPPDATA\..\LocalLow\CollapseLauncher"
     $configPath = Join-Path $basePath 'config.ini'
     if (!(Test-Path $configPath)) {
-        Write-Error "CollapseLauncher config.ini not found."
+        Write-Error $Locale.LauncherConfigNotFound
         return $null
     }
     $config = Get-Content $configPath | Where-Object { $_ -match '=' } | ForEach-Object {
@@ -31,6 +36,18 @@ function Get-GameFolders {
         'ZZZBiliBili' = 'ZenlessZoneZero_Data'
         'ZZZGlb' = 'ZenlessZoneZero_Data'
     }
+    $gameNames = @{
+        'GIGlb' = $Locale.hk4e_global
+        'GiGlbGPlay' = $Locale.hk4e_global_gplay
+        'GICN' = $Locale.hk4e_cn
+        'GICNBiliBili' = $Locale.hk4e_cn_b
+        'SRCN' = $Locale.hkrpg_cn
+        'HSRCNBiliBili' = $Locale.hkrpg_cn_b
+        'SRGlb' = $Locale.hkrpg_global
+        'ZZZCN' = $Locale.nap_cn
+        'ZZZBiliBili' = $Locale.nap_cn_b
+        'ZZZGlb' = $Locale.nap_global
+    }
     foreach ($folder in $gameFolders) {
         $fullPath = Join-Path $gameFolderPath $folder
         $configPath = Join-Path $fullPath 'config.ini'
@@ -53,6 +70,7 @@ function Get-GameFolders {
                 $foundGames += [PSCustomObject]@{
                     Name = $folder
                     Path = $installPath
+                    DisplayName = $gameNames[$folder]
                 }
             }
         }
@@ -106,39 +124,41 @@ $collapseConfig = Get-CollapseLauncherConfig
 if (!$collapseConfig) { exit }
 $gameFolderPath = $collapseConfig['GameFolder']
 if (!(Test-Path $gameFolderPath)) {
-    Write-Error "GameFolder path not found: $gameFolderPath"
+    Write-Error $Locale.CollapseGameFolderNotFound
     exit
 }
 $games = Get-GameFolders $gameFolderPath
 $status = @{}
 while ($true) {
-    Write-Host "\nInstalled Games:"
+    Write-Host $Locale.GameInstalled
     for ($i=0; $i -lt $games.Count; $i++) {
         $game = $games[$i]
         $cacheInfo = Get-GameCacheInfo $game
         $removed = $status[$game.Name]
+        $displayName = if ($game.PSObject.Properties.Match('DisplayName').Count -gt 0) { $game.DisplayName } else { $game.Name }
         $mark = if ($removed) { '[Cache Removed]' } else { '' }
-        Write-Host "$($i+1). $($game.Name) - $($game.Path) $mark"
+        Write-Host "$($i+1). $displayName - $($game.Path) $mark"
     }
-    Write-Host "0. Exit"
-    $choice = Read-Host "Select a game to remove cache (number)"
+    Write-Host $Locale.GoBack
+    $choice = Read-Host $Locale.GameCacheSelection
     if ($choice -eq '0') { break }
     if ($choice -match '^[1-9][0-9]*$' -and ($choice -le $games.Count)) {
         $idx = [int]$choice - 1
         $game = $games[$idx]
         $cacheInfo = Get-GameCacheInfo $game
+        $displayName = if ($game.PSObject.Properties.Match('DisplayName').Count -gt 0) { $game.DisplayName } else { $game.Name }
         if ($cacheInfo) {
             $result = Remove-OldCacheVersions $cacheInfo.WebCachesPath
             if ($result) {
-                Write-Host "Cache removed for $($game.Name)."
+                Write-Host $Locale.GameCacheRemovedStatus $displayName
                 $status[$game.Name] = $true
             } else {
-                Write-Host "No cache found for $($game.Name)."
+                Write-Host $Locale.GameCacheNotFound $displayName
             }
         } else {
-            Write-Host "Game data folder not found for $($game.Name)."
+            Write-Host $Locale.GameDataFolderNotFound
         }
     } else {
-        Write-Host "Invalid selection."
+        Write-Host $Locale.InvalidChoice -ForegroundColor Red
     }
 }

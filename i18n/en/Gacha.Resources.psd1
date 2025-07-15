@@ -94,4 +94,35 @@
     ToolCleanerDisclaimerLink = '';
 
     ToolCleanerAnyKey = 'Press any key to continue...';
+
+    hk4e_cn = 'Genshin Impact (China)';
+    hk4e_cn_b = 'Genshin Impact (BiliBili)';
+    hk4e_global = 'Genshin Impact (Global)';
+    hk4e_global_gplay = 'Genshin Impact (Google Play)';
+    hk4e_global_epic = 'Genshin Impact (Epic Games)';
+    hkrpg_cn = 'Honkai: Star Rail (China)';
+    hkrpg_cn_b = 'Honkai: Star Rail (BiliBili)';
+    hkrpg_global = 'Honkai: Star Rail (Global)';
+    hkrpg_global_epic = 'Honkai: Star Rail (Epic Games)';
+    nap_cn = 'Zenless Zone Zero (China)';
+    nap_cn_b = 'Zenless Zone Zero (BiliBili)';
+    nap_global = 'Zenless Zone Zero (Global)';
+    nap_global_epic = 'Zenless Zone Zero (Epic Games)';
+
+    LauncherConfigNotFound = 'Launcher configuration data not found. Please ensure the launcher is installed and configured correctly.';
+    GameDataFolderNotFound = 'Game data folder not found for the selected game.';
+    GameInstalled = 'Installed Games:';
+    GameCacheSelection = 'Select a game to remove cache:';
+    GameCacheRemovedStatus = 'Game cache removed successfully.';
+    GameCacheRemoved = 'Cache removed for game:';
+    GameCacheNotFound = 'No cache found for the selected game.';
+    GoBack = '0. Go Back';
+
+    CollapseGameFolderNotFound = 'Collapse Launcher game folder not found. Please ensure the Collapse Launcher is installed and you have went through the out of box experience.';
+
+    CloudContinuePrompt = 'Press ENTER to continue with log file removal, or press Q then ENTER to go back.';
+    CloudLogFileDeleted = 'Deleted log file:';
+    CloudLogFileNotFound = 'Log file not found in:';
+    CloudDirectoryNotFound = 'Directory does not exist:';
+    CloudNoFilesDeleted = 'No files were deleted.';
 }
