@@ -1,7 +1,12 @@
 # Define the log directories to check
-$input = Read-Host "Press ENTER to continue with log file removal, or press Q then ENTER to exit."
+
+$gachaLogTmp = "$env:TMP\gacha-log"
+
+Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
+
+$input = Read-Host $Locale.CloudContinuePrompt
 if ($input -eq "Q") {
-    Write-Host "No files were deleted."
+    Write-Host $Locale.CloudNoFilesDeleted
     break
 }
 $logDirs = @(
@@ -15,11 +20,12 @@ foreach ($dir in $logDirs) {
         $logFile = Join-Path $dir 'MiHoYoSDK.log'
         if (Test-Path $logFile) {
             Remove-Item $logFile -Force
-            Write-Host "Deleted: $logFile"
+            Write-Host $Locale.CloudLogFileDeleted $logFile
         } else {
-            Write-Host "Log file not found in: $dir"
+            Write-Host $Locale.CloudLogFileNotFound $logFile
         }
     } else {
-        Write-Host "Directory does not exist: $dir"
+        Write-Host $Locale.CloudDirectoryNotFound $dir
     }
 }
+Write-Host $Locale.GachaMenuAnyKey -ForegroundColor Yellow
