@@ -32,6 +32,10 @@ function Get-Cleaner {
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal.ps1")))}"
 }
 
+function Get-LangReset {
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/lang_reset.ps1")))}"
+}
+
 function Close-Clear {
     Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "cleanup.ps1")))}"
@@ -45,6 +49,7 @@ while ($true) {
     switch ($choice) {
         0 { Close-Clear }
         1 { Get-Cleaner }
+        2 { Get-LangReset }
         default { Write-Host $Locale.InvalidChoice -ForegroundColor Red; continue }
     }
     

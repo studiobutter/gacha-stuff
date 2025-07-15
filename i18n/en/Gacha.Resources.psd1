@@ -138,4 +138,9 @@
     CloudLogFileNotFound = 'Log file not found in:';
     CloudDirectoryNotFound = 'Directory does not exist:';
     CloudNoFilesDeleted = 'No files were deleted.';
+
+    LanguageResetPrompt = 'Do you want to reset the language preference? (y/n)';
+    LanguageResetSuccess = 'Language preference reset. You will be asked to select a language next time.';
+    LanguageResetCancelled = 'No changes made to the language preference.';
+    LanguageResetInvalidInput = 'Invalid input. No changes made to the language preference.';
 }

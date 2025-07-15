@@ -216,8 +216,15 @@ catch {
 $saveRegUrl = Get-ScriptUrl 'saveReg.ps1'
 $saveRegFile = Join-Path $gachaLogTmp 'saveReg.ps1'
 try {
-    Invoke-WebRequest -Uri $saveRegUrl -OutFile $saveRegFile -UseBasicParsing
-    Write-Host "Downloaded saveReg.ps1 to $saveRegFile" -ForegroundColor Green
+    if ($saveRegUrl -like 'file:///*') {
+        $localSaveRegPath = $saveRegUrl -replace '^file:///', ''
+        $localSaveRegPath = $localSaveRegPath -replace '/', '\\'
+        Copy-Item -Path $localSaveRegPath -Destination $saveRegFile -Force
+        Write-Host "Copied saveReg.ps1 to $saveRegFile" -ForegroundColor Green
+    } else {
+        Invoke-WebRequest -Uri $saveRegUrl -OutFile $saveRegFile -UseBasicParsing
+        Write-Host "Downloaded saveReg.ps1 to $saveRegFile" -ForegroundColor Green
+    }
     & $saveRegFile $commonCode
 }
 catch {
