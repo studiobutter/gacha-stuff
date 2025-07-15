@@ -1,6 +1,10 @@
 # Requires -RunAsAdministrator
 # HoYo Cache Removal Script
 
+$gachaLogTmp = "$env:TMP\gacha-log"
+
+Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
+
 function Get-UserName {
     return [System.Environment]::UserName
 }
@@ -8,12 +12,12 @@ function Get-UserName {
 function Get-GamePaths {
     $user = Get-UserName
     return @(
-        @{ Name = "Genshin Impact (Global)";    Path = "C:\Users\$user\AppData\LocalLow\miHoYo\Genshin Impact";      Log = @("output_log.txt", "output_log-old.txt");   DataPattern = "GenshinImpact_Data" },
-        @{ Name = "Genshin Impact (China)";     Path = "C:\Users\$user\AppData\LocalLow\miHoYo\原神";                Log = @("output_log.txt", "output_log-old.txt");   DataPattern = "YuanShen_Data" },
-        @{ Name = "Honkai: Star Rail (Global)"; Path = "C:\Users\$user\AppData\LocalLow\Cognosphere\Star Rail";      Log = @("Player.log", "Player-prev.log");          DataPattern = "StarRail_Data" },
-        @{ Name = "Honkai: Star Rail (China)";  Path = "C:\Users\$user\AppData\LocalLow\miHoYo\崩坏：星穹铁道";        Log = @("Player.log", "Player-prev.log");          DataPattern = "StarRail_Data" },
-        @{ Name = "Zenless Zone Zero (Global)"; Path = "C:\Users\$user\AppData\LocalLow\miHoYo\ZenlessZoneZero";     Log = @("Player.log", "Player-prev.log");          DataPattern = "ZenlessZoneZero_Data" },
-        @{ Name = "Zenless Zone Zero (China)";  Path = "C:\Users\$user\AppData\LocalLow\miHoYo\绝区零";                Log = @("Player.log", "Player-prev.log");          DataPattern = "ZenlessZoneZero_Data" }
+        @{ Name = $Locale.hk4e_global;    Path = "C:\Users\$user\AppData\LocalLow\miHoYo\Genshin Impact";      Log = @("output_log.txt", "output_log-old.txt");   DataPattern = "GenshinImpact_Data" },
+        @{ Name = $Locale.hk4e_cn;     Path = "C:\Users\$user\AppData\LocalLow\miHoYo\原神";                Log = @("output_log.txt", "output_log-old.txt");   DataPattern = "YuanShen_Data" },
+        @{ Name = $Locale.hkrpg_global; Path = "C:\Users\$user\AppData\LocalLow\Cognosphere\Star Rail";      Log = @("Player.log", "Player-prev.log");          DataPattern = "StarRail_Data" },
+        @{ Name = $Locale.hkrpg_cn;  Path = "C:\Users\$user\AppData\LocalLow\miHoYo\崩坏：星穹铁道";        Log = @("Player.log", "Player-prev.log");          DataPattern = "StarRail_Data" },
+        @{ Name = $Locale.nap_global; Path = "C:\Users\$user\AppData\LocalLow\miHoYo\ZenlessZoneZero";     Log = @("Player.log", "Player-prev.log");          DataPattern = "ZenlessZoneZero_Data" },
+        @{ Name = $Locale.nap_cn;  Path = "C:\Users\$user\AppData\LocalLow\miHoYo\绝区零";                Log = @("Player.log", "Player-prev.log");          DataPattern = "ZenlessZoneZero_Data" }
     )
 }
 
@@ -92,6 +96,7 @@ function Clear-ChromiumCache {
 }
 
 function Main {
+    Clear-Host
     $games = Get-GamePaths
     $gameStates = @{}
     while ($true) {
@@ -103,7 +108,7 @@ function Main {
                 foreach ($dir in $dataDirs) {
                     $key = "$($game.Name) [$dir]"
                     if ($gameStates[$key] -eq "removed") {
-                        Write-Host "$i. $key (cache removed)" -ForegroundColor DarkGray
+                        Write-Host "$i. $key $($Locale.GameCacheRemoveHint)" -ForegroundColor DarkGray
                     } else {
                         Write-Host "$i. $key"
                         $available += @{ Index = $i; Game = $game; DataDir = $dir; Key = $key }
@@ -113,15 +118,17 @@ function Main {
             }
         }
         if ($available.Count -eq 0) {
-            Write-Host "No games with cache found or all caches already removed."
+            Write-Host $Locale.GameCacheNotFoundAll -ForegroundColor Yellow
             break
         }
-        Write-Host "Select a game to remove its cache (or press Enter to exit):"
+        Write-Host "0. Exit"
+        Write-Host $Locale.GameCacheSelection
         $input = Read-Host
         if (-not $input) { break }
+        if ($input -eq '0') { break }
         $inputInt = 0
         if (-not [int]::TryParse($input, [ref]$inputInt)) {
-            Write-Host "Invalid selection."
+            Write-Host $Locale.InvalidChoice
             continue
         }
         $selected = $available | Where-Object { $_.Index -eq $inputInt } | Select-Object -First 1
@@ -130,20 +137,20 @@ function Main {
             $latest = Remove-OldCacheVersions -webCachesPath $webCaches
             if ($latest) {
                 Clear-ChromiumCache -latestVersionPath $latest
-                Write-Host "Cache cleared for $($selected.Key)."
+                Write-Host "$($Locale.GameCacheRemoved) $($selected.Key)."
                 $gameStates[$selected.Key] = "removed"
             } else {
-                Write-Host "No cache found for $($selected.Key)."
+                Write-Host "$($Locale.GameCacheNotFound): $($selected.Key)."
             }
         } else {
-            Write-Host "Invalid selection."
+            Write-Host $Locale.InvalidChoice
         }
     }
 }
 
 # Ensure running as admin
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Warning "Please run this script as Administrator."
+    Write-Warning $Locale.SuggestAdmin
     exit
 }
 

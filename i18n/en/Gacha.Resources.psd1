@@ -7,6 +7,8 @@
     RegSuggestAdmin = 'You may need to run PowerShell as Administrator to save this setting.';
     RegRememberCancelled = 'Operation cancelled. No changes made to the registry.';
 
+    SuggestAdmin = 'This script requires administrative privileges to run.';
+
     EnterChoice = 'Enter your choice';
     NoURL = 'Cannot find gacha log URL, open the gacha history in-game before running.';
     Copied = 'Gacha log URL copied to clipboard:';
@@ -116,8 +118,19 @@
     GameCacheRemovedStatus = 'Game cache removed successfully.';
     GameCacheRemoved = 'Cache removed for game:';
     GameCacheNotFound = 'No cache found for the selected game.';
-    GoBack = '0. Go Back';
+    GameCacheAlreadyRemoved = 'Cache already removed for game:';
+    GameCacheRemoveHint = '(cache removed)';
+    GameCacheNotFoundAll = 'No game cache found for all the games or all cache already removed.';
 
+    GameCacheVerNotFound = 'No cache version found for the selected game.';
+    GameCacheVerRemoved = 'Removed old cache version:';
+    GameCacheVerCleared = 'Cleared Chromium cache files in:';
+    GameCacheVerFailed = 'Failed to remove old cache version:';
+    GameCacheFailed = 'Failed to clear Chromium cache files:';
+    GameDataNotFound = 'Game data folder not found. Please ensure the game is installed correctly.';
+
+    GoBack = '0. Go Back';
+    # This line is specific to the Collapse Launcher
     CollapseGameFolderNotFound = 'Collapse Launcher game folder not found. Please ensure the Collapse Launcher is installed and you have went through the out of box experience.';
 
     CloudContinuePrompt = 'Press ENTER to continue with log file removal, or press Q then ENTER to go back.';
