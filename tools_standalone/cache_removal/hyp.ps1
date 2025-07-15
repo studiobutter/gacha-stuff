@@ -85,7 +85,6 @@ function Remove-GameCache {
 function Show-Menu {
     param($games)
     Clear-Host
-    Write-Host "== HoYo Cache Removal Tool ==`n" -ForegroundColor Cyan
     for ($i = 0; $i -lt $games.Count; $i++) {
         $status = if ($games[$i].CacheRemoved) { '[REMOVED]' } else { '' }
         Write-Host ("[{0}] {1} - {2} {3}" -f ($i+1), $games[$i].Name, $games[$i].InstallPath, $status)
