@@ -1,15 +1,17 @@
 # Prompt user to confirm language reset
-$answer = Read-Host "Do you want to reset the language preference? (y/n)"
+$gachaLogTmp = "$env:TMP\gacha-log"
+
+Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
+
+$answer = Read-Host $Locale.LanguageResetPrompt
 
 if ($answer -eq 'y') {
     # Remove 'lang' value from registry
     Remove-ItemProperty -Path 'HKCU:\Software\gacha-log' -Name 'lang' -ErrorAction SilentlyContinue
-    Write-Host "Language preference reseted. You'll be asked to select a language next time."
-    # Run cleanup.ps1
-    & "$PSScriptRoot\..\cleanup.ps1"
-    exit
+    Write-Host $Locale.LanguageResetSuccess
+    break
 } elseif ($answer -eq 'n') {
-    Write-Host "No changes made."
+    Write-Host $Locale.LanguageResetCancelled
 } else {
-    Write-Host "Invalid input. No changes made."
+    Write-Host $Locale.LanguageResetInvalidInput
 }
