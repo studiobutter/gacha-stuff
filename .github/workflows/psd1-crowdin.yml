@@ -40,17 +40,6 @@ jobs:
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
 
-      - name: Download from Crowdin
-        uses: crowdin/github-action@v2
-        with:
-          download_translations: true
-          config: '.crowdin.yml'
-        env:
-          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
-
-      - name: Convert JSON → PSD1
-        run: python scripts/convert_json_to_psd1.py
-
       - name: Create PR with translation updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
