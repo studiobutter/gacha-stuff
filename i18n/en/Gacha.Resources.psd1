@@ -78,7 +78,7 @@
     
     DisabledChoice = 'Option is Disabled';
     
-    ToolCleanerDisclaimer1 = 'This tool will delete all cache files from the game.';
+    ToolCleanerDisclaimer1 = 'This tool will delete all cache files generated from the game browser.';
     ToolCleanerDisclaimer2 = "- For Option 1: No Launcher Detection, if you don't have HoYoPlay launcher installed and have any other similar region of the game installed"
     ToolCleanerDisclaimer3 = @(
         "Example"
@@ -93,7 +93,7 @@
     ToolCleanerDisclaimer7 = 'Note that this tool will not delete any game files including "Cache Updates" files, only Chromium cache files.';
     ToolCleanerDisclaimer8 = '- For Option 4: Cloud Launchers, which delete the file containing the gacha log URL.';
     ToolCleanerDisclaimer9 = 'For more information, you can read about it here:';
-    ToolCleanerDisclaimerLink = '';
+    ToolCleanerDisclaimerLink = 'https://docs.hb.seria.moe/docs/tools';
 
     ToolCleanerAnyKey = 'Press any key to continue...';
 
