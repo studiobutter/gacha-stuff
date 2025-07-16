@@ -1,14 +1,21 @@
 "project_id": "795754"
 "base_path": "."
 "base_url": "https://api.crowdin.com"
-"api_token_env": "CROWDIN_PERSONAL_TOKEN"
 "preserve_hierarchy": true
 
 "auto_upload": true
 "auto_download": true
-"push_translations": false
-"create_pull_request": false
+"push_translations": true
+"create_pull_request": true
 
-files:
-  - source: "/crowdin/en.json"
-    translation: "/crowdin/%locale%.json"
+"commit_message": "chore(l10n): update translations from Crowdin"
+"branch_name": "l10n_crowdin_translations"
+"pull_request_title": "Crowdin Translations Update"
+"pull_request_base_branch": "tools"
+
+files: [
+  {
+    "source": "/crowdin/en.json",
+    "translation": "/crowdin/%locale%.json"
+  }
+]
