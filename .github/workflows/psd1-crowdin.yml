@@ -1,24 +1,31 @@
 name: PSD1 ↔ Crowdin Sync
 
 on:
-  workflow_dispatch:
   push:
     paths:
       - 'i18n/**/*.psd1'
-      - 'scripts/*.ps1'
+      - 'scripts/*.py'
       - '.github/workflows/psd1-crowdin.yml'
+  workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python requirements (if needed)
+        run: pip install --upgrade pip
+
       - name: Convert PSD1 → JSON
-        shell: pwsh
-        run: |
-          ./scripts/Convert-Psd1ToJson.ps1 -InputDir i18n -OutputDir crowdin
+        run: python scripts/convert_psd1_to_json.py
 
       - name: Upload to Crowdin
         uses: crowdin/github-action@v2
@@ -38,14 +45,12 @@ jobs:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
 
       - name: Convert JSON → PSD1
-        shell: pwsh
-        run: |
-          ./scripts/Convert-JsonToPsd1.ps1 -JsonDir crowdin -Psd1Dir i18n
+        run: python scripts/convert_json_to_psd1.py
 
-      - name: Commit back updates (optional)
+      - name: Commit updated PSD1 files
         run: |
           git config user.name github-actions
           git config user.email github-actions@users.noreply.github.com
           git add i18n/
-          git commit -m "Update PSD1 files with Crowdin translations" || echo "No changes"
+          git commit -m "Update .psd1 from Crowdin translations" || echo "No changes to commit"
           git push
