@@ -2,7 +2,7 @@
 
 This is the Repository for all PowerShell Files to copy your Gacha Links. Now with support for Multiple Languages.
 
-To add your own language, please fork this repository, update the `language.json` file and add your language translation in the `i18n` folder
+To add your own language, please fork this repository, update the `language.json` file and add your language translation in the `i18n` folder.
 
 Run the Interactive menu:
 
