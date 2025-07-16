@@ -11,7 +11,7 @@
 "commit_message": "chore(l10n): update translations from Crowdin"
 "branch_name": "l10n_crowdin_translations"
 "pull_request_title": "Crowdin Translations Update"
-"pull_request_base_branch": "tools"
+"pull_request_base_branch": "main"
 
 "pull_request_translation_completion": "100"
 "update_option": "update_as_unapproved"
