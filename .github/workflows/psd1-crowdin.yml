@@ -35,6 +35,7 @@ jobs:
           config: '.crowdin.yml'
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download from Crowdin
         uses: crowdin/github-action@v2
@@ -43,6 +44,7 @@ jobs:
           config: '.crowdin.yml'
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Convert JSON → PSD1
         run: python scripts/convert_json_to_psd1.py
