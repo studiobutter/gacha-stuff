@@ -58,7 +58,7 @@ jobs:
           git commit -m "Update translations from Crowdin" || echo "No changes to commit"
 
           # Push branch to origin
-          git push origin $branch
+          git push --force-with-lease origin $branch
 
           # Authenticate and create PR
           gh auth setup-git
