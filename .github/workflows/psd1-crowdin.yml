@@ -8,6 +8,10 @@ on:
       - '.github/workflows/psd1-crowdin.yml'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -21,8 +25,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Python requirements (if needed)
-        run: pip install --upgrade pip
+      - name: Install GitHub CLI
+        run: sudo apt install gh -y
 
       - name: Convert PSD1 → JSON
         run: python scripts/convert_psd1_to_json.py
@@ -35,7 +39,6 @@ jobs:
           config: '.crowdin.yml'
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download from Crowdin
         uses: crowdin/github-action@v2
@@ -44,15 +47,34 @@ jobs:
           config: '.crowdin.yml'
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Convert JSON → PSD1
         run: python scripts/convert_json_to_psd1.py
 
-      - name: Commit updated PSD1 files
+      - name: Create PR with translation updates
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          branch="crowdin-update-$(date +'%Y%m%d')"
+
+          # Configure Git
           git config user.name github-actions
           git config user.email github-actions@users.noreply.github.com
+
+          # Create new branch
+          git checkout -b $branch
+
+          # Stage and commit changes
           git add i18n/
-          git commit -m "Update .psd1 from Crowdin translations" || echo "No changes to commit"
-          git push
+          git commit -m "Update translations from Crowdin" || echo "No changes to commit"
+
+          # Push branch to origin
+          git push origin $branch
+
+          # Authenticate and create PR
+          gh auth setup-git
+          gh pr create \
+            --title "Crowdin Translation Update $(date +'%Y-%m-%d')" \
+            --body "This PR updates .psd1 localization files from the latest Crowdin translations." \
+            --head $branch \
+            --base main
