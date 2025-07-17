@@ -10,7 +10,7 @@
     SuggestAdmin = 'Tệp lệnh này yêu cầu quyền Quản trị viên để chạy.';
 
     EnterChoice = 'Nhập lựa chọn của bạn:';
-    NoURL = 'Không tìm thấy URL phù hợp hoặc không thể định vị được URL. Vui lòng mở Lịch sử Gacha trong trò chơi.';;
+    NoURL = 'Không tìm thấy URL phù hợp hoặc không thể định vị được URL. Vui lòng mở Lịch sử Gacha trong trò chơi.';
     Copied = 'Đường dẫn Nhật Ký Gacha đã được sao chép vào bộ nhớ tạm.';
     PasteInstructions = 'Hãy dán vào dịch vụ theo dõi Nhật Ký Gacha yêu thích của bạn (ví dụ: zzz.rng.moe, Hoyo Buddy, v.v.)';
     InvalidChoice = 'Lựa chọn không hợp lệ. Vui lòng thử lại.';
@@ -21,7 +21,8 @@
     GachaMenuOptions = @(
         '1. Genshin Impact',
         '2. Honkai: Star Rail',
-        '3. Zenless Zone Zero'
+        '3. Zenless Zone Zero',
+        '4. Cài đặt',
         'Nhấn [0] để thoát'
     );
     GachaMenuAnyKey = 'Nhấn bất kỳ phím nào để tiếp tục...';
