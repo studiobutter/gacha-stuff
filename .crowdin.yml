@@ -11,7 +11,7 @@ base_path: .
 base_url: 'https://api.crowdin.com'
 preserve_hierarchy: 1
 commit_message: 'chore(l10n): update translations from Crowdin'
-pull_request_title: Crowdin Translations Update
+pull_request_title: [TL] Crowdin Translations Update
 files:
   - source: /l10n/en.json
     translation: /l10n/%locale%.json
