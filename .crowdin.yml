@@ -1,24 +1,17 @@
-"project_id": "795754"
-"base_path": "."
-"base_url": "https://api.crowdin.com"
-"preserve_hierarchy": true
-
-"auto_upload": true
-"auto_download": true
-"push_translations": true
-"create_pull_request": true
-
-"commit_message": "chore(l10n): update translations from Crowdin"
-"branch_name": "l10n_crowdin_translations"
-"pull_request_title": "Crowdin Translations Update"
-"pull_request_base_branch": "main"
-
-"pull_request_translation_completion": "100"
-"update_option": "update_as_unapproved"
-
-files: [
-  {
-    "source": "/crowdin/en.json",
-    "translation": "/crowdin/%locale%.json"
-  }
-]
+project_id: '795754'
+auto_upload: 1
+auto_download: 1
+push_translations: 1
+create_pull_request: 1
+branch_name: l10n_crowdin_translations
+pull_request_base_branch: main
+pull_request_translation_completion: '100'
+update_option: update_as_unapproved
+base_path: .
+base_url: 'https://api.crowdin.com'
+preserve_hierarchy: 1
+commit_message: 'chore(l10n): update translations from Crowdin'
+pull_request_title: Crowdin Translations Update
+files:
+  - source: /l10n/en.json
+    translation: /l10n/%locale%.json
