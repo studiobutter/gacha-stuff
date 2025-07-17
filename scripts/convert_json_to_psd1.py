@@ -21,7 +21,7 @@ def write_psd1(data, out_path):
         f.write("\n".join(lines))
     print(f"✅ Wrote: {out_path}")
 
-def convert_folder(json_dir="crowdin", output_root="i18n"):
+def convert_folder(json_dir="i10n", output_root="i18n"):
     for file in os.listdir(json_dir):
         if file.endswith(".json"):
             lang = os.path.splitext(file)[0]
