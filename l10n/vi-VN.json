@@ -62,17 +62,18 @@
     "2. Quét bằng cấu hình trình khởi chạy HoYoPlay",
     "3. Quét bằng cấu hình trình khởi chạy Collapse",
     "4. Quét bằng cấu hình trình khởi chạy Cloud",
+    "Nhấn [0] để thoát",
     "Nhấn [0] để thoát"
   ],
   "DisabledChoice": "Lựa chọn hiện tại bị vô hiệu hóa.",
   "ToolCleanerDisclaimer1": "Công cụ này sẽ xóa các tệp rác được tạo bởi trình duyệt của trò chơi",
   "ToolCleanerDisclaimer2": "- Đối với Tùy chọn 1: Quét không cần trình khởi chạy, nếu bạn không có trình khởi chạy HoYoPlay được cài đặt và có bất kỳ vùng trò chơi tương tự nào được cài đặt",
   "ToolCleanerDisclaimer3": [
-    "Ví dụ",
-    "1. Genshin Impact (Quốc tế) và Genshin Impact (Google Play)",
-    "2. Honkai: Star Rail (Trung Quốc) và Honkai: Star Rail (BiliBili)",
-    "3. Zenless Zone Zero (Trung Quốc) và Zenless Zone Zero (BiliBili)",
-    "4. Genshin Impact (Trung Quốc) và Genshin Impact (BiliBili)"
+    "Ví dụ',",
+    "1. Genshin Impact (Quốc tế) và Genshin Impact (Google Play)',",
+    "2. Honkai: Star Rail (Trung Quốc) và Honkai: Star Rail (BiliBili)',",
+    "3. Zenless Zone Zero (Trung Quốc) và Zenless Zone Zero (BiliBili)',",
+    "4. Genshin Impact (Trung Quốc) vầ Genshin Impact (BiliBili)"
   ],
   "ToolCleanerDisclaimer4": "Vui lòng mở những phiên bản đó trong một vài giây và đóng chúng trước khi chạy công cụ này để tập lệnh này phát hiện tất cả trò chơi.",
   "ToolCleanerDisclaimer5": "- Đối với Tùy chọn 2: Quét bằng cấu hình trình khởi chạy HoYoPlay, nếu bạn có trình khởi chạy HoYoPlay được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn.",
