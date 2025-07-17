@@ -178,10 +178,6 @@ elseif ($commonCode -in @('zh-tw', 'zh-hk')) {
     $commonCode = 'zh-tw'
     $env:GACHA_LANG = $commonCode
 }
-elseif ($commonCode -eq 'vi-vn') {
-    $commonCode = 'vi'
-    $env:GACHA_LANG = $commonCode
-}
 else {
     $env:GACHA_LANG = $commonCode
 }
