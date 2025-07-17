@@ -16,9 +16,10 @@
   "GachaMenuTitle": "Menu Thu Thập URL Nhật Ký Gacha",
   "GachaMenuDescription": "Chọn trò chơi:",
   "GachaMenuOptions": [
-    "1. Genshin Impact',",
-    "2. Honkai: Star Rail',",
+    "1. Genshin Impact",
+    "2. Honkai: Star Rail",
     "3. Zenless Zone Zero",
+    "4. Cài đặt",
     "Nhấn [0] để thoát"
   ],
   "GachaMenuAnyKey": "Nhấn bất kỳ phím nào để tiếp tục...",
@@ -58,9 +59,9 @@
   ],
   "CleanerOptions": [
     "1. Quét không cần trình khởi chạy',",
-    "2. Quét bằng cấu hình trình khởi chạy HoYoPlay',",
-    "3. Quét bằng cấu hình trình khởi chạy Collapse',",
-    "4. Quét bằng cấu hình trình khởi chạy Cloud',",
+    "2. Quét bằng cấu hình trình khởi chạy HoYoPlay",
+    "3. Quét bằng cấu hình trình khởi chạy Collapse",
+    "4. Quét bằng cấu hình trình khởi chạy Cloud",
     "Nhấn [0] để thoát"
   ],
   "DisabledChoice": "Lựa chọn hiện tại bị vô hiệu hóa.",
