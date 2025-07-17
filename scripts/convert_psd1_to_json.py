@@ -55,7 +55,7 @@ def parse_psd1_to_dict(psd1_path):
     return result
 
 
-def convert_folder(input_root="i18n", output_root="crowdin"):
+def convert_folder(input_root="i18n", output_root="i10n"):
     os.makedirs(output_root, exist_ok=True)
     for root, dirs, files in os.walk(input_root):
         for file in files:
