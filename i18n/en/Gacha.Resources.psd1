@@ -20,7 +20,7 @@
         '2. Honkai: Star Rail',
         '3. Zenless Zone Zero',
         '4. Settings',
-        'Press 0 to Exit',
+        'Press 0 to Exit'
     );
     GachaMenuAnyKey =     'Press any key to return to the menu...';
     GachaMenuExit =     'Cleaning temp files and exiting...';
@@ -29,17 +29,17 @@
         '1. Global',
         '2. China',
         '3. Cloud',
-        'Press 0 to Exit',
+        'Press 0 to Exit'
     );
     RegionOptionsNoCloud =     @(
         '1. Global',
         '2. China',
-        'Press 0 to Exit',
+        'Press 0 to Exit'
     );
     CloudOptions =     @(
         '1. Global',
         '2. China',
-        'Press 0 to Exit',
+        'Press 0 to Exit'
     );
     TaskCompleted =     'Task completed. If any error occurred, rerun the script or contact support. Press any key to exit.';
     RegionUnavailable =     'This region is currently unavailable. Please choose another region.';
@@ -55,7 +55,7 @@
     ToolOptions =     @(
         '1. Cache Cleaner',
         '2. Reset Language Settings',
-        'Press 0 to Exit',
+        'Press 0 to Exit'
     );
     CleanerOptions =     @(
         '1. No Launcher Detection',
@@ -63,7 +63,7 @@
         '3. Collapse Launcher',
         '4. Cloud Launcher',
         '?. Learn More',
-        'Press 0 to Exit',
+        'Press 0 to Exit'
     );
     DisabledChoice =     'Option is Disabled';
     ToolCleanerDisclaimer1 =     'This tool will delete all cache files generated from the game browser.';
@@ -73,7 +73,7 @@
         '- Genshin Impact (China) and Genshin Impact (BiliBili)',
         '- Honkai: Star Rail (China) and Honkai: Star Rail (BiliBili)',
         '- Zenless Zone Zero (China) and Zenless Zone Zero (BiliBili)',
-        '- Genshin Impact (Global) and Genshin Impact (Global) - Google Play)',
+        '- Genshin Impact (Global) and Genshin Impact (Global) - Google Play)'
     );
     ToolCleanerDisclaimer4 =     'Please open those versions of the game for few seconds and then close them before running this tool so the tool can detect all available games installed on the system to remove cached data.';
     ToolCleanerDisclaimer5 =     '- For Option 2: HoYoPlay Launcher Detection, if you have HoYoPlay launcher installed, this tool will automatically detect all games installed on the system thru HoYoPlay configuration and remove cached files.';
