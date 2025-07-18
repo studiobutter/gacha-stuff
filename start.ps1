@@ -174,8 +174,8 @@ if ($commonCode -in @(
     $commonCode = 'en'
     $env:GACHA_LANG = $commonCode
 }
-elseif ($commonCode -in @('zh-tw', 'zh-hk')) {
-    $commonCode = 'zh-tw'
+elseif ($commonCode -in @('zh-TW', 'zh-HK')) {
+    $commonCode = 'zh-TW'
     $env:GACHA_LANG = $commonCode
 }
 else {
