@@ -1,0 +1,35 @@
+name: Convert PSD1 to JSON on Gacha Change
+
+on:
+  push:
+    paths:
+      - i18n/en/Gacha.Resources.psd1
+
+jobs:
+  convert-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run conversion script
+        run: python3 convert_psd1_to_json.py
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add i10n/
+          git diff --cached --quiet || git commit -m "[auto] Convert PSD1 to JSON"
+          git push origin "${GITHUB_REF##*/}"
