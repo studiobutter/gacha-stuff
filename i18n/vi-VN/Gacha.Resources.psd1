@@ -89,7 +89,7 @@
     ToolCleanerDisclaimer4 = "Vui lòng mở những phiên bản đó trong một vài giây và đóng chúng trước khi chạy công cụ này để tập lệnh này phát hiện tất cả trò chơi.";
     ToolCleanerDisclaimer5 = "- Đối với Tùy chọn 2: Quét bằng cấu hình trình khởi chạy HoYoPlay, nếu bạn có trình khởi chạy HoYoPlay được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn.";
     ToolCleanerDisclaimer6 = "- Đối với Tùy chọn 3: Quét bằng cấu hình trình khởi chạy Collapse, nếu bạn có trình khởi chạy Collapse được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn.";
-    ToolCleanerDisclaimer7 = "Lưu ý rằng công cụ này sẽ không xóa bất kỳ tệp nào từ thư mục cài đặt trò chơi hoặc dử liệu tải xuống bằng tính năng "Cập nhật cache" của Collapse";
+    ToolCleanerDisclaimer7 = "Lưu ý rằng công cụ này sẽ không xóa bất kỳ tệp nào từ thư mục cài đặt trò chơi hoặc dử liệu tải xuống bằng tính năng Cập nhật cache của Collapse";
     ToolCleanerDisclaimer8 = "- Đối với Tùy chọn 4: Quét bằng cấu hình trình khởi chạy Cloud, nếu bạn có trình khởi chạy Cloud được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn.";
     ToolCleanerDisclaimer9 = "Để biết thêm thông tin, bạn có thể đọc về nó ở đây:";
     ToolCleanerDisclaimerLink = "https://docs.hb.seria.moe/vi/docs/tools";
