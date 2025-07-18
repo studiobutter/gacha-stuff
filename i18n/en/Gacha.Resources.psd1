@@ -90,7 +90,7 @@
     ToolCleanerDisclaimer4 = "Please open those versions of the game for few seconds and then close them before running this tool so the tool can detect all available games installed on the system to remove cached data.";
     ToolCleanerDisclaimer5 = "- For Option 2: HoYoPlay Launcher Detection, if you have HoYoPlay launcher installed, this tool will automatically detect all games installed on the system thru HoYoPlay configuration and remove cached files.";
     ToolCleanerDisclaimer6 = "- For Option 3: If you use Collapse Launcher, this tool will automatically detect all games installed on the system thru Collapse Launcher configuration and remove cached files.";
-    ToolCleanerDisclaimer7 = "Note that this tool will not delete any game files including "Cache Updates" files, only Chromium cache files.";
+    ToolCleanerDisclaimer7 = "Note that this tool will not delete any game files including Cache Updates files, only Chromium cache files.";
     ToolCleanerDisclaimer8 = "- For Option 4: Cloud Launchers, which delete the file containing the gacha log URL.";
     ToolCleanerDisclaimer9 = "For more information, you can read about it here:";
     ToolCleanerDisclaimerLink = "https://docs.hb.seria.moe/docs/tools";
@@ -143,4 +143,7 @@
     LanguageResetSuccess = "Language preference reset. You will be asked to select a language next time.";
     LanguageResetCancelled = "No changes made to the language preference.";
     LanguageResetInvalidInput = "Invalid input. No changes made to the language preference.";
+
+    Changelogs = "Changelogs";
+    ChangelogsDescription = "View the latest changes and updates to the script.";
 }
