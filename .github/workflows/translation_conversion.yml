@@ -1,0 +1,35 @@
+name: Convert JSON to PSD1 on l10n_main updates
+
+on:
+  push:
+    branches:
+      - l10n_main
+
+jobs:
+  convert-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run conversion script
+        run: python3 ./scripts/convert_json_to_psd1.py
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add i18n/
+          git diff --cached --quiet || git commit -m "[auto] Convert JSON to PSD1"
+          git push origin l10n_main
