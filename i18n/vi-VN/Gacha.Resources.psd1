@@ -34,7 +34,7 @@
     YSCacheCN = "Sử dụng vị trí bộ nhớ đệm Vùng Trung Quốc Đại Lục"
     ToolSelection = "Chọn công cụ để chạy:"
     ToolOptions = @("1. Dọn dẹp tệp rác", "2. Thiết lập cài đặt ngôn ngữ", "Nhấn [0] để thoát")
-    CleanerOptions = @("1. Quét không cần trình khởi chạy", "2. Quét bằng cấu hình trình khởi chạy HoYoPlay", "3. Quét bằng cấu hình trình khởi chạy Collapse", "4. Quét bằng cấu hình trình khởi chạy Cloud", "Nhấn [0] để thoát", "Nhấn [0] để thoát")
+    CleanerOptions = @("1. Quét không cần trình khởi chạy", "2. Quét bằng cấu hình trình khởi chạy HoYoPlay", "3. Quét bằng cấu hình trình khởi chạy Collapse", "4. Quét bằng cấu hình trình khởi chạy Cloud", "?. Tìm hiểu thêm", "Nhấn [0] để thoát")
     DisabledChoice = "Lựa chọn hiện tại bị vô hiệu hóa."
     ToolCleanerDisclaimer1 = "Công cụ này sẽ xóa các tệp rác được tạo bởi trình duyệt của trò chơi"
     ToolCleanerDisclaimer2 = "- Đối với Tùy chọn 1: Quét không cần trình khởi chạy, nếu bạn không có trình khởi chạy HoYoPlay được cài đặt và có bất kỳ vùng trò chơi tương tự nào được cài đặt"
