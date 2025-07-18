@@ -30,6 +30,6 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git add i10n/
+          git add l10n/
           git diff --cached --quiet || git commit -m "[auto] Convert PSD1 to JSON"
           git push origin "${GITHUB_REF##*/}"
