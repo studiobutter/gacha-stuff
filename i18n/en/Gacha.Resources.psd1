@@ -145,5 +145,5 @@
     LanguageResetInvalidInput = "Invalid input. No changes made to the language preference.";
 
     Changelogs = "Changelogs";
-    ChangelogsDescription = "View the latest changes and updates to the script.";
+    ChangelogsDescription = "View the latest changes and updates to the script?";
 }
