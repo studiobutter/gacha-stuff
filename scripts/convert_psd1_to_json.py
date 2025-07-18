@@ -6,7 +6,6 @@ def parse_psd1_to_dict(psd1_path):
     with open(psd1_path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Remove outer @{ ... }
     match = re.search(r'@\s*\{(.*)\}', content, re.DOTALL)
     if not match:
         raise ValueError(f"Invalid PSD1 format in {psd1_path}")
@@ -26,21 +25,18 @@ def parse_psd1_to_dict(psd1_path):
             key, value = map(str.strip, line.split('=', 1))
             key = key.strip()
 
-            # Start of array
             if value.startswith('@('):
                 collecting_array = True
                 current_key = key
                 array_values = []
                 value = value[2:].strip()
                 if value.endswith(')'):
-                    # inline array
                     items = value[:-1].split(',')
                     result[key] = [item.strip(" '\"") for item in items if item.strip()]
                     collecting_array = False
                 elif value:
                     array_values.append(value.strip(" '\""))
             else:
-                # Scalar value
                 result[key] = value.strip(" '\";")
         elif collecting_array:
             if line.endswith(');') or line.endswith(')'):
@@ -55,22 +51,17 @@ def parse_psd1_to_dict(psd1_path):
     return result
 
 
-def convert_folder(input_root="i18n", output_root="i10n"):
-    os.makedirs(output_root, exist_ok=True)
-    for root, dirs, files in os.walk(input_root):
-        for file in files:
-            if file.lower().endswith(".psd1"):
-                lang = os.path.basename(root)
-                path = os.path.join(root, file)
-                try:
-                    data = parse_psd1_to_dict(path)
-                    json_path = os.path.join(output_root, f"{lang}.json")
-                    with open(json_path, "w", encoding="utf-8") as out:
-                        json.dump(data, out, ensure_ascii=False, indent=2)
-                    print(f"✅ Converted {path} → {json_path}")
-                except Exception as e:
-                    print(f"❌ Failed to convert {path}: {e}")
+def convert_single_file(input_file="i18n/en/Gacha.Resources.psd1", output_file="l10n/en.json"):
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+    try:
+        data = parse_psd1_to_dict(input_file)
+        with open(output_file, "w", encoding="utf-8") as out:
+            json.dump(data, out, ensure_ascii=False, indent=2)
+        print(f"✅ Converted {input_file} → {output_file}")
+    except Exception as e:
+        print(f"❌ Failed to convert {input_file}: {e}")
 
 
 if __name__ == "__main__":
-    convert_folder()
+    convert_single_file()
+# 
