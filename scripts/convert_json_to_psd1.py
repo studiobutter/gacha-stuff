@@ -1,42 +1,21 @@
-import os
 import json
+import os
 
-def format_value(value):
-    if isinstance(value, list):
-        lines = ["    @("]
-        for i, item in enumerate(value):
-            comma = "," if i < len(value) - 1 else ""
-            lines.append(f"        '{item}'{comma}")
-        lines.append("    );")
-        return "\n".join(lines)
-    else:
-        return f"    '{value}';"
+def json_to_psd1(json_path, output_path):
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-def write_psd1(data, out_path):
     lines = ["@{"]
-    for key in data:
-        formatted = format_value(data[key])
-        lines.append(f"    {key} = {formatted}")
+    for key, value in data.items():
+        # Escape any embedded quotes inside the string
+        escaped_value = value.replace('"', '`"')
+        lines.append(f'    "{key}" = "{escaped_value}"')
     lines.append("}")
-    with open(out_path, "w", encoding="utf-8") as f:
+
+    with open(output_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
-    print(f"✅ Wrote: {out_path}")
 
-def convert_folder(json_dir="l10n", output_root="i18n"):
-    for file in os.listdir(json_dir):
-        if file.endswith(".json"):
-            lang = os.path.splitext(file)[0]
-            json_path = os.path.join(json_dir, file)
-            out_dir = os.path.join(output_root, lang)
-            os.makedirs(out_dir, exist_ok=True)
-            out_path = os.path.join(out_dir, "Gacha.Resources.psd1")
+    print(f"Converted: {json_path} -> {output_path}")
 
-            try:
-                with open(json_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                write_psd1(data, out_path)
-            except Exception as e:
-                print(f"❌ Failed to convert {json_path}: {e}")
-
-if __name__ == "__main__":
-    convert_folder()
+# Example usage:
+json_to_psd1("l10n/en.json", "i18n/en/Gacha.Resources.psd1")
