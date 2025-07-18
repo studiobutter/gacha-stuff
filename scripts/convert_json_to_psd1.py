@@ -4,8 +4,9 @@ import json
 def format_value(value):
     if isinstance(value, list):
         lines = ["    @("]
-        for item in value:
-            lines.append(f"        '{item}',")
+        for i, item in enumerate(value):
+            comma = "," if i < len(value) - 1 else ""
+            lines.append(f"        '{item}'{comma}")
         lines.append("    );")
         return "\n".join(lines)
     else:
