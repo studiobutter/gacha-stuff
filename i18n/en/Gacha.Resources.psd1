@@ -19,10 +19,10 @@
     GachaMenuTitle = "Gacha Log URL Obtainer";
     GachaMenuDescription = "Select game:";
     GachaMenuOptions = @(
-        "1. Genshin Impact",
-        "2. Honkai: Star Rail",
-        "3. Zenless Zone Zero",
-        "4. Settings",
+        "1. Genshin Impact"
+        "2. Honkai: Star Rail"
+        "3. Zenless Zone Zero"
+        "4. Settings"
         "Press 0 to Exit"
     );
     GachaMenuAnyKey = "Press any key to return to the menu...";
@@ -30,19 +30,19 @@
 
     GachaMenuChooseLink = "Select region:";
     RegionOptions = @(
-        "1. Global",
-        "2. China",
-        "3. Cloud",
+        "1. Global"
+        "2. China"
+        "3. Cloud"
         "Press 0 to Exit"
     );
     RegionOptionsNoCloud = @(
-        "1. Global",
-        "2. China",
+        "1. Global"
+        "2. China"
         "Press 0 to Exit"
     );
     CloudOptions = @(
-        "1. Global",
-        "2. China",
+        "1. Global"
+        "2. China"
         "Press 0 to Exit"
         );
         
@@ -62,17 +62,17 @@
     # This sections is for tools.
     ToolSelection = "Select a tool to run:";
     ToolOptions = @(
-        "1. Cache Cleaner",
-        "2. Reset Language Settings",
+        "1. Cache Cleaner"
+        "2. Reset Language Settings"
         "Press 0 to Exit"
     );
 
     CleanerOptions = @(
-        "1. No Launcher Detection",
-        "2. HoYoPlay Launcher",
-        "3. Collapse Launcher",
-        "4. Cloud Launcher",
-        "?. Learn More",
+        "1. No Launcher Detection"
+        "2. HoYoPlay Launcher"
+        "3. Collapse Launcher"
+        "4. Cloud Launcher"
+        "?. Learn More"
         "Press 0 to Exit"
     );
     
