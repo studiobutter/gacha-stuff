@@ -21,7 +21,7 @@ jobs:
           python-version: '3.x'
 
       - name: Run conversion script
-        run: python3 ./scripts/convert_json_to_psd1.py
+        run: python3 scripts/convert_json_to_psd1.py
 
       - name: Configure Git
         run: |
