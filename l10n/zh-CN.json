@@ -122,5 +122,7 @@
   "LanguageResetPrompt": "Do you want to reset the language preference? (y/n)",
   "LanguageResetSuccess": "Language preference reset. You will be asked to select a language next time.",
   "LanguageResetCancelled": "No changes made to the language preference.",
-  "LanguageResetInvalidInput": "Invalid input. No changes made to the language preference."
+  "LanguageResetInvalidInput": "Invalid input. No changes made to the language preference.",
+  "Changelogs": "Changelogs",
+  "ChangelogsDescription": "View the latest changes and updates to the script? (y/n)"
 }
