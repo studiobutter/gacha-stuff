@@ -20,7 +20,7 @@
         '2. Honkai: Star Rail',
         '3. Zenless Zone Zero',
         '4. Cài đặt',
-        'Nhấn [0] để thoát',
+        'Nhấn [0] để thoát'
     );
     GachaMenuAnyKey =     'Nhấn bất kỳ phím nào để tiếp tục...';
     GachaMenuExit =     'Dọn file rác và thoát...';
@@ -29,17 +29,17 @@
         '1. Quốc tế',
         '2. Trung Quốc Đại Lục',
         '3. Bản Cloud',
-        'Nhấn [0] để thoát',
+        'Nhấn [0] để thoát'
     );
     RegionOptionsNoCloud =     @(
         '1. Quốc tế',
         '2. Trung Quốc Đại Lục',
-        'Nhấn [0] để thoát',
+        'Nhấn [0] để thoát'
     );
     CloudOptions =     @(
         '1. Quốc tế',
         '2. Trung Quốc Đại Lục',
-        'Nhấn [0] để thoát',
+        'Nhấn [0] để thoát'
     );
     TaskCompleted =     'Tác vụ đã hoàn tất. Nếu có bất kỳ lỗi nào xảy ra, vui lòng chạy lại mã lệnh hoặc làm theo hướng dẫn ở trên để liên hệ hỗ trợ. Nhấn phím bất kỳ để thoát.';
     RegionUnavailable =     'Vùng được lựa chọn này hiện không khả dụng. Vui lòng chọn vùng khác.';
@@ -55,7 +55,7 @@
     ToolOptions =     @(
         '1. Dọn dẹp tệp rác',
         '2. Thiết lập cài đặt ngôn ngữ',
-        'Nhấn [0] để thoát',
+        'Nhấn [0] để thoát'
     );
     CleanerOptions =     @(
         '1. Quét không cần trình khởi chạy',
@@ -63,7 +63,7 @@
         '3. Quét bằng cấu hình trình khởi chạy Collapse',
         '4. Quét bằng cấu hình trình khởi chạy Cloud',
         'Nhấn [0] để thoát',
-        'Nhấn [0] để thoát',
+        'Nhấn [0] để thoát'
     );
     DisabledChoice =     'Lựa chọn hiện tại bị vô hiệu hóa.';
     ToolCleanerDisclaimer1 =     'Công cụ này sẽ xóa các tệp rác được tạo bởi trình duyệt của trò chơi';
@@ -73,7 +73,7 @@
         '1. Genshin Impact (Quốc tế) và Genshin Impact (Google Play)',
         '2. Honkai: Star Rail (Trung Quốc) và Honkai: Star Rail (BiliBili)',
         '3. Zenless Zone Zero (Trung Quốc) và Zenless Zone Zero (BiliBili)',
-        '4. Genshin Impact (Trung Quốc) vầ Genshin Impact (BiliBili)',
+        '4. Genshin Impact (Trung Quốc) vầ Genshin Impact (BiliBili)'
     );
     ToolCleanerDisclaimer4 =     'Vui lòng mở những phiên bản đó trong một vài giây và đóng chúng trước khi chạy công cụ này để tập lệnh này phát hiện tất cả trò chơi.';
     ToolCleanerDisclaimer5 =     '- Đối với Tùy chọn 2: Quét bằng cấu hình trình khởi chạy HoYoPlay, nếu bạn có trình khởi chạy HoYoPlay được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn.';
