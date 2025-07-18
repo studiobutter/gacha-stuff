@@ -17,7 +17,6 @@ def to_psd1_value(val):
         return str(val)
 
 def is_safe_key(key):
-    # PowerShell keys can be unquoted if they match this
     return re.match(r"^[a-zA-Z_][a-zA-Z0-9_]*$", key)
 
 def json_to_psd1(json_path, output_path):
@@ -38,17 +37,5 @@ def json_to_psd1(json_path, output_path):
 
     print(f"Converted: {json_path} -> {output_path}")
 
-def main():
-    input_dir = "l10n"
-    output_dir = "i18n"
-    pattern = re.compile(r"^[a-z]{2}-[A-Z]{2}\.json$")
-
-    for filename in os.listdir(input_dir):
-        if pattern.match(filename):
-            locale = filename[:-5]  # Remove .json
-            json_path = os.path.join(input_dir, filename)
-            psd1_path = os.path.join(output_dir, locale, "Gacha.Resources.psd1")
-            json_to_psd1(json_path, psd1_path)
-
-if __name__ == "__main__":
-    main()
+# Only convert English
+json_to_psd1("l10n/en.json", "i18n/en/Gacha.Resources.psd1")
