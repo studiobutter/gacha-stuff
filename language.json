@@ -36,9 +36,41 @@
             "name": "Tiếng Việt",
             "codes": [
                 "vi",
-                "vi-vn"
+                 "vi-vn"
             ],
             "commonCode": "vi-vn"
-        }
+        },
+        {
+            "name": "Español"
+            "codes": [
+                "es-es",
+                "es-mx",
+                "es-ar",
+                "es-co",
+                "es-cl",
+                "es-pe",
+                "es-ve",
+                "es-uy",
+                "es-py",
+                "es-bo",
+                "es-ec",
+                "es-gt",
+                "es-cu",
+                "es-do",
+                "es-hn",
+                "es-ni",
+                "es-sv",
+                "es-cr",
+                "es-pa",
+                "es-pr",
+                "es-ud",
+                "es-us",
+                "es-br",
+                "es-bz",
+                "es-gq", 
+                "es-ph
+                ]
+            ],
+            "commonCode": "es-es"
     ]
 }
