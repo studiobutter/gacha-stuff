@@ -29,91 +29,64 @@
     FailedToLocatePath1 = "Không tìm thấy đường dẫn trò chơi! Vui lòng liên hệ với nhà cung cấp tập lệnh để được hỗ trợ. Lỗi mã: 1"
     FailedToLocatePath2 = "Không tìm thấy đường dẫn trò chơi! Vui lòng liên hệ với nhà cung cấp tập lệnh để được hỗ trợ. Lỗi mã: 2"
     ScriptProvider1 = "Máy chủ Discord hỗ trợ: https://discord.gg/e48fzqxuPM"
-    ScriptProvider2 = "Máy chủ Discord hỗ trợ: https://discord.gg/srs";
-
-    YSCacheOS = "Sử dụng vị trí bộ nhớ đệm Vùng Quốc Tế";
-    YSCacheCN = "Sử dụng vị trí bộ nhớ đệm Vùng Trung Quốc Đại Lục";
-
-    # --- MISSING STRINGS, NEED TRANSLATION ---
-    ToolSelection = "Chọn công cụ để chạy:";
-    ToolOptions = @(
-        "1. Dọn dẹp tệp rác",
-        "2. Thiết lập cài đặt ngôn ngữ",
-        "Nhấn [0] để thoát"
-    );
-
-    CleanerOptions = @(
-        "1. Quét không cần trình khởi chạy",
-        "2. Quét bằng cấu hình trình khởi chạy HoYoPlay",
-        "3. Quét bằng cấu hình trình khởi chạy Collapse",
-        "4. Quét bằng cấu hình trình khởi chạy Cloud",
-        "Nhấn [0] để thoát"
-        );
-
-    DisabledChoice = "Lựa chọn hiện tại bị vô hiệu hóa.";
-
-    ToolCleanerDisclaimer1 = "Công cụ này sẽ xóa các tệp rác được tạo bởi trình duyệt của trò chơi";
-    ToolCleanerDisclaimer2 = "- Đối với Tùy chọn 1: Quét không cần trình khởi chạy, nếu bạn không có trình khởi chạy HoYoPlay được cài đặt và có bất kỳ vùng trò chơi tương tự nào được cài đặt";
-    ToolCleanerDisclaimer3 = @(
-        "Ví dụ",
-        "1. Genshin Impact (Quốc tế) và Genshin Impact (Google Play)",
-        "2. Honkai: Star Rail (Trung Quốc) và Honkai: Star Rail (BiliBili)",
-        "3. Zenless Zone Zero (Trung Quốc) và Zenless Zone Zero (BiliBili)",
-        "4. Genshin Impact (Trung Quốc) vầ Genshin Impact (BiliBili)"
-    )
-    ToolCleanerDisclaimer4 = "Vui lòng mở những phiên bản đó trong một vài giây và đóng chúng trước khi chạy công cụ này để tập lệnh này phát hiện tất cả trò chơi.";
-    ToolCleanerDisclaimer5 = "- Đối với Tùy chọn 2: Quét bằng cấu hình trình khởi chạy HoYoPlay, nếu bạn có trình khởi chạy HoYoPlay được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn.";
-    ToolCleanerDisclaimer6 = "- Đối với Tùy chọn 3: Quét bằng cấu hình trình khởi chạy Collapse, nếu bạn có trình khởi chạy Collapse được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn.";
-    ToolCleanerDisclaimer7 = "Lưu ý rằng công cụ này sẽ không xóa bất kỳ tệp nào từ thư mục cài đặt trò chơi hoặc dử liệu tải xuống bằng tính năng Cập nhật cache của Collapse";
-    ToolCleanerDisclaimer8 = "- Đối với Tùy chọn 4: Quét bằng cấu hình trình khởi chạy Cloud, nếu bạn có trình khởi chạy Cloud được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn.";
-    ToolCleanerDisclaimer9 = "Để biết thêm thông tin, bạn có thể đọc về nó ở đây:";
-    ToolCleanerDisclaimerLink = "https://docs.hb.seria.moe/vi/docs/tools";
-
-    ToolCleanerAnyKey = "Nhấn phím bất kỳ để tiếp tục...";
-
-    hk4e_cn = "Genshin Impact (Trung Quốc)";
-    hk4e_cn_b = "Genshin Impact (BiliBili)";
-    hk4e_global = "Genshin Impact (Quốc tế)";
-    hk4e_global_gplay = "Genshin Impact (Google Play)";
-    hk4e_global_epic = "Genshin Impact (Epic Games)";
-    hkrpg_cn = "Honkai: Star Rail (Trung Quốc)";
-    hkrpg_cn_b = "Honkai: Star Rail (BiliBili)";
-    hkrpg_global = "Honkai: Star Rail (Quốc tế)";
-    hkrpg_global_epic = "Honkai: Star Rail (Epic Games)";
-    nap_cn = "Zenless Zone Zero (Trung Quốc)";
-    nap_cn_b = "Zenless Zone Zero (BiliBili)";
-    nap_global = "Zenless Zone Zero (Quốc tế)";
-    nap_global_epic = "Zenless Zone Zero (Epic Games)";
-
-    LauncherConfigNotFound = "Không tìm thấy dữ liệu cấu hình trình khởi chạy. Vui lòng đảm bảo rằng trình khởi chạy đã được cài đặt và cấu hình đúng cách.";
-    GameDataFolderNotFound = "Không tìm thấy thư mục dữ liệu trò chơi cho trò chơi đã chọn.";
-    GameInstalled = "Các trò chơi đã cài đặt:";
-    GameCacheSelection = "Chọn trò chơi để xóa cache:";
-    GameCacheRemovedStatus = "Đã xóa cache trò chơi thành công.";
-    GameCacheRemoved = "Đã xóa cache cho trò chơi:";
-    GameCacheNotFound = "Không tìm thấy cache cho trò chơi đã chọn.";
-    GameCacheAlreadyRemoved = "Cache đã được xóa cho trò chơi:";
-    GameCacheRemoveHint = "(cache đã được xóa)";
-    GameCacheNotFoundAll = "Không tìm thấy cache cho tất cả các trò chơi hoặc tất cả cache đã được xóa.";
-    GameCacheVerNotFound = "Không tìm thấy phiên bản cache cho trò chơi đã chọn.";
-    GameCacheVerRemoved = "Đã xóa phiên bản cache cũ:";
-    GameCacheVerCleared = "Đã xóa các tệp cache Chromium trong:";
-    GameCacheVerFailed = "Không thể xóa phiên bản cache cũ:";
-    GameCacheFailed = "Không thể xóa các tệp cache Chromium:";
-    GameDataNotFound = "Không tìm thấy thư mục dữ liệu trò chơi. Vui lòng đảm bảo rằng trò chơi đã được cài đặt đúng cách.";
-
-    GoBack = "0. Quay lại";
-
-    CollapseGameFolderNotFound = "Không tìm thấy thư mục trò chơi của Collapse Launcher. Vui lòng đảm bảo rằng Collapse Launcher đã được cài đặt và bạn đã hoàn thành trải nghiệm ban đầu.";
-
-    CloudContinuePrompt = "Nhấn ENTER để tiếp tục xóa tệp log, hoặc nhấn Q rồi ENTER để quay lại.";
-    CloudLogFileDeleted = "Đã xóa tệp log:";
-    CloudLogFileNotFound = "Không tìm thấy tệp log trong:";
-    CloudDirectoryNotFound = "Không tìm thấy thư mục:";
-    CloudNoFilesDeleted = "Không có tệp nào bị xóa.";
-    
-    LanguageResetPrompt = "Bạn có muốn đặt lại tùy chọn ngôn ngữ không? (y/n)";
-    LanguageResetSuccess = "Tùy chọn ngôn ngữ đã được đặt lại. Bạn sẽ được yêu cầu chọn ngôn ngữ vào lần tiếp theo.";
-    LanguageResetCancelled = "Không có thay đổi nào được thực hiện đối với tùy chọn ngôn ngữ.";
-    LanguageResetInvalidInput = "Đầu vào không hợp lệ. Không có thay đổi nào được thực hiện đối với tùy chọn ngôn ngữ.";
+    ScriptProvider2 = "Máy chủ Discord hỗ trợ: https://discord.gg/srs"
+    YSCacheOS = "Sử dụng vị trí bộ nhớ đệm Vùng Quốc Tế"
+    YSCacheCN = "Sử dụng vị trí bộ nhớ đệm Vùng Trung Quốc Đại Lục"
+    ToolSelection = "Chọn công cụ để chạy:"
+    ToolOptions = @("1. Dọn dẹp tệp rác", "2. Thiết lập cài đặt ngôn ngữ", "Nhấn [0] để thoát")
+    CleanerOptions = @("1. Quét không cần trình khởi chạy", "2. Quét bằng cấu hình trình khởi chạy HoYoPlay", "3. Quét bằng cấu hình trình khởi chạy Collapse", "4. Quét bằng cấu hình trình khởi chạy Cloud", "?. Tìm hiểu thêm", "Nhấn [0] để thoát")
+    DisabledChoice = "Lựa chọn hiện tại bị vô hiệu hóa."
+    ToolCleanerDisclaimer1 = "Công cụ này sẽ xóa các tệp rác được tạo bởi trình duyệt của trò chơi"
+    ToolCleanerDisclaimer2 = "- Đối với Tùy chọn 1: Quét không cần trình khởi chạy, nếu bạn không có trình khởi chạy HoYoPlay được cài đặt và có bất kỳ vùng trò chơi tương tự nào được cài đặt"
+    ToolCleanerDisclaimer3 = @("Ví dụ", "1. Genshin Impact (Quốc tế) và Genshin Impact (Google Play)", "2. Honkai: Star Rail (Trung Quốc) và Honkai: Star Rail (BiliBili)", "3. Zenless Zone Zero (Trung Quốc) và Zenless Zone Zero (BiliBili)", "4. Genshin Impact (Trung Quốc) vầ Genshin Impact (BiliBili)")
+    ToolCleanerDisclaimer4 = "Vui lòng mở những phiên bản đó trong một vài giây và đóng chúng trước khi chạy công cụ này để tập lệnh này phát hiện tất cả trò chơi."
+    ToolCleanerDisclaimer5 = "- Đối với Tùy chọn 2: Quét bằng cấu hình trình khởi chạy HoYoPlay, nếu bạn có trình khởi chạy HoYoPlay được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn."
+    ToolCleanerDisclaimer6 = "- Đối với Tùy chọn 3: Quét bằng cấu hình trình khởi chạy Collapse, nếu bạn có trình khởi chạy Collapse được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn."
+    ToolCleanerDisclaimer7 = "Lưu ý rằng công cụ này sẽ không xóa bất kỳ tệp nào từ thư mục cài đặt trò chơi hoặc dử liệu tải xuống bằng tính năng Cập nhật cache của Collapse."
+    ToolCleanerDisclaimer8 = "- Đối với Tùy chọn 4: Quét bằng cấu hình trình khởi chạy Cloud, nếu bạn có trình khởi chạy Cloud được cài đặt, nó sẽ xóa các tệp rác từ trò chơi đã chọn."
+    ToolCleanerDisclaimer9 = "Để biết thêm thông tin, bạn có thể đọc về nó ở đây:"
+    ToolCleanerDisclaimerLink = "https://docs.hb.seria.moe/vi/docs/tools"
+    ToolCleanerAnyKey = "Nhấn phím bất kỳ để tiếp tục..."
+    hk4e_cn = "Genshin Impact (Trung Quốc)"
+    hk4e_cn_b = "Genshin Impact (BiliBili)"
+    hk4e_global = "Genshin Impact (Quốc tế)"
+    hk4e_global_gplay = "Genshin Impact (Google Play)"
+    hk4e_global_epic = "Genshin Impact (Epic Games)"
+    hkrpg_cn = "Honkai: Star Rail (Trung Quốc)"
+    hkrpg_cn_b = "Honkai: Star Rail (BiliBili)"
+    hkrpg_global = "Honkai: Star Rail (Quốc tế)"
+    hkrpg_global_epic = "Honkai: Star Rail (Epic Games)"
+    nap_cn = "Zenless Zone Zero (Trung Quốc)"
+    nap_cn_b = "Zenless Zone Zero (BiliBili)"
+    nap_global = "Zenless Zone Zero (Quốc tế)"
+    nap_global_epic = "Zenless Zone Zero (Epic Games)"
+    LauncherConfigNotFound = "Không tìm thấy dữ liệu cấu hình trình khởi chạy. Vui lòng đảm bảo rằng trình khởi chạy đã được cài đặt và cấu hình đúng cách."
+    GameDataFolderNotFound = "Không tìm thấy thư mục dữ liệu trò chơi cho trò chơi đã chọn."
+    GameInstalled = "Các trò chơi đã cài đặt:"
+    GameCacheSelection = "Chọn trò chơi để xóa cache:"
+    GameCacheRemovedStatus = "Đã xóa cache trò chơi thành công."
+    GameCacheRemoved = "Đã xóa cache cho trò chơi:"
+    GameCacheNotFound = "Không tìm thấy cache cho trò chơi đã chọn."
+    GameCacheAlreadyRemoved = "Cache đã được xóa cho trò chơi:"
+    GameCacheRemoveHint = "(cache đã được xóa)"
+    GameCacheNotFoundAll = "Không tìm thấy cache cho tất cả các trò chơi hoặc tất cả cache đã được xóa."
+    GameCacheVerNotFound = "Không tìm thấy phiên bản cache cho trò chơi đã chọn."
+    GameCacheVerRemoved = "Đã xóa phiên bản cache cũ:"
+    GameCacheVerCleared = "Đã xóa các tệp cache Chromium trong:"
+    GameCacheVerFailed = "Không thể xóa phiên bản cache cũ:"
+    GameCacheFailed = "Không thể xóa các tệp cache Chromium:"
+    GameDataNotFound = "Không tìm thấy thư mục dữ liệu trò chơi. Vui lòng đảm bảo rằng trò chơi đã được cài đặt đúng cách."
+    GoBack = "0. Quay lại"
+    CollapseGameFolderNotFound = "Không tìm thấy thư mục trò chơi của Collapse Launcher. Vui lòng đảm bảo rằng Collapse Launcher đã được cài đặt và bạn đã hoàn thành trải nghiệm ban đầu."
+    CloudContinuePrompt = "Nhấn ENTER để tiếp tục xóa tệp log, hoặc nhấn Q rồi ENTER để quay lại."
+    CloudLogFileDeleted = "Đã xóa tệp log:"
+    CloudLogFileNotFound = "Không tìm thấy tệp log trong:"
+    CloudDirectoryNotFound = "Không tìm thấy thư mục:"
+    CloudNoFilesDeleted = "Không có tệp nào bị xóa."
+    LanguageResetPrompt = "Bạn có muốn đặt lại tùy chọn ngôn ngữ không? (y/n)"
+    LanguageResetSuccess = "Tùy chọn ngôn ngữ đã được đặt lại. Bạn sẽ được yêu cầu chọn ngôn ngữ vào lần tiếp theo."
+    LanguageResetCancelled = "Không có thay đổi nào được thực hiện đối với tùy chọn ngôn ngữ."
+    LanguageResetInvalidInput = "Đầu vào không hợp lệ. Không có thay đổi nào được thực hiện đối với tùy chọn ngôn ngữ."
+    Changelogs = "Nhật ký thay đổi"
+    ChangelogsDescription = "Xem cập nhật và thay đổi mới cho tệp lênh này? (y/n)"
 }
