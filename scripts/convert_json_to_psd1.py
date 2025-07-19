@@ -45,7 +45,7 @@ def main():
 
     for filename in os.listdir(input_dir):
         if pattern.match(filename):
-            locale = filename[:-5]  # Remove .json
+            locale = filename[:-5].lower()  # Remove .json and convert to lowercase
             json_path = os.path.join(input_dir, filename)
             psd1_path = os.path.join(output_dir, locale, "Gacha.Resources.psd1")
             json_to_psd1(json_path, psd1_path)
