@@ -53,8 +53,8 @@
   "YSCacheCN": "使用国服缓存位置",
   "ToolSelection": "Select a tool to run:",
   "ToolOptions": [
-    ");",
-    "CleanerOptions = @(",
+    "1. Cache Cleaner",
+    "2. Reset Language Settings",
     "Press 0 to Exit"
   ],
   "CleanerOptions": [
