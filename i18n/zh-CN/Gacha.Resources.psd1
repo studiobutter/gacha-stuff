@@ -38,7 +38,7 @@
     DisabledChoice = "选项已禁用"
     ToolCleanerDisclaimer1 = "此工具将删除游戏浏览器生成的所有缓存文件。"
     ToolCleanerDisclaimer2 = "- 对于选项1：未侦测到启动器，如果你还未安装 HoYoPlay 或者其他类似的游戏启动器，则不会检测到启动器"
-    ToolCleanerDisclaimer3 = @("示例", "- 原神（中国官服）和原神（B服）", "- 崩坏：星穹铁道（中国官服）和崩坏：星穹铁道（B服）", "- 绝区零（中国官方）和绝区零（Bilibili）", "- 原神（国际服）和原神（国际服 - Play 商店）")
+    ToolCleanerDisclaimer3 = @("示例", "- 原神（中国官服）和原神（B服）", "- 崩坏：星穹铁道（中国官服）和崩坏：星穹铁道（B服）", "- 绝区零（中国官方）和绝区零（B服）", "- 原神（国际服）和原神（国际服 - Play 商店）")
     ToolCleanerDisclaimer4 = "在运行此工具之前，请打开那些版本的游戏几秒钟，便于此工具检测到系统内所有已安装的游戏，并移除缓存数据。"
     ToolCleanerDisclaimer5 = "- 选项2：如果你已安装 米哈游启动器 (HoYoPlay)，该工具会自动侦测系统内所有已安装的游戏，并移除缓存文件。"
     ToolCleanerDisclaimer6 = "- 选项3：如果你用的是 Collapse 启动器，该工具会自动侦测到系统内所有已安装游戏，并移除缓存文件。"
