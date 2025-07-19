@@ -33,7 +33,7 @@
     YSCacheOS = "使用国际服缓存位置"
     YSCacheCN = "使用国服缓存位置"
     ToolSelection = "Select a tool to run:"
-    ToolOptions = @(");", "CleanerOptions = @(", "Press 0 to Exit")
+    ToolOptions = @("1. Cache Cleaner", "2. Reset Language Settings", "Press 0 to Exit")
     CleanerOptions = @("1. No Launcher Detection", "2. HoYoPlay Launcher", "3. Collapse Launcher", "4. Cloud Launcher", "?. Learn More", "Press 0 to Exit")
     DisabledChoice = "Option is Disabled"
     ToolCleanerDisclaimer1 = "This tool will delete all cache files generated from the game browser."
