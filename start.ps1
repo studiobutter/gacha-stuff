@@ -47,11 +47,11 @@ if (Test-Path $regPath) {
 
 if ($regLang) {
     $env:GACHA_LANG = $regLang
-    $commonCode = $regLang.ToLower()
-    Write-Host "Loaded saved language from Registry: $regLang"
+    $glang = $regLang.ToLower()
+    Write-Host "Loaded saved language from Registry: $glang"
     # Continue the rest of your script here
     # Download Gacha.Resources.psd1 for the selected language
-    $resourceUrl = Get-ScriptUrl "i18n/$commonCode/Gacha.Resources.psd1"
+    $resourceUrl = Get-ScriptUrl "i18n/$glang/Gacha.Resources.psd1"
     $resourceFile = Join-Path $gachaLogTmp 'Gacha.Resources.psd1'
     try {
         if ($resourceUrl -like 'file:///*') {
@@ -61,19 +61,19 @@ if ($regLang) {
         } else {
             Invoke-WebRequest -Uri $resourceUrl -OutFile $resourceFile -UseBasicParsing
         }
-        Write-Host "Downloaded Gacha.Resources.psd1 for '$commonCode' to $resourceFile" -ForegroundColor Green
+        Write-Host "Downloaded Gacha.Resources.psd1 for '$glang' to $resourceFile" -ForegroundColor Green
 
         # Import the language resource file
         if (Test-Path $resourceFile) {
             Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
-            Write-Host "Loaded language resource file for '$commonCode'." -ForegroundColor Cyan
+            Write-Host "Loaded language resource file for '$glang'." -ForegroundColor Cyan
         }
         else {
             Write-Host "Resource file not found after download." -ForegroundColor Yellow
         }
     }
     catch {
-        Write-Host "Failed to download Gacha.Resources.psd1 for '$commonCode': $_" -ForegroundColor Red
+        Write-Host "Failed to download Gacha.Resources.psd1 for '$glang': $_" -ForegroundColor Red
     }
     if (Test-Path $resourceFile) {
         $GachaResources = Import-PowerShellDataFile -Path $resourceFile
@@ -174,16 +174,18 @@ if ($commonCode -in @(
     $commonCode = 'en'
     $env:GACHA_LANG = $commonCode
 }
-elseif ($commonCode -in @('zh-TW', 'zh-HK')) {
-    $commonCode = 'zh-TW'
+elseif ($commonCode -in @('zh-tw', 'zh-hk')) {
+    $commonCode = 'zh-tw'
     $env:GACHA_LANG = $commonCode
 }
 else {
     $env:GACHA_LANG = $commonCode
 }
 
+$glang = $commonCode.ToLower()
+
 # Download Gacha.Resources.psd1 for the selected language
-$resourceUrl = Get-ScriptUrl "i18n/$commonCode/Gacha.Resources.psd1"
+$resourceUrl = Get-ScriptUrl "i18n/$glang/Gacha.Resources.psd1"
 $resourceFile = Join-Path $gachaLogTmp 'Gacha.Resources.psd1'
 try {
     if ($resourceUrl -like 'file:///*') {
@@ -193,19 +195,19 @@ try {
     } else {
         Invoke-WebRequest -Uri $resourceUrl -OutFile $resourceFile -UseBasicParsing
     }
-    Write-Host "Downloaded Gacha.Resources.psd1 for '$commonCode' to $resourceFile" -ForegroundColor Green
+    Write-Host "Downloaded Gacha.Resources.psd1 for '$glang' to $resourceFile" -ForegroundColor Green
 
     # Import the language resource file
     if (Test-Path $resourceFile) {
         $GachaResources = Import-PowerShellDataFile -Path $resourceFile
-        Write-Host "Loaded language resource file for '$commonCode'." -ForegroundColor Cyan
+        Write-Host "Loaded language resource file for '$glang'." -ForegroundColor Cyan
     }
     else {
         Write-Host "Resource file not found after download." -ForegroundColor Yellow
     }
 }
 catch {
-    Write-Host "Failed to download Gacha.Resources.psd1 for '$commonCode': $_" -ForegroundColor Red
+    Write-Host "Failed to download Gacha.Resources.psd1 for '$glang': $_" -ForegroundColor Red
 }
 
 # Download saveReg.ps1 and execute it with $commonCode as argument
@@ -221,7 +223,7 @@ try {
         Invoke-WebRequest -Uri $saveRegUrl -OutFile $saveRegFile -UseBasicParsing
         Write-Host "Downloaded saveReg.ps1 to $saveRegFile" -ForegroundColor Green
     }
-    & $saveRegFile $commonCode
+    & $saveRegFile $glang
 }
 catch {
     Write-Host "Failed to download or run saveReg.ps1: $_" -ForegroundColor Red
