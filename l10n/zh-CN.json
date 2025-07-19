@@ -6,7 +6,7 @@
   "RegRememberSuccess": "语言选择已成功保存到注册表。",
   "RegSuggestAdmin": "您可能需要以管理员身份运行 PowerShell 来保存此设置。",
   "RegRememberCancelled": "操作已取消。未对注册表进行任何更改。",
-  "SuggestAdmin": "This script requires administrative privileges to run.",
+  "SuggestAdmin": "此脚本需要管理员权限才能运行。",
   "EnterChoice": "请输入您的选择",
   "NoURL": "未找到抽卡记录 URL，请先在游戏内打开抽卡历史记录后再运行。",
   "Copied": "抽卡记录 URL 已复制到剪贴板：",
@@ -20,7 +20,7 @@
     "2. 崩坏：星穹铁道",
     "3. 绝区零",
     "4. 设置",
-    "Press 0 to Exit"
+    "按 0 退出"
   ],
   "GachaMenuAnyKey": "按任意键返回菜单...",
   "GachaMenuExit": "正在清理临时文件并退出...",
@@ -51,22 +51,22 @@
   "ScriptProvider2": "Discord 服务器：https://discord.gg/srs",
   "YSCacheOS": "使用国际服缓存位置",
   "YSCacheCN": "使用国服缓存位置",
-  "ToolSelection": "Select a tool to run:",
+  "ToolSelection": "选择运行工具：",
   "ToolOptions": [
-    "1. Cache Cleaner",
-    "2. Reset Language Settings",
-    "Press 0 to Exit"
+    "1.缓存清理",
+    "2. 重置语言设置",
+    "按 0 退出"
   ],
   "CleanerOptions": [
-    "1. No Launcher Detection",
-    "2. HoYoPlay Launcher",
-    "3. Collapse Launcher",
-    "4. Cloud Launcher",
-    "?. Learn More",
-    "Press 0 to Exit"
+    "1.未侦测到启动器",
+    "2. HoYoPlay 启动器",
+    "3.Collapse 启动器",
+    "4.云启动器",
+    "?.了解更多",
+    "按 0 退出"
   ],
-  "DisabledChoice": "Option is Disabled",
-  "ToolCleanerDisclaimer1": "This tool will delete all cache files generated from the game browser.",
+  "DisabledChoice": "选项已禁用",
+  "ToolCleanerDisclaimer1": "此工具将删除游戏浏览器生成的所有缓存文件。",
   "ToolCleanerDisclaimer2": "- For Option 1: No Launcher Detection, if you don't have HoYoPlay launcher installed and have any other similar region of the game installed",
   "ToolCleanerDisclaimer3": [
     "Example",
