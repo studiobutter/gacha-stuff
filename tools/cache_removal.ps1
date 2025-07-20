@@ -1,3 +1,16 @@
+function Get-ScriptUrl {
+    param([string]$ScriptPath)
+    
+    $isLocalTesting = $env:GACHA_LOCAL_TEST -eq "true"
+    if ($isLocalTesting) {
+        $localPath = Join-Path $env:GACHA_LOCAL_PATH $ScriptPath
+        return "file:///$($localPath.Replace('\', '/'))"
+    }
+    else {
+        return "https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/main/$ScriptPath"
+    }
+}
+
 function Show-Menu {
     param (
         [bool]$hoyoplayEnabled,
