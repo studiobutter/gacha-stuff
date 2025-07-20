@@ -41,7 +41,7 @@
             "commonCode": "vi-vn"
         },
         {
-            "name": "Español"
+            "name": "Español",
             "codes": [
                 "es-es",
                 "es-mx",
@@ -69,7 +69,7 @@
                 "es-bz",
                 "es-gq", 
                 "es-ph"
-                ]
+                ],
             "commonCode": "es-es"
         }
     ]

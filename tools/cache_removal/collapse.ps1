@@ -129,6 +129,7 @@ if (!(Test-Path $gameFolderPath)) {
 }
 $games = Get-GameFolders $gameFolderPath
 $status = @{}
+Clear-Host
 while ($true) {
     Write-Host $Locale.GameInstalled
     for ($i=0; $i -lt $games.Count; $i++) {
