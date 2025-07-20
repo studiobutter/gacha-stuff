@@ -38,7 +38,7 @@
     DisabledChoice = "Option is Disabled"
     ToolCleanerDisclaimer1 = "This tool will delete all cache files generated from the game browser."
     ToolCleanerDisclaimer2 = "- For Option 1: No Launcher Detection, if you don't have HoYoPlay launcher installed and have any other similar region of the game installed"
-    ToolCleanerDisclaimer3 = @("Example", "- Genshin Impact (China) and Genshin Impact (BiliBili)", "- Honkai: Star Rail (China) and Honkai: Star Rail (BiliBili)", "- Zenless Zone Zero (China) and Zenless Zone Zero (BiliBili)", "- Genshin Impact (Global) and Genshin Impact (Global) - Google Play)")
+    ToolCleanerDisclaimer3 = @("Example", "- Genshin Impact (China) and Genshin Impact (BiliBili)", "- Honkai: Star Rail (China) and Honkai: Star Rail (BiliBili)", "- Zenless Zone Zero (China) and Zenless Zone Zero (BiliBili)", "- Genshin Impact (Global) and Genshin Impact (Global) - Google Play")
     ToolCleanerDisclaimer4 = "Please open those versions of the game for few seconds and then close them before running this tool so the tool can detect all available games installed on the system to remove cached data."
     ToolCleanerDisclaimer5 = "- For Option 2: HoYoPlay Launcher Detection, if you have HoYoPlay launcher installed, this tool will automatically detect all games installed on the system thru HoYoPlay configuration and remove cached files."
     ToolCleanerDisclaimer6 = "- For Option 3: If you use Collapse Launcher, this tool will automatically detect all games installed on the system thru Collapse Launcher configuration and remove cached files."
