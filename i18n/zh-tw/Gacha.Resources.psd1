@@ -15,7 +15,7 @@
     URLFound = "已找到抽卡紀錄 URL："
     GachaMenuTitle = "抽卡紀錄 URL 取得工具"
     GachaMenuDescription = "選擇遊戲："
-    GachaMenuOptions = @("1. 原神", "2. 崩壞：星穹鐵道", "3. 絕區零", "按 0 結束", "按 0 結束")
+    GachaMenuOptions = @("1. 原神", "2. 崩壞：星穹鐵道", "3. 絕區零", "4. 設定", "按 0 結束")
     GachaMenuAnyKey = "按任意鍵返回選單..."
     GachaMenuExit = "正在清理暫存檔案並結束..."
     GachaMenuChooseLink = "選擇區域："
