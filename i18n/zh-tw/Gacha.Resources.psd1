@@ -15,7 +15,7 @@
     URLFound = "已找到抽卡紀錄 URL："
     GachaMenuTitle = "抽卡紀錄 URL 取得工具"
     GachaMenuDescription = "選擇遊戲："
-    GachaMenuOptions = @("1. 原神", "2. 崩壞：星穹鐵道", "3. 絕區零", "按 0 結束", "Press 0 to Exit")
+    GachaMenuOptions = @("1. 原神", "2. 崩壞：星穹鐵道", "3. 絕區零", "按 0 結束", "按 0 結束")
     GachaMenuAnyKey = "按任意鍵返回選單..."
     GachaMenuExit = "正在清理暫存檔案並結束..."
     GachaMenuChooseLink = "選擇區域："
@@ -38,14 +38,14 @@
     DisabledChoice = "選項已停用"
     ToolCleanerDisclaimer1 = "此工具將刪除遊戲瀏覽器生成的所有快取檔案。"
     ToolCleanerDisclaimer2 = "- 選項 1：無啟動器偵測，如果您沒有安裝 HoYoPlay 啟動器且安裝了其他類似區域的遊戲"
-    ToolCleanerDisclaimer3 = @("範例", "- 原神（中國服）和 原神（嗶哩嗶哩服）", "- 崩壞：星穹鐵道（中國服）和 崩壞：星穹鐵道（嗶哩嗶哩服）", "- 絕區零（中國服）和 絕區零（嗶哩嗶哩服）", "- 原神（國際服）和 原神（國際服） - Google Play）")
+    ToolCleanerDisclaimer3 = @("範例", "- 原神（中國服）和 原神（嗶哩嗶哩服）", "- 崩壞：星穹鐵道（中國服）和 崩壞：星穹鐵道（嗶哩嗶哩服）", "- 絕區零（中國服）和 絕區零（嗶哩嗶哩服）", "- 原神（國際服）和 原神（國際服） - Google Play")
     ToolCleanerDisclaimer4 = "請在執行此工具之前，先開啟這些版本的遊戲幾秒鐘然後關閉，以便工具能夠偵測系統上安裝的所有可用遊戲並移除快取資料。"
     ToolCleanerDisclaimer5 = "- 選項 2：HoYoPlay 啟動器偵測，如果您安裝了 HoYoPlay 啟動器，此工具將通過 HoYoPlay 設定自動偵測系統上安裝的所有遊戲並移除快取檔案。"
     ToolCleanerDisclaimer6 = "- 選項 3：如果您使用 Collapse 啟動器，此工具將通過 Collapse 啟動器設定自動偵測系統上安裝的所有遊戲並移除快取檔案。"
     ToolCleanerDisclaimer7 = "請注意，此工具不會刪除任何遊戲檔案（包括快取更新檔案），僅刪除 Chromium 快取檔案。"
     ToolCleanerDisclaimer8 = "- 選項 4：雲端啟動器，刪除包含抽卡紀錄 URL 的檔案。"
     ToolCleanerDisclaimer9 = "如需更多資訊，您可以在此處閱讀："
-    ToolCleanerDisclaimerLink = "https://docs.hb.seria.moe/docs/tools"
+    ToolCleanerDisclaimerLink = "https://docs.hb.seria.moe/zh-Hant/docs/tools"
     ToolCleanerAnyKey = "按任意鍵繼續..."
     hk4e_cn = "原神（中國服）"
     hk4e_cn_b = "原神（嗶哩嗶哩服）"
