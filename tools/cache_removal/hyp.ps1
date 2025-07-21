@@ -81,7 +81,7 @@ function Remove-GameCache {
             Get-ChildItem -Path $cacheData -File | Remove-Item -Force
             Write-Host $Locale.GameCacheVerCleared -f $latest.Name -ForegroundColor Green
         } catch {
-            Write-Host $Locale.GameCacheFailed -f $_ -ForegroundColor Red
+            Write-Host ($Locale.GameCacheFailed -f ($_.ToString())) -ForegroundColor Red
         }
     }
 }
