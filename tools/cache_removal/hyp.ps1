@@ -72,13 +72,13 @@ function Remove-GameCache {
             Remove-Item -Path $ver.FullName -Recurse -Force -ErrorAction Stop
             Write-Host $Locale.GameCacheVerRemoved -f $ver.Name -ForegroundColor Green
         } catch {
-            Write-Host $Locale.GameCacheVerFailed -f $ver.Name -ForegroundColor Red
+            Write-Host ($Locale.GameCacheFailed -f ($_.ToString())) -ForegroundColor Red
         }
     }
-    $cacheData = Join-Path $latest.FullName 'Cache\Cache_Data'
-    if (Test-Path $cacheData) {
+    $latestCacheFolder = Join-Path $latest.FullName 'Cache'
+    if (Test-Path $latestCacheFolder) {
         try {
-            Get-ChildItem -Path $cacheData -File | Remove-Item -Force
+            Get-ChildItem -Path $latestCacheFolder -Force | Remove-Item -Recurse -Force
             Write-Host $Locale.GameCacheVerCleared -f $latest.Name -ForegroundColor Green
         } catch {
             Write-Host ($Locale.GameCacheFailed -f ($_.ToString())) -ForegroundColor Red
