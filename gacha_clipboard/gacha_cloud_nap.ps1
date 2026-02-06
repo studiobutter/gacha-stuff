@@ -48,7 +48,7 @@ switch ($choice.ToLower()) {
         return
     }
     "1" {
-        $pattern = '"url":"https://gs.hoyoverse.com/'
+        $pattern = '"url":"https://gs.hoyoverse.com/nap/'
         $gachaGlobal = Get-LastMatchingURL -filePath $GlobalPath -pattern $pattern
 
         if ($gachaGlobal) {
