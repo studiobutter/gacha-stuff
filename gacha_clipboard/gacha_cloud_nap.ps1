@@ -60,7 +60,7 @@ switch ($choice.ToLower()) {
         }
     }
     "2" {
-        $pattern = '"url":"https://webstatic.mihoyo.com/'
+        $pattern = '"url":"https://webstatic.mihoyo.com/nap/'
         $gachaCN = Get-LastMatchingURL -filePath $CNPath -pattern $pattern
 
         if ($gachaCN) {
