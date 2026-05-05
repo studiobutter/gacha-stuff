@@ -71,6 +71,14 @@
                 "es-ph"
                 ],
             "commonCode": "es-es"
+        },
+        {
+            "name": "한국어",
+            "codes": [
+                "ko",
+                "ko-kr"
+            ],
+            "commonCode": "ko-kr"
         }
     ]
 }
