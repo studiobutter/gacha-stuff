@@ -17,11 +17,38 @@ function Get-ScriptUrl {
 $systemLanguage = Get-Culture
 Write-Host "User TEMP folder: $env:TMP"
 
-# Download language.json from repo to $env:TMP/gacha-log
+# Create $env:TMP/gacha-log directory
 $gachaLogTmp = Join-Path $env:TMP 'gacha-log'
 if (-not (Test-Path $gachaLogTmp)) {
     New-Item -Path $gachaLogTmp -ItemType Directory | Out-Null
 }
+
+if ($PSVersionTable.PSEdition -ne 'Core') {
+    $pwsh = Get-Command pwsh.exe -ErrorAction SilentlyContinue
+
+    if ($pwsh) {
+        Write-Host "PowerShell Core detected. Relaunching..."
+        $startFile = Join-Path $gachaLogTmp 'start.ps1'
+        $startUrl = Get-ScriptUrl 'start.ps1'
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+        if ($startUrl -like 'file:///*') {
+            $localPath = $startUrl -replace '^file:///', ''
+            $localPath = $localPath -replace '/', '\'
+            Copy-Item -Path $localPath -Destination $startFile -Force
+        } else {
+            Invoke-WebRequest -Uri $startUrl -OutFile $startFile -UseBasicParsing
+        }
+        
+        & $pwsh.Source -NoProfile -ExecutionPolicy Bypass -File $startFile
+        exit $LASTEXITCODE
+    }
+    else {
+        Write-Host "[Error: -1] Please install PowerShell (v7.0 or higher) to run this script. Current version: $($PSVersionTable.PSVersion)" -ForegroundColor Red
+        exit 1
+    }
+}
+
+# Download language.json from repo to $env:TMP/gacha-log
 $languageFile = Join-Path $gachaLogTmp 'language.json'
 $languageJsonUrl = Get-ScriptUrl 'language.json'
 if ($languageJsonUrl -like 'file:///*') {
