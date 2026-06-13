@@ -21,15 +21,14 @@ function Get-GameFolders {
     $foundGames = @()
     $dataFolders = @{
         'GIGlb' = 'GenshinImpact_Data'
-        'GiGlbGPlay' = 'GenshinImpact_Data'
         'GICN' = 'YuanShen_Data'
         'GICNBiliBili' = 'YuanShen_Data'
+        'SRGlb' = 'StarRail_Data'
         'SRCN' = 'StarRail_Data'
         'HSRCNBiliBili' = 'StarRail_Data'
-        'SRGlb' = 'StarRail_Data'
+        'ZZZGlb' = 'ZenlessZoneZero_Data'
         'ZZZCN' = 'ZenlessZoneZero_Data'
         'ZZZBiliBili' = 'ZenlessZoneZero_Data'
-        'ZZZGlb' = 'ZenlessZoneZero_Data'
     }
     foreach ($folder in $gameFolders) {
         $fullPath = Join-Path $gameFolderPath $folder
