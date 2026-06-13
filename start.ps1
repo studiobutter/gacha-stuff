@@ -14,6 +14,33 @@ function Get-ScriptUrl {
     }
 }
 
+function Invoke-ScriptFromUrl {
+    param([string]$ScriptPath, [string]$ArgsStr = "")
+    $url = Get-ScriptUrl $ScriptPath
+    $fileName = Split-Path $ScriptPath -Leaf
+    $tempFile = Join-Path $env:TMP "gacha-log\$fileName"
+    
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    try {
+        if ($url -like 'file:///*') {
+            $localPath = $url -replace '^file:///', ''
+            $localPath = $localPath -replace '/', '\'
+            Copy-Item -Path $localPath -Destination $tempFile -Force
+        } else {
+            Invoke-WebRequest -Uri $url -OutFile $tempFile -UseBasicParsing
+        }
+        
+        if ([string]::IsNullOrWhiteSpace($ArgsStr)) {
+            & $tempFile
+        } else {
+            $argArray = $ArgsStr -split ' '
+            & $tempFile @argArray
+        }
+    } catch {
+        Write-Host "Failed to download or run ${ScriptPath}: $_" -ForegroundColor Red
+    }
+}
+
 $systemLanguage = Get-Culture
 Write-Host "User TEMP folder: $env:TMP"
 
@@ -107,8 +134,23 @@ if ($regLang) {
         Write-Output $GachaResources.Greeting
         Set-ExecutionPolicy Bypass -Scope Process -Force
         [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-        $menuScript = (New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "menu.ps1"))
-        Invoke-Expression $menuScript
+        
+        $menuUrl = Get-ScriptUrl "menu.ps1"
+        $menuFile = Join-Path $gachaLogTmp 'menu.ps1'
+        
+        try {
+            if ($menuUrl -like 'file:///*') {
+                $localMenuPath = $menuUrl -replace '^file:///', ''
+                $localMenuPath = $localMenuPath -replace '/', '\'
+                Copy-Item -Path $localMenuPath -Destination $menuFile -Force
+            } else {
+                Invoke-WebRequest -Uri $menuUrl -OutFile $menuFile -UseBasicParsing
+            }
+            
+            & $menuFile
+        } catch {
+            Write-Host "Failed to download or run menu.ps1: $_" -ForegroundColor Red
+        }
     }
     else {
         Write-Host "Resource file not found, cannot display greeting." -ForegroundColor Yellow

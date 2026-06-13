@@ -16,6 +16,33 @@ function Get-ScriptUrl {
     }
 }
 
+function Invoke-ScriptFromUrl {
+    param([string]$ScriptPath, [string]$ArgsStr = "")
+    $url = Get-ScriptUrl $ScriptPath
+    $fileName = Split-Path $ScriptPath -Leaf
+    $tempFile = Join-Path $env:TMP "gacha-log\$fileName"
+    
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    try {
+        if ($url -like 'file:///*') {
+            $localPath = $url -replace '^file:///', ''
+            $localPath = $localPath -replace '/', '\'
+            Copy-Item -Path $localPath -Destination $tempFile -Force
+        } else {
+            Invoke-WebRequest -Uri $url -OutFile $tempFile -UseBasicParsing
+        }
+        
+        if ([string]::IsNullOrWhiteSpace($ArgsStr)) {
+            & $tempFile
+        } else {
+            $argArray = $ArgsStr -split ' '
+            & $tempFile @argArray
+        }
+    } catch {
+        Write-Host "Failed to download or run ${ScriptPath}: $_" -ForegroundColor Red
+    }
+}
+
 function Show-Menu {
     Write-Host $Locale.GachaMenuChooseLink
     foreach ($option in $Locale.RegionOptionsNoCloud) {
@@ -24,14 +51,14 @@ function Show-Menu {
 }
 
 function Get-Gacha_os {
-    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("$(Get-ScriptUrl "gacha_clipboard/get_warp_link_os.ps1")?cachebust=srs")
+    Invoke-ScriptFromUrl -ScriptPath "gacha_clipboard/get_warp_link_os.ps1"
     Write-Host $Locale.TaskCompleted
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Close-Clear
 }
 
 function Get-Gacha_cn {
-    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; Invoke-Expression (New-Object Net.WebClient).DownloadString("$(Get-ScriptUrl "gacha_clipboard/get_warp_link_cn.ps1")?cachebust=srs")
+    Invoke-ScriptFromUrl -ScriptPath "gacha_clipboard/get_warp_link_cn.ps1"
     Write-Host $Locale.TaskCompleted
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Close-Clear
@@ -39,7 +66,7 @@ function Get-Gacha_cn {
 
 function Close-Clear {
     Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "cleanup.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "cleanup.ps1"
     exit 0
 }
 

@@ -27,19 +27,19 @@ function Show-Menu {
 }
 
 function Invoke-NoLauncher {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal/no_launcher.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "tools/cache_removal/no_launcher.ps1"
 }
 
 function Invoke-HoYoPlay {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal/hyp.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "tools/cache_removal/hyp.ps1"
 }
 
 function Invoke-Collapse {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal/collapse.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "tools/cache_removal/collapse.ps1"
 }
 
 function Invoke-Cloud {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal/cloud.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "tools/cache_removal/cloud.ps1"
 }
 
 function Show-More {
@@ -64,7 +64,7 @@ function Show-More {
 
 function Close-Clear {
     Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "cleanup.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "cleanup.ps1"
     exit 0
 }
 

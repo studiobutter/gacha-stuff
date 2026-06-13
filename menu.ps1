@@ -17,6 +17,33 @@ function Get-ScriptUrl {
         return "https://raw.githubusercontent.com/studiobutter/gacha-stuff/refs/heads/main/$ScriptPath"
     }
 }
+
+function Invoke-ScriptFromUrl {
+    param([string]$ScriptPath, [string]$ArgsStr = "")
+    $url = Get-ScriptUrl $ScriptPath
+    $fileName = Split-Path $ScriptPath -Leaf
+    $tempFile = Join-Path $env:TMP "gacha-log\$fileName"
+    
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    try {
+        if ($url -like 'file:///*') {
+            $localPath = $url -replace '^file:///', ''
+            $localPath = $localPath -replace '/', '\'
+            Copy-Item -Path $localPath -Destination $tempFile -Force
+        } else {
+            Invoke-WebRequest -Uri $url -OutFile $tempFile -UseBasicParsing
+        }
+        
+        if ([string]::IsNullOrWhiteSpace($ArgsStr)) {
+            & $tempFile
+        } else {
+            $argArray = $ArgsStr -split ' '
+            & $tempFile @argArray
+        }
+    } catch {
+        Write-Host "Failed to download or run ${ScriptPath}: $_" -ForegroundColor Red
+    }
+}
     
 function Show-Menu {
     Write-Host $Locale.GachaMenuDescription
@@ -26,20 +53,20 @@ function Show-Menu {
 }
 
 function Get-Gacha_hk4e {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "gacha_menu/hk4e-gacha.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "gacha_menu/hk4e-gacha.ps1"
 }
 function Get-Gacha_hkrpg {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "gacha_menu/hkrpg-gacha.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "gacha_menu/hkrpg-gacha.ps1"
 }
 function Get-Gacha_nap {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "gacha_menu/nap-gacha.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "gacha_menu/nap-gacha.ps1"
 }
 function Get-ScriptTools {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools_menu.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "tools_menu.ps1"
 }
 function Close-Clear {
     Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "cleanup.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "cleanup.ps1"
     exit 0
 }
 
