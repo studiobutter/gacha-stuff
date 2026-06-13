@@ -75,7 +75,7 @@ function Get-Gacha_Cloud {
 function Close-Clear {
     Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
     Invoke-ScriptFromUrl -ScriptPath "cleanup.ps1"
-    exit 0
+    [Environment]::Exit(0)
 }
 
 while ($true) {
