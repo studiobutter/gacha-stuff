@@ -19,6 +19,7 @@ function Get-GameRegistryPaths {
         @{ Name = $Locale.hkrpg_cn_b; RegPath = 'HKCU:Software\miHoYo\HYP\standalone\14_0\hkrpg_cn\6P5gHMNyK3\hkrpg_cn'; Type = 'StarRail'; DataFolder = 'StarRail_Data'; },
         @{ Name = $Locale.nap_global; RegPath = 'HKCU:Software\Cognosphere\HYP\1_0\nap_global'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = $Locale.nap_global_epic;    RegPath = 'HKCU:Software\Cognosphere\HYP\standalone\1_3\nap_global\0hUu4SbmhI\nap_global'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
+        @{ Name = $Locale.nap_global_steam;    RegPath = 'HKCU:Software\Cognosphere\HYP\standalone\1_5\nap_global\FpjStNkPwp\nap_global'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = $Locale.nap_cn;          RegPath = 'HKCU:Software\miHoYo\HYP\1_1\nap_cn';          Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = $Locale.nap_cn_qq;   RegPath = 'HKCU:Software\miHoYo\HYP\1_2\nap_cn';          Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = $Locale.nap_cn_b; RegPath = 'HKCU:Software\miHoYo\HYP\standalone\14_0\nap_cn\xV0f4r1GT0\nap_cn'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; }

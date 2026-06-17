@@ -60,6 +60,7 @@
     nap_cn_b = "Zenless Zone Zero (BiliBili)"
     nap_global = "Zenless Zone Zero (Global)"
     nap_global_epic = "Zenless Zone Zero (Epic Games)"
+    nap_global_steam = "Zenless Zone Zero (Steam)"
     LauncherConfigNotFound = "Launcher configuration data not found. Please ensure the launcher is installed and configured correctly."
     GameDataFolderNotFound = "Game data folder not found for the selected game."
     GameInstalled = "Installed Games:"
