@@ -11,6 +11,33 @@ function Get-ScriptUrl {
     }
 }
 
+function Invoke-ScriptFromUrl {
+    param([string]$ScriptPath, [string]$ArgsStr = "")
+    $url = Get-ScriptUrl $ScriptPath
+    $fileName = Split-Path $ScriptPath -Leaf
+    $tempFile = Join-Path $env:TMP "gacha-log\$fileName"
+    
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    try {
+        if ($url -like 'file:///*') {
+            $localPath = $url -replace '^file:///', ''
+            $localPath = $localPath -replace '/', '\'
+            Copy-Item -Path $localPath -Destination $tempFile -Force
+        } else {
+            Invoke-WebRequest -Uri $url -OutFile $tempFile -UseBasicParsing
+        }
+        
+        if ([string]::IsNullOrWhiteSpace($ArgsStr)) {
+            & $tempFile
+        } else {
+            $argArray = $ArgsStr -split ' '
+            & $tempFile @argArray
+        }
+    } catch {
+        Write-Host "Failed to download or run ${ScriptPath}: $_" -ForegroundColor Red
+    }
+}
+
 # Check for Administrator rights
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Output "Script is not running as Administrator. Attempting to relaunch with elevated privileges..."
@@ -54,4 +81,4 @@ else {
     Write-Output "No text provided. Usage: ./saveReg.ps1 [text]"
 }
 
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "menu.ps1")))}"
+Invoke-ScriptFromUrl -ScriptPath "menu.ps1"

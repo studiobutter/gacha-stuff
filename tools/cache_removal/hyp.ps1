@@ -19,6 +19,7 @@ function Get-GameRegistryPaths {
         @{ Name = $Locale.hkrpg_cn_b; RegPath = 'HKCU:Software\miHoYo\HYP\standalone\14_0\hkrpg_cn\6P5gHMNyK3\hkrpg_cn'; Type = 'StarRail'; DataFolder = 'StarRail_Data'; },
         @{ Name = $Locale.nap_global; RegPath = 'HKCU:Software\Cognosphere\HYP\1_0\nap_global'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = $Locale.nap_global_epic;    RegPath = 'HKCU:Software\Cognosphere\HYP\standalone\1_3\nap_global\0hUu4SbmhI\nap_global'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
+        @{ Name = $Locale.nap_global_steam;    RegPath = 'HKCU:Software\Cognosphere\HYP\standalone\1_5\nap_global\FpjStNkPwp\nap_global'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = $Locale.nap_cn;          RegPath = 'HKCU:Software\miHoYo\HYP\1_1\nap_cn';          Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = $Locale.nap_cn_qq;   RegPath = 'HKCU:Software\miHoYo\HYP\1_2\nap_cn';          Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; },
         @{ Name = $Locale.nap_cn_b; RegPath = 'HKCU:Software\miHoYo\HYP\standalone\14_0\nap_cn\xV0f4r1GT0\nap_cn'; Type = 'ZZZ';      DataFolder = 'ZenlessZoneZero_Data'; }
@@ -72,16 +73,16 @@ function Remove-GameCache {
             Remove-Item -Path $ver.FullName -Recurse -Force -ErrorAction Stop
             Write-Host $Locale.GameCacheVerRemoved -f $ver.Name -ForegroundColor Green
         } catch {
-            Write-Host $Locale.GameCacheVerFailed -f $ver.Name -ForegroundColor Red
+            Write-Host ($Locale.GameCacheFailed -f ($_.ToString())) -ForegroundColor Red
         }
     }
-    $cacheData = Join-Path $latest.FullName 'Cache\Cache_Data'
-    if (Test-Path $cacheData) {
+    $latestCacheFolder = Join-Path $latest.FullName 'Cache'
+    if (Test-Path $latestCacheFolder) {
         try {
-            Get-ChildItem -Path $cacheData -File | Remove-Item -Force
+            Get-ChildItem -Path $latestCacheFolder -Force | Remove-Item -Recurse -Force
             Write-Host $Locale.GameCacheVerCleared -f $latest.Name -ForegroundColor Green
         } catch {
-            Write-Host $Locale.GameCacheFailed -f $_ -ForegroundColor Red
+            Write-Host ($Locale.GameCacheFailed -f ($_.ToString())) -ForegroundColor Red
         }
     }
 }

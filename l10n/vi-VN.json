@@ -96,6 +96,7 @@
   "nap_cn_b": "Zenless Zone Zero (BiliBili)",
   "nap_global": "Zenless Zone Zero (Quốc tế)",
   "nap_global_epic": "Zenless Zone Zero (Epic Games)",
+  "nap_global_steam": "Zenless Zone Zero (Steam)",
   "LauncherConfigNotFound": "Không tìm thấy dữ liệu cấu hình trình khởi chạy. Vui lòng đảm bảo rằng trình khởi chạy đã được cài đặt và cấu hình đúng cách.",
   "GameDataFolderNotFound": "Không tìm thấy thư mục dữ liệu trò chơi cho trò chơi đã chọn.",
   "GameInstalled": "Các trò chơi đã cài đặt:",

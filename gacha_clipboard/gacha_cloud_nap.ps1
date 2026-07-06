@@ -1,4 +1,4 @@
-# Script made by Studio Butter for Zenless Zone Zero - Cloud (China)
+# Script made by Studio Butter for Zenless Zone Zero - Cloud (Global and CN)
 
 $gachaLogTmp = "$env:TMP\gacha-log"
 Import-LocalizedData -BaseDirectory $gachaLogTmp -FileName 'Gacha.Resources.psd1' -BindingVariable Locale
@@ -11,7 +11,7 @@ for ($i = 0; $i -lt $Locale.CloudOptions.Count; $i++) {
 $choice = Read-Host $Locale.EnterChoice
 
 # Define the paths to the log files in %localappdata%
-# $GlobalPath = "$env:LOCALAPPDATA\HoYoverse\ZenlessZoneZeroCloud\config\logs\MiHoYoSDK.log"
+$GlobalPath = "$env:LOCALAPPDATA\HoYoverse\ZenlessZoneZeroCloud\config\logs\MiHoYoSDK.log"
 $CNPath = "$env:LOCALAPPDATA\miHoYo\ZenlessZoneZeroCloud\config\logs\MiHoYoSDK.log"
 
 # Function to get the last matching URL from a log file
@@ -44,11 +44,23 @@ function Get-LastMatchingURL {
 
 # Determine which URL to copy based on user's choice
 switch ($choice.ToLower()) {
+    "0" {
+        return
+    }
     "1" {
-        Write-Host $Locale.RegionUnavailable -ForegroundColor Yellow
+        $pattern = '"url":"https://gs.hoyoverse.com/nap/'
+        $gachaGlobal = Get-LastMatchingURL -filePath $GlobalPath -pattern $pattern
+
+        if ($gachaGlobal) {
+            $gachaGlobal | Set-Clipboard
+            Write-Output ($Locale.Copied + " " + $gachaGlobal)
+            Write-Output ($Locale.PasteInstructions)
+        } else {
+            Write-Output $Locale.NoURL
+        }
     }
     "2" {
-        $pattern = '"url":"https://webstatic.mihoyo.com/nap/event/e20230424gacha/'
+        $pattern = '"url":"https://webstatic.mihoyo.com/nap/'
         $gachaCN = Get-LastMatchingURL -filePath $CNPath -pattern $pattern
 
         if ($gachaCN) {

@@ -20,6 +20,33 @@ function Get-ScriptUrl {
         return "https://gacha.studiobutter.io.vn/$ScriptPath"
     }
 }
+
+function Invoke-ScriptFromUrl {
+    param([string]$ScriptPath, [string]$ArgsStr = "")
+    $url = Get-ScriptUrl $ScriptPath
+    $fileName = Split-Path $ScriptPath -Leaf
+    $tempFile = Join-Path $env:TMP "gacha-log\$fileName"
+    
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    try {
+        if ($url -like 'file:///*') {
+            $localPath = $url -replace '^file:///', ''
+            $localPath = $localPath -replace '/', '\'
+            Copy-Item -Path $localPath -Destination $tempFile -Force
+        } else {
+            Invoke-WebRequest -Uri $url -OutFile $tempFile -UseBasicParsing
+        }
+        
+        if ([string]::IsNullOrWhiteSpace($ArgsStr)) {
+            & $tempFile
+        } else {
+            $argArray = $ArgsStr -split ' '
+            & $tempFile @argArray
+        }
+    } catch {
+        Write-Host "Failed to download or run ${ScriptPath}: $_" -ForegroundColor Red
+    }
+}
     
 function Show-Menu {
     Write-Host $Locale.ToolSelection
@@ -29,17 +56,17 @@ function Show-Menu {
 }
 
 function Get-Cleaner {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/cache_removal.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "tools/cache_removal.ps1"
 }
 
 function Get-LangReset {
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "tools/lang_reset.ps1")))}"
+    Invoke-ScriptFromUrl -ScriptPath "tools/lang_reset.ps1"
 }
 
 function Close-Clear {
     Write-Host $Locale.GachaMenuExit -ForegroundColor Yellow
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex "&{$((New-Object System.Net.WebClient).DownloadString($(Get-ScriptUrl "cleanup.ps1")))}"
-    exit 0
+    Invoke-ScriptFromUrl -ScriptPath "cleanup.ps1"
+    [Environment]::Exit(0)
 }
 
 while ($true) {

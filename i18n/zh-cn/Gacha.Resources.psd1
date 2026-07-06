@@ -34,7 +34,7 @@
     YSCacheCN = "使用国服缓存位置"
     ToolSelection = "选择运行工具："
     ToolOptions = @("1.缓存清理", "2. 重置语言设置", "按 0 退出")
-    CleanerOptions = @("1.未侦测到启动器", "2. 米哈游启动器 (HoYoPlay)", "3.Collapse 启动器", "4.云启动器", "?.了解更多", "按 0 退出")
+    CleanerOptions = @("1.未侦测到启动器", "2.米哈游启动器 (HoYoPlay)", "3.Collapse 启动器", "4.云启动器", "?.了解更多", "按 0 退出")
     DisabledChoice = "选项已禁用"
     ToolCleanerDisclaimer1 = "此工具将删除游戏浏览器生成的所有缓存文件。"
     ToolCleanerDisclaimer2 = "- 对于选项1：未侦测到启动器，如果你还未安装 HoYoPlay 或者其他类似的游戏启动器，则不会检测到启动器"
@@ -60,6 +60,7 @@
     nap_cn_b = "绝区零（B服）"
     nap_global = "绝区零（国际服）"
     nap_global_epic = "绝区零（Epic Games）"
+    nap_global_steam = "绝区零（Steam）"
     LauncherConfigNotFound = "未找到启动器配置数据。请确保启动器已安装，并配置正确。"
     GameDataFolderNotFound = "未找到选定游戏的游戏数据文件夹。"
     GameInstalled = "已安装游戏："

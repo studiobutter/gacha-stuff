@@ -15,7 +15,7 @@
     URLFound = "已找到抽卡紀錄 URL："
     GachaMenuTitle = "抽卡紀錄 URL 取得工具"
     GachaMenuDescription = "選擇遊戲："
-    GachaMenuOptions = @("1. 原神", "2. 崩壞：星穹鐵道", "3. 絕區零", "按 0 結束", "按 0 結束")
+    GachaMenuOptions = @("1. 原神", "2. 崩壞：星穹鐵道", "3. 絕區零", "4. 設定", "按 0 結束")
     GachaMenuAnyKey = "按任意鍵返回選單..."
     GachaMenuExit = "正在清理暫存檔案並結束..."
     GachaMenuChooseLink = "選擇區域："
@@ -60,6 +60,7 @@
     nap_cn_b = "絕區零（嗶哩嗶哩服）"
     nap_global = "絕區零（國際服）"
     nap_global_epic = "絕區零（Epic Games）"
+    nap_global_steam = "絕區零（Steam）"
     LauncherConfigNotFound = "找不到啟動器設定資料。請確保啟動器已正確安裝和設定。"
     GameDataFolderNotFound = "找不到所選遊戲的遊戲資料資料夾。"
     GameInstalled = "已安裝的遊戲："

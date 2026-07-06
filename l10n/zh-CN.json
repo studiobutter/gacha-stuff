@@ -59,7 +59,7 @@
   ],
   "CleanerOptions": [
     "1.未侦测到启动器",
-    "2. 米哈游启动器 (HoYoPlay)",
+    "2.米哈游启动器 (HoYoPlay)",
     "3.Collapse 启动器",
     "4.云启动器",
     "?.了解更多",
@@ -96,6 +96,7 @@
   "nap_cn_b": "绝区零（B服）",
   "nap_global": "绝区零（国际服）",
   "nap_global_epic": "绝区零（Epic Games）",
+  "nap_global_steam": "绝区零（Steam）",
   "LauncherConfigNotFound": "未找到启动器配置数据。请确保启动器已安装，并配置正确。",
   "GameDataFolderNotFound": "未找到选定游戏的游戏数据文件夹。",
   "GameInstalled": "已安装游戏：",
